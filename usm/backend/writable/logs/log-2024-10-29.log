@@ -1,0 +1,18 @@
+CRITICAL - 2024-10-29 07:49:32 --> Error: Call to a member function isValid() on null
+[Method: POST, Route: addcl]
+in APPPATH\Controllers\ClubController.php on line 43.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-10-29 07:50:09 --> Error: Call to a member function isValid() on null
+[Method: POST, Route: addcl]
+in APPPATH\Controllers\ClubController.php on line 43.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
