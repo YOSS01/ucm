@@ -28,13 +28,24 @@ class LoginController extends Controller
 
         if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
             
-            $session = session();
+            $session = \Config\Services::session();
+            $session->start();
             $session->set([
                 'user_id' => $user['id'],
                 'email' => $user['email'],
                 'is_logged_in' => true
             ]);
-            return $this->response->setJSON(['status' => 'success', 'message' => 'Login successful']);
+
+           
+
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Login successful',
+                'data' => [
+                    'user_id' => $session->get('user_id'),
+                    'email' => $session->get('email')
+                ]
+            ]);
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid email or password']);
         }

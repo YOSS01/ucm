@@ -9,7 +9,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->post('/register', 'RegisterController::register');
-// $routes->post('login', 'LoginController::login');   //cors problem      
+$routes->post('login', 'LoginController::login');   //cors problem      
 $routes->post('logout', 'SessionController::logout');
 $routes->get('/all-users','UserController::allusers');
 $routes->get("/all-clubs","ClubController::allclubs");
