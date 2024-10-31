@@ -101,7 +101,7 @@ class ClubController extends BaseController
 
         $logo = $this->request->getFile('logo');
         if ($logo->isValid() && !$logo->hasMoved()) {
-            $logo->move(WRITEPATH . 'upload/');
+            $logo->move(FCPATH . 'uploads/');
             $logoPath = $logo->getName();
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload logo']);
@@ -109,7 +109,7 @@ class ClubController extends BaseController
     
         $background = $this->request->getFile('background');
         if ($background->isValid() && !$background->hasMoved()) {
-            $background->move(WRITEPATH . 'upload/');
+            $background->move(WRITEPATH . 'uploads/');
             $backgroundPath = $background->getName();
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload background']);
@@ -117,7 +117,7 @@ class ClubController extends BaseController
     
         $qr_code = $this->request->getFile('qr_code');
         if ($qr_code->isValid() && !$qr_code->hasMoved()) {
-            $qr_code->move(WRITEPATH . 'upload/');
+            $qr_code->move(WRITEPATH . 'uploads/');
             $qrCodePath = $qr_code->getName();
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload QR code']);
