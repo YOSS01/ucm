@@ -33,7 +33,8 @@ class ClubController extends BaseController
             'logo' => 'uploaded[logo]|max_size[logo,1024]|ext_in[logo,png,jpg,jpeg]',
             'background' => 'uploaded[background]|max_size[background,1024]|ext_in[background,png,jpg,jpeg]',
             'qr_code' => 'uploaded[qr_code]|max_size[qr_code,1024]|ext_in[qr_code,png,jpg,jpeg]',
-            'status' => 'required|string'
+            'status' => 'required|string',
+            'slug'=>'required|String|max_length[255]'
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
@@ -71,6 +72,7 @@ class ClubController extends BaseController
             'background' =>$backgroundPath,
             'qr_code' =>  $qrCodePath,
             'status' => $this->request->getVar('status'),
+            'slug'=>$this->request->getVar('slug')
  
         ];
        
@@ -96,7 +98,8 @@ class ClubController extends BaseController
             'logo' => 'uploaded[logo]|max_size[logo,1024]|ext_in[logo,png,jpg,jpeg]',
             'background' => 'uploaded[background]|max_size[background,1024]|ext_in[background,png,jpg,jpeg]',
             'qr_code' => 'uploaded[qr_code]|max_size[qr_code,1024]|ext_in[qr_code,png,jpg,jpeg]',
-            'status' => 'required|string'
+            'status' => 'required|string',
+            'slug'=>'required|String|max_length[255]'
         ]);
 
         $logo = $this->request->getFile('logo');
@@ -130,7 +133,8 @@ class ClubController extends BaseController
                 'logo' => $logoPath,
                 'background' =>$backgroundPath,
                 'qr_code' =>  $qrCodePath,
-                'status' => $this->request->getVar('status')
+                'status' => $this->request->getVar('status'),
+                'slug'=>$this->request->getVar('slug')
             ];
 
        

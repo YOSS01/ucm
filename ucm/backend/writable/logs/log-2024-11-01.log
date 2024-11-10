@@ -1,0 +1,66 @@
+CRITICAL - 2024-11-01 17:32:46 --> CodeIgniter\HTTP\Exceptions\HTTPException: Could not move file "phpF850.tmp" to "C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\writable\/". Reason: 
+[Method: POST, Route: add-event]
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 154.
+ 1 SYSTEMPATH\HTTP\Files\UploadedFile.php(154): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('phpF850.tmp', 'C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\writable\\/', '')
+ 2 APPPATH\Controllers\EventController.php(40): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\writable\\/', 'uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->addevent()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-01 17:34:00 --> CodeIgniter\HTTP\Exceptions\HTTPException: Could not move file "php1AF7.tmp" to "C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\writable\/". Reason: 
+[Method: POST, Route: add-event]
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 154.
+ 1 SYSTEMPATH\HTTP\Files\UploadedFile.php(154): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('php1AF7.tmp', 'C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\writable\\/', '')
+ 2 APPPATH\Controllers\EventController.php(40): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\writable\\/', 'uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->addevent()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-01 17:51:57 --> CodeIgniter\HTTP\Exceptions\HTTPException: Could not move file "php8AFA.tmp" to "C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\writable\/". Reason: 
+[Method: POST, Route: add-event]
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 154.
+ 1 SYSTEMPATH\HTTP\Files\UploadedFile.php(154): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('php8AFA.tmp', 'C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\writable\\/', '')
+ 2 APPPATH\Controllers\EventController.php(40): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\writable\\/', 'uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->addevent()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-01 22:52:25 --> CodeIgniter\HTTP\Exceptions\HTTPException: Could not move file "php9D29.tmp" to "C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\writable\/". Reason: 
+[Method: POST, Route: add-event]
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 154.
+ 1 SYSTEMPATH\HTTP\Files\UploadedFile.php(154): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('php9D29.tmp', 'C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\writable\\/', '')
+ 2 APPPATH\Controllers\EventController.php(40): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\writable\\/', 'uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->addevent()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-01 22:54:37 --> CodeIgniter\HTTP\Exceptions\HTTPException: Could not move file "phpA253.tmp" to "C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\writable\/". Reason: 
+[Method: POST, Route: add-event]
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 154.
+ 1 SYSTEMPATH\HTTP\Files\UploadedFile.php(154): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('phpA253.tmp', 'C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\writable\\/', '')
+ 2 APPPATH\Controllers\EventController.php(40): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\writable\\/', 'uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->addevent()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-01 22:57:57 --> CodeIgniter\HTTP\Exceptions\HTTPException: Could not move file "phpAF07.tmp" to "C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\writable\/". Reason: 
+[Method: POST, Route: add-event]
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 154.
+ 1 SYSTEMPATH\HTTP\Files\UploadedFile.php(154): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('phpAF07.tmp', 'C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\writable\\/', '')
+ 2 APPPATH\Controllers\EventController.php(41): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\writable\\/', 'uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->addevent()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
