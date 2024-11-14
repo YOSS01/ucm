@@ -1,14 +1,26 @@
 import Image from "next/image";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+
+// auth
+import { verifySession } from "@/app/_lib/dal";
 
 // components
 import Navbar from "@/components/Navbar";
-import Link from "next/link";
+import Logout from "./_components/logout";
 
 export const metadata = {
   title: "Profile",
 };
 
-export default function page() {
+export default async function page() {
+  const session = await verifySession();
+
+  // Check if the user is authenticated
+  if (!session.userId) {
+    redirect("/login");
+  }
+
   return (
     <div className="w-full h-screen relative">
       <Navbar active="/profile" />
@@ -38,6 +50,7 @@ export default function page() {
               Not member in any club yet
             </ul>
           </div>
+          <Logout />
         </div>
       </div>
 

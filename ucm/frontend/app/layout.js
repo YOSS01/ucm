@@ -1,6 +1,9 @@
 import { Poppins, Original_Surfer } from "next/font/google";
 import "@/styles/globals.css";
 
+// Toaster
+import { Toaster } from "react-hot-toast";
+
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
@@ -80,6 +83,7 @@ export default function RootLayout({ children }) {
         className={`${poppins.className} antialiased selection:bg-black/70 selection:text-white`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );

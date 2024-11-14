@@ -1,29 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
 
+// auth
+import { cookies } from "next/headers";
+import { decrypt } from "@/app/_lib/session";
+
 // images
 import logo from "@/public/images/logo-uiz.png";
 
-const nav = [
-  {
-    label: "Admin space",
-    href: "/login/admin",
-  },
-  {
-    label: "Clubs",
-    href: "/clubs",
-  },
-  {
-    label: "Events",
-    href: "/",
-  },
-  {
-    label: "Join us",
-    href: "/login",
-  },
-];
+export default async function Navbar({ active }) {
+  const cookie = (await cookies()).get("session")?.value;
+  const session = await decrypt(cookie);
 
-export default function Navbar({ active }) {
+  const nav = [
+    {
+      label: "Admin space",
+      href: "/login/admin",
+    },
+    {
+      label: "Clubs",
+      href: "/clubs",
+    },
+    {
+      label: "Events",
+      href: "/",
+    },
+    {
+      label: session ? "Profile" : "Join us",
+      href: session ? "/profile" : "/login",
+    },
+  ];
   return (
     <div className="w-full h-14 fixed top-10 flex justify-between items-center px-10 z-30 text-white">
       <div>

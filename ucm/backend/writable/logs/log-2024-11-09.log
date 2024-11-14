@@ -1,0 +1,144 @@
+ERROR - 2024-11-09 20:22:35 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'club_managment', 3306, '', 0)
+#1 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\UserController.php(15): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->allusers()
+#8 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\UserController.php(15): CodeIgniter\BaseModel->findAll()
+#6 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->allusers()
+#7 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-11-09 20:22:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: GET, Route: all-users]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\UserController.php(15): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->allusers()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-11-09 20:23:25 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'club_managment', 3306, '', 0)
+#1 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\ClubController.php(17): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+#8 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+#9 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\ClubController.php(17): CodeIgniter\BaseModel->findAll()
+#6 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+#7 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+#8 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-11-09 20:23:25 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: GET, Route: all-clubs]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `clubs`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\ClubController.php(17): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-11-09 20:24:27 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'club_managment', 3306, '', 0)
+#1 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\ClubController.php(17): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+#8 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+#9 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\ClubController.php(17): CodeIgniter\BaseModel->findAll()
+#6 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+#7 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+#8 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-11-09 20:24:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+[Method: GET, Route: all-clubs]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `clubs`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\ClubController.php(17): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
