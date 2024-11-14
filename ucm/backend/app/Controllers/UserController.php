@@ -15,4 +15,6 @@ class UserController extends BaseController
         $users = $userModel->findAll();
          return $this->response->setJSON($users);
     }
+
+    // get user()
 }

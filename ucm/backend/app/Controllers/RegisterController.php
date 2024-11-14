@@ -47,6 +47,7 @@ class RegisterController extends Controller
         ];
     
         if ($userModel->insert($insertData)) {
+            // return userId
             return $this->response->setJSON(['status' => 'success', 'message' => 'User registered successfully']);
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to register user']);

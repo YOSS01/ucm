@@ -15,7 +15,7 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (!$validation->run($this->request->getPost())) {
+        if (!$validation->run($this->request->getPost())) { // use json
             return $this->response->setJSON([
                 'status' => 'error',
                 'message' => 'Validation failed',
