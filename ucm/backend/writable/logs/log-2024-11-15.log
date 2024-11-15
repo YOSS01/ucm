@@ -1,0 +1,212 @@
+INFO - 2024-11-15 16:05:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-15 16:05:53 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+CRITICAL - 2024-11-15 17:08:07 --> TypeError: CodeIgniter\Validation\Validation::run(): Argument #1 ($data) must be of type ?array, stdClass given, called in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php on line 28
+[Method: POST, Route: login]
+in SYSTEMPATH\Validation\Validation.php on line 136.
+ 1 APPPATH\Controllers\UserController.php(28): CodeIgniter\Validation\Validation->run(Object(stdClass))
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->login()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-11-15 17:08:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-15 17:08:23 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+CRITICAL - 2024-11-15 17:16:56 --> ErrorException: Undefined variable $json
+[Method: POST, Route: login]
+in APPPATH\Controllers\UserController.php on line 35.
+ 1 APPPATH\Controllers\UserController.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $json', 'C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\app\\Controllers\\UserController.php', 35)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->login()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-11-15 17:29:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-15 17:29:06 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+INFO - 2024-11-15 17:29:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-15 17:29:17 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+WARNING - 2024-11-15 17:32:48 --> [DEPRECATED] password_hash(): Passing null to parameter #1 ($password) of type string is deprecated in APPPATH\Controllers\AdminController.php on line 26.
+ 1 APPPATH\Controllers\AdminController.php(26): password_hash(Object(SensitiveParameterValue), '2y')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->addadmin()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-11-15 17:32:48 --> mysqli_sql_exception: Column 'email' cannot be null in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `ad...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ad...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ad...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ad...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\AdminController.php(30): CodeIgniter\Model->insert(Array)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\AdminController->addadmin()
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2024-11-15 17:32:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'email' cannot be null
+[Method: POST, Route: add-admin]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `admin` (`email`, `password`) VALUES (:email:, :password:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\AdminController.php(30): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->addadmin()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-15 17:32:48 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'email' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `admin` (`email`, `password`) VALUES (NULL, \'$2y$10$gUYUKhMxKzT7Oi9r/LEmzOixCnaqg/0tqStvIRhtBZtQ/VYxfX4qC\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `admin` (`email`, `password`) VALUES (NULL, \'$2y$10$gUYUKhMxKzT7Oi9r/LEmzOixCnaqg/0tqStvIRhtBZtQ/VYxfX4qC\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `admin` (`email`, `password`) VALUES (:email:, :password:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\AdminController.php(30): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->addadmin()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-15 17:32:48 --> [Caused by] mysqli_sql_exception: Column 'email' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `admin` (`email`, `password`) VALUES (NULL, \'$2y$10$gUYUKhMxKzT7Oi9r/LEmzOixCnaqg/0tqStvIRhtBZtQ/VYxfX4qC\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `admin` (`email`, `password`) VALUES (NULL, \'$2y$10$gUYUKhMxKzT7Oi9r/LEmzOixCnaqg/0tqStvIRhtBZtQ/VYxfX4qC\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `admin` (`email`, `password`) VALUES (NULL, \'$2y$10$gUYUKhMxKzT7Oi9r/LEmzOixCnaqg/0tqStvIRhtBZtQ/VYxfX4qC\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `admin` (`email`, `password`) VALUES (:email:, :password:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\AdminController.php(30): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->addadmin()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-11-15 18:03:34 --> mysqli_sql_exception: Table 'admin' already exists in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `a...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `a...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `a...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `a...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193709_CreateAdminTable.php(36): CodeIgniter\Database\Forge->createTable('admin')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateAdminTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-15 18:05:30 --> mysqli_sql_exception: Table 'admin' already exists in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `a...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `a...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `a...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `a...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193709_CreateAdminTable.php(36): CodeIgniter\Database\Forge->createTable('admin')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateAdminTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-15 18:05:52 --> mysqli_sql_exception: Table 'admin' already exists in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `a...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `a...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `a...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `a...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193709_CreateAdminTable.php(36): CodeIgniter\Database\Forge->createTable('admin')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateAdminTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-15 18:06:11 --> mysqli_sql_exception: Table 'admin' already exists in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `a...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `a...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `a...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `a...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193709_CreateAdminTable.php(36): CodeIgniter\Database\Forge->createTable('admin')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateAdminTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-15 18:07:34 --> mysqli_sql_exception: Table 'clubmembership' already exists in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193710_CreateClubMembershipTable.php(52): CodeIgniter\Database\Forge->createTable('clubmembership')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateClubMembershipTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-15 18:09:12 --> mysqli_sql_exception: Table 'clubmembership' already exists in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193710_CreateClubMembershipTable.php(52): CodeIgniter\Database\Forge->createTable('clubmembership')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateClubMembershipTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-15 18:14:21 --> mysqli_sql_exception: Table 'clubmembership' already exists in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193710_CreateClubMembershipTable.php(52): CodeIgniter\Database\Forge->createTable('clubmembership')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateClubMembershipTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+INFO - 2024-11-15 18:48:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-15 18:48:28 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
