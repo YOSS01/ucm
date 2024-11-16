@@ -11,7 +11,10 @@ import { EffectCube, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-cube";
 
-export default function Carousel() {
+// Toaster
+import toast from "react-hot-toast";
+
+export default function Carousel({ session }) {
   const [swiper, setSwiper] = useState();
   const [index, setIndex] = useState(1);
   const data = [
@@ -118,9 +121,7 @@ export default function Carousel() {
                   </p>
                 </div>
                 <div className="text-sm flex items-center gap-x-5">
-                  <button className="h-[45px] border-2 border-solid border-white rounded-full px-7 bg-white text-black hover:bg-transparent hover:text-white duration-300">
-                    Get in
-                  </button>
+                  <Signup session={session} />
                   <Link
                     href={`/clubs/${item?.slug}`}
                     className="h-[45px] flex justify-center items-center border-2 border-solid border-white rounded-full px-7 hover:bg-white hover:text-black duration-300"
@@ -147,3 +148,23 @@ export default function Carousel() {
     </div>
   );
 }
+
+const Signup = ({ session }) => {
+  function handleSignup() {
+    if (!session) {
+      toast("Please create an account to proceed!", {
+        icon: "🔔",
+      });
+    }
+  }
+  return (
+    <>
+      <button
+        onClick={handleSignup}
+        className="h-[45px] border-2 border-solid border-white rounded-full px-7 bg-white text-black hover:bg-transparent hover:text-white duration-300"
+      >
+        Get in
+      </button>
+    </>
+  );
+};

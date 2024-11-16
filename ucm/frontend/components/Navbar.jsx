@@ -14,8 +14,8 @@ export default async function Navbar({ active }) {
 
   const nav = [
     {
-      label: "Admin space",
-      href: "/login/admin",
+      label: session ? "" : "Admin space",
+      href: session ? "" : "/login/admin",
     },
     {
       label: "Clubs",
@@ -26,7 +26,7 @@ export default async function Navbar({ active }) {
       href: "/",
     },
     {
-      label: session ? "Profile" : "Join us",
+      label: session ? "Account" : "Join us",
       href: session ? "/profile" : "/login",
     },
   ];
