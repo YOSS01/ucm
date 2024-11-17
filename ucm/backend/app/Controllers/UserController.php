@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\AdminModel;
 use App\Models\UserModel;
+use App\Models\ClubMembershipModel;
 
 class UserController extends BaseController
 {
@@ -166,11 +167,27 @@ class UserController extends BaseController
     }
     
    
-
-
+    
     public function getuserByid($id){
-        $user = new UserMOdel();
-        $user = $user->find($id);
-        return $this->response->setJSON($user);
+        $userModel = new UserModel();
+        $clubMembershipModel = new ClubMembershipModel();
+        
+        $user = $userModel->find($id);
+        
+    
+        $clubs = $clubMembershipModel->where('id_user', $id)->findAll();
+    
+       
+        $userData = [
+            'first_name' => $user['first_name'],
+            'last_name' => $user['last_name'],
+            'email' => $user['email'],
+            'picture' => $user['picture'],
+            'clubs' => $clubs
+        ];
+    
+        return $this->response->setJSON($userData);
     }
+
+   
 }
