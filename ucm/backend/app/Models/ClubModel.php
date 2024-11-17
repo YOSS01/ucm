@@ -10,4 +10,6 @@ class ClubModel extends Model
     protected $allowedFields = [
         'id_president', 'name', 'description', 'logo', 'background', 'qr_code', 'status','slug'
     ];
+   
+
 }
