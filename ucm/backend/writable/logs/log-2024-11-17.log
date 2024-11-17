@@ -1,0 +1,151 @@
+ERROR - 2024-11-17 10:00:08 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'club_managment' in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'club_managment', 3306, '', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1485): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1505): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(163): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'club_managment' in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1485): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1505): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(163): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-11-17 10:00:31 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'club_managment' in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'club_managment', 3306, '', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1485): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1505): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(163): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'club_managment' in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1485): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1505): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(163): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-11-17 10:00:53 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'club_managment' in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'club_managment', 3306, '', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1485): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1505): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(163): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'club_managment' in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1485): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1505): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(163): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-11-17 10:02:21 --> mysqli_sql_exception: Can't create table `club_managment`.`clubmembership` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193710_CreateClubMembershipTable.php(52): CodeIgniter\Database\Forge->createTable('clubmembership')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateClubMembershipTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-17 10:03:35 --> mysqli_sql_exception: Incorrect table definition; there can be only one auto column and it must be defined as a key in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193710_CreateClubMembershipTable.php(52): CodeIgniter\Database\Forge->createTable('clubmembership')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateClubMembershipTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-17 10:04:11 --> mysqli_sql_exception: Can't create table `club_managment`.`eventrequest` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `e...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `e...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `e...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `e...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193711_CreateEventsTable.php(54): CodeIgniter\Database\Forge->createTable('eventrequest')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateEventRequestsTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+INFO - 2024-11-17 10:27:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 10:27:42 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+INFO - 2024-11-17 10:28:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-11-17 10:31:04 --> ErrorException: Cannot use empty array elements in arrays
+[Method: GET, Route: all-admins]
+in APPPATH\Controllers\AdminController.php on line 30.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()

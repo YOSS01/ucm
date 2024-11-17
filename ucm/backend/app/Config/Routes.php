@@ -19,12 +19,12 @@ $routes->get('user-number/(:num)','UserController::getuserByid/$1');
 
 
 //admin routes
-// $routes->post('/add-admin','AdminController::addadmin');
-// $routes->post('/login-admin','AdminController::login_admin');
-// $routes->post('/logout-admin','AdminController::logout_admin');
-// $routes->get('/all-admins','AdminController::alladmins');
-// $routes->post('/update-admin/(:num)','AdminController::update_admin/$1');
-// $routes->get('/delet-admin/(:num)','AdminController::delete_admin/$1');
+$routes->post('/add-admin','AdminController::addadmin');
+$routes->post('/login-admin','AdminController::login_admin');
+$routes->post('/logout-admin','AdminController::logout_admin');
+$routes->get('/all-admins','AdminController::alladmins');
+$routes->post('/update-admin/(:num)','AdminController::update_admin/$1');
+$routes->get('/delet-admin/(:num)','AdminController::delete_admin/$1');
 
 
 //club routes

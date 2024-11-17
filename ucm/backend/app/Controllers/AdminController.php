@@ -11,10 +11,10 @@ class AdminController extends BaseController {
             'password' => 'required'
         ]);
 
-        // Récupérer les données JSON
-        $jsonData = $this->request->getJSON();
+       
+     
 
-        if (!$validation->run((array) $jsonData)) {
+        if (!$validation->withRequest($this->request)->run()) {
             return $this->response->setJSON([
                 'status' => 'error',
                 'message' => 'Validation failed',
@@ -25,8 +25,10 @@ class AdminController extends BaseController {
         $admin = new AdminModel();
 
         $data = [
-            'email' => $jsonData->email,
-            'password' => password_hash($jsonData->password, PASSWORD_DEFAULT)
+            'email' => $this->request->getVar('email'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ];
 
         if ($admin->insert($data)) {
@@ -50,8 +52,7 @@ class AdminController extends BaseController {
             'email' => 'required|valid_email',
             'password' => 'required'
         ]);
-
-        if (!$validation->run($this->request->getPost())) {
+  if (!$validation->run((array)$this->request->getJSON())) {
             return $this->response->setJSON([
                 'status' => 'error',
                 'message' => 'Validation failed',
