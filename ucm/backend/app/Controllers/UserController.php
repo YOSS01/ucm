@@ -84,7 +84,7 @@ class UserController extends BaseController
 
         if ($user && password_verify($this->request->getJSON()->password, $user['password'])) {
             $session = \Config\Services::session();
-            $session->start();
+          
             $session->set([
                 'user_id' => $user['id'],
                 'email' => $user['email'],
