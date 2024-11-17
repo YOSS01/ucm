@@ -1,11 +1,16 @@
 "use client";
 import Link from "next/link";
-
+import { useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { signin } from "@/app/_actions/auth";
+import toast from "react-hot-toast";
 
 export default function Form() {
   const [state, action] = useFormState(signin, undefined);
+
+  useEffect(() => {
+    if (state?.message) toast.error(state?.message);
+  }, [state]);
   return (
     <form action={action} className="w-full flex flex-col gap-y-7">
       <div className="w-full flex flex-col gap-y-0">

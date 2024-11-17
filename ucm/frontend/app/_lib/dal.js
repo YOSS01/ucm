@@ -20,21 +20,19 @@ export const getUser = cache(async () => {
   if (!session) return null;
 
   try {
-    //   const data = await db.query.users.findMany({
-    //     where: eq(users.id, session.userId),
-    //     // Explicitly return the columns you need rather than the whole user object
-    //     columns: {
-    //       id: true,
-    //       name: true,
-    //       email: true,
-    //     },
-    //   })
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_APP_BASE_URL}/user-number/${session.userId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-    const user = {
-      id: 28,
-      name: "test",
-      email: "test@gmail.com",
-    };
+    if (!response.ok) return;
+
+    const user = await response.json();
 
     return user;
   } catch (error) {

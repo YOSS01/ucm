@@ -10,6 +10,10 @@ export const SignupFormSchema = z
       .string()
       .min(2, { message: "Last name must be at least 2 characters long." })
       .trim(),
+    cin: z
+      .string()
+      .min(2, { message: "CIN must be at least 2 characters long." })
+      .trim(),
     email: z.string().email({ message: "Please enter a valid email." }).trim(),
     password: z
       .string()
@@ -24,7 +28,6 @@ export const SignupFormSchema = z
     confirmPassword: z
       .string()
       .min(8, { message: "Be at least 8 characters long. " }),
-    cin: z.string(),
   })
   .superRefine(({ confirmPassword, password }, ctx) => {
     if (confirmPassword !== password) {

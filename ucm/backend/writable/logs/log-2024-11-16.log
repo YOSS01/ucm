@@ -1,0 +1,61 @@
+ERROR - 2024-11-16 09:25:25 --> mysqli_sql_exception: Table 'admin' already exists in C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `a...', 0)
+#1 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `a...')
+#2 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `a...')
+#3 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `a...')
+#4 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193709_CreateAdminTable.php(36): CodeIgniter\Database\Forge->createTable('admin')
+#5 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateAdminTable->up()
+#6 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-16 09:26:31 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'clubs_managment_system' in C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'Clubs_Managment...', 3306, '', 0)
+#1 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1485): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1505): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(163): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'clubs_managment_system' in C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1485): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(1505): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(163): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#10 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#11 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-11-16 23:32:30 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+[Method: POST, Route: login]
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 537.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(537): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\UserController.php(26): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->login()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-11-16 23:35:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-16 23:35:21 --> Session: Sessions is enabled, and one exists. Please don't $session->start();

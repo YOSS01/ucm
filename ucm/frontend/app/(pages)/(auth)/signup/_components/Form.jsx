@@ -1,10 +1,16 @@
 "use client";
 import Link from "next/link";
+import { useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { signup } from "@/app/_actions/auth";
+import toast from "react-hot-toast";
 
 export default function Form() {
   const [state, action] = useFormState(signup, undefined);
+
+  useEffect(() => {
+    if (state?.message) toast.error(state?.message);
+  }, [state]);
   return (
     <form
       action={action}
@@ -73,36 +79,70 @@ export default function Form() {
           )}
         </div>
       </div>
-      <div className="w-full flex flex-col gap-y-0">
-        <label htmlFor="email">Email</label>
-        <div className="w-full relative">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-4 absolute left-0 top-1/2 -translate-y-1/2 text-gray-500"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"
-            />
-          </svg>
 
-          <input
-            className="w-full border-b border-solid border-gray-500 focus:border-black outline-none py-2 px-6 placeholder:text-gray-500 placeholder:font-light"
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email"
-          />
+      <div className="flex justify-between items-center gap-x-2">
+        <div className="w-1/2 flex flex-col gap-y-0">
+          <label htmlFor="email">Email</label>
+          <div className="w-full relative">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-4 absolute left-0 top-1/2 -translate-y-1/2 text-gray-500"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"
+              />
+            </svg>
+
+            <input
+              className="w-full border-b border-solid border-gray-500 focus:border-black outline-none py-2 px-6 placeholder:text-gray-500 placeholder:font-light"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+            />
+          </div>
+          {state?.errors?.email && (
+            <p className="text-red-500 text-xs">{state.errors.email}</p>
+          )}
         </div>
-        {state?.errors?.email && (
-          <p className="text-red-500 text-xs">{state.errors.email}</p>
-        )}
+        <div className="w-1/2 flex flex-col gap-y-0">
+          <label htmlFor="cin">CIN</label>
+          <div className="group w-full relative">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-4 absolute left-0 top-1/2 -translate-y-1/2 text-gray-500"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+              />
+            </svg>
+
+            <input
+              className="w-full border-b border-solid border-gray-500 focus:border-black outline-none py-2 ps-6 placeholder:text-gray-500 placeholder:font-light"
+              type="text"
+              id="cin"
+              name="cin"
+              placeholder="CIN"
+            />
+          </div>
+          {state?.errors?.cin && (
+            <p className="text-red-500 text-xs">{state.errors.cin}</p>
+          )}
+        </div>
       </div>
+
       <div className="w-full flex flex-col gap-y-0">
         <label htmlFor="password">Password</label>
         <div className="w-full relative">

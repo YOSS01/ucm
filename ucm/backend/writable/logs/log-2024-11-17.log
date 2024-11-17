@@ -1,0 +1,31 @@
+INFO - 2024-11-17 11:38:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 11:38:43 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+CRITICAL - 2024-11-17 11:41:34 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+[Method: POST, Route: login]
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 537.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(537): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 APPPATH\Controllers\UserController.php(26): CodeIgniter\HTTP\IncomingRequest->getJSON()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->login()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-11-17 11:41:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 11:41:48 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+INFO - 2024-11-17 11:42:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 11:42:15 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+INFO - 2024-11-17 11:42:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 11:42:17 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+INFO - 2024-11-17 11:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 11:44:03 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+INFO - 2024-11-17 11:44:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 11:44:25 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+INFO - 2024-11-17 12:18:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 12:18:01 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+INFO - 2024-11-17 12:24:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 12:24:25 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+INFO - 2024-11-17 12:28:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 12:28:42 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+INFO - 2024-11-17 12:32:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 12:32:40 --> Session: Sessions is enabled, and one exists. Please don't $session->start();

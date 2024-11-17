@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 // auth
-import { verifySession } from "@/app/_lib/dal";
+import { getUser } from "@/app/_lib/dal";
 
 // components
 import Navbar from "@/components/Navbar";
@@ -15,12 +14,7 @@ export const metadata = {
 };
 
 export default async function page() {
-  const session = await verifySession();
-
-  // Check if the user is authenticated
-  if (!session.userId) {
-    redirect("/login");
-  }
+  const user = await getUser();
 
   return (
     <div className="w-full h-screen relative">
@@ -38,12 +32,14 @@ export default async function page() {
                 className="w-full h-full object-cover pointer-events-none"
               />
             </div>
-            <h1 className="font-original_surfer">Jack Finnigan</h1>
+            <h1 className="font-original_surfer">
+              {user?.first_name + " " + user?.last_name}
+            </h1>
             <Link
-              href="mailto:userexample@gmail.com"
+              href={`mailto:${user?.email}`}
               className="text-xs text-black/60 font-light"
             >
-              userexample@gmail.com
+              {user?.email}
             </Link>
           </div>
           <div>
