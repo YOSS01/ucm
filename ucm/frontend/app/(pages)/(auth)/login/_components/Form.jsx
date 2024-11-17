@@ -5,6 +5,9 @@ import { useFormState, useFormStatus } from "react-dom";
 import { signin } from "@/app/_actions/auth";
 import toast from "react-hot-toast";
 
+// components
+import ForgetPassword from "./ForgetPassword";
+
 export default function Form() {
   const [state, action] = useFormState(signin, undefined);
 
@@ -78,9 +81,7 @@ export default function Form() {
               )}
             </div>
 
-            <Link href="/" className="text-xs text-red-600 hover:underline">
-              Forgot password?
-            </Link>
+            <ForgetPassword />
           </div>
         </div>
       </div>

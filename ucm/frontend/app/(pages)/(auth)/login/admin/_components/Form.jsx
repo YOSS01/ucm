@@ -1,10 +1,22 @@
-import Link from "next/link";
+"use client";
+import { useEffect } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import { adminLogin } from "@/app/_actions/auth";
+import toast from "react-hot-toast";
+
+// components
+import ForgetPassword from "./ForgetPassword";
 
 export default function Form() {
+  const [state, action] = useFormState(adminLogin, undefined);
+
+  useEffect(() => {
+    if (state?.message) toast.error(state?.message);
+  }, [state]);
   return (
-    <form className="w-full flex flex-col gap-y-7">
+    <form action={action} className="w-full flex flex-col gap-y-7">
       <div className="w-full flex flex-col gap-y-0">
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <div className="group w-full relative">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -25,14 +37,16 @@ export default function Form() {
             className="w-full border-b border-solid border-gray-500 focus:border-black outline-none py-2 px-6 placeholder:text-gray-500 placeholder:font-light"
             type="email"
             id="email"
-            name=""
+            name="email"
             placeholder="Type your email here..."
-            required
           />
         </div>
+        {state?.errors?.email && (
+          <p className="text-red-500 text-xs">{state.errors.email}</p>
+        )}
       </div>
       <div className="w-full flex flex-col gap-y-0">
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <div className="flex flex-col gap-y-1">
           <div className="group w-full relative">
             <svg
@@ -54,23 +68,39 @@ export default function Form() {
               className="w-full border-b border-solid border-gray-500 focus:border-black outline-none py-2 px-6 placeholder:text-gray-500 placeholder:font-light"
               type="password"
               id="password"
-              name=""
+              name="password"
               placeholder="Type your password here..."
-              required
             />
           </div>
 
-          <div className="w-full flex justify-end">
-            <Link href="/" className="text-xs text-red-600 hover:underline">
-              Forgot password?
-            </Link>
+          <div className="w-full flex justify-between">
+            <div>
+              {state?.errors?.password && (
+                <p className="text-red-500 text-xs">{state.errors.password}</p>
+              )}
+            </div>
+
+            <ForgetPassword />
           </div>
         </div>
       </div>
 
-      <button className="w-full h-[60px] bg-black/80 text-white flex justify-center items-center hover:bg-black duration-300 mt-3">
-        Log in
-      </button>
+      <SubmitButton />
+      <div className="text-red-600 text-xs">
+        ** This page is intended for administrators only.
+      </div>
     </form>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      disabled={pending}
+      className="w-full h-[60px] bg-black/80 text-white flex justify-center items-center hover:bg-black duration-300 mt-3"
+    >
+      Get in
+    </button>
   );
 }

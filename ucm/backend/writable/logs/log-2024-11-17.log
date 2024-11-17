@@ -319,4 +319,9 @@ WHERE `user_id` = :user_id:', [...], false)
 10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
 12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
-13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))INFO - 2024-11-17 14:47:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 14:47:24 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+INFO - 2024-11-17 15:20:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 15:20:01 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
+INFO - 2024-11-17 15:49:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-11-17 15:49:10 --> Session: Sessions is enabled, and one exists. Please don't $session->start();
