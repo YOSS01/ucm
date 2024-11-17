@@ -17,12 +17,10 @@ class UserController extends BaseController
  
     $validation = \Config\Services::validation();
     $validation->setRules([
-        'email' => 'required|valid_email|is_unique[user.email]',
-        'password' => 'required|min_length[8]',
+
         'first_name' => 'required|min_length[2]',
         'last_name' => 'required|min_length[2]',
-        'cin' => 'required|min_length[1]|is_unique[user.cin]',
-        'puicture' => 'uploaded[picture]|max_size[picture,1024]|ext_in[picture,png,jpg,jpeg]'
+       'puicture' => 'uploaded[picture]|max_size[picture,1024]|ext_in[picture,png,jpg,jpeg]'
     ]);
 
 
@@ -47,13 +45,10 @@ class UserController extends BaseController
     }
     $data = [
 
-        'email' => $this->request->getVar('email'),
-        'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT), 
-        'first_name' => $this->request->getVar('first_name'),
+       'first_name' => $this->request->getVar('first_name'),
         'last_name' => $this->request->getVar('last_name'),
-        'cin' => $this->request->getVar('cin'),
-        'picture' => $picturePath,
-        'created_at' => date('Y-m-d H:i:s')
+     
+        'picture' => $picturePath
     ];
     if($userModel->update($id, $data)){
         return $this->response->setJSON([
@@ -182,7 +177,7 @@ class UserController extends BaseController
             'first_name' => $user['first_name'],
             'last_name' => $user['last_name'],
             'email' => $user['email'],
-            'picture' => $user['picture'],
+            'picture' => base_url('uploads/' . $user['picture']),
             'clubs' => $clubs
         ];
     
