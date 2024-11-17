@@ -114,8 +114,7 @@ class UserController extends BaseController
             'password' => 'required|min_length[8]',
             'first_name' => 'required|min_length[2]',
             'last_name' => 'required|min_length[2]',
-            'cin' => 'required|min_length[1]|is_unique[user.cin]',
-             'puicture' => 'uploaded[picture]|max_size[picture,1024]|ext_in[picture,png,jpg,jpeg]'
+            'cin' => 'required|min_length[1]|is_unique[user.cin]'
         ]);
     
         if (!$validation->run((array)$this->request->getJSON())) {  
@@ -128,15 +127,7 @@ class UserController extends BaseController
     
         
         $userModel = new UserModel();
-        $picture = $this->request->getFile('user_picture');
-        if($picture->isValid() && !$picture->hasMoved()){
-            $picture->move(WRITEPATH . 'uploads/');
-            $picturePath = $picture->getName();
-    
-        }else{
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload picture']);
-    
-        }
+        
         $insertData = [
       
 
@@ -145,7 +136,6 @@ class UserController extends BaseController
             'first_name' => $this->request->getVar('first_name'),
             'last_name' => $this->request->getVar('last_name'),
             'cin' => $this->request->getVar('cin'),
-            'picture' => $picturePath,
             'created_at' => date('Y-m-d H:i:s'),
         ];
     
@@ -177,7 +167,7 @@ class UserController extends BaseController
             'first_name' => $user['first_name'],
             'last_name' => $user['last_name'],
             'email' => $user['email'],
-            'picture' => base_url('uploads/' . $user['picture']),
+            'picture' => $user['picture'],
             'clubs' => $clubs
         ];
     
