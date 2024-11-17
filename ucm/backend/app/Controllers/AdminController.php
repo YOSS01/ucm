@@ -62,10 +62,10 @@ class AdminController extends BaseController {
 
         $adminModel = new AdminModel();
         $admin = $adminModel->where('email', $this->request->getJSON()->email)->first();
-        if($admin){
-            if(password_verify($this->request->getJSON()->password, $admin['password'])){
+        if($admin || password_verify($this->request->getJSON()->password, $admin['password'])){
+          
                 $session = \Config\Services::session();
-                $session->start();
+               
                 $session->set([
                     'admin_id' => $admin['id'],
                     'email' => $admin['email'],
@@ -86,7 +86,7 @@ class AdminController extends BaseController {
                     'message' => 'Invalid email or password'
                 ]);
             }
-        }
+        
 
           
 

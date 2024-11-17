@@ -1471,3 +1471,4 @@ Stack trace:
 #11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
 #12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
 #13 {main}
+INFO - 2024-11-17 16:13:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
