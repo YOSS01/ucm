@@ -10,11 +10,12 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 //user routes 
-$routes->post('/register', 'UserController::register');
-$routes->post('login', 'UserController::login');      
-$routes->post('logout', 'UserController::logout');
-$routes->get('/all-users','UserController::allusers');
-$routes->get('user-number/(:num)','UserController::getuserByid/$1');
+    $routes->post('/register', 'UserController::register'); //add new user
+    $routes->post('login', 'UserController::login');      
+    $routes->post('logout', 'UserController::logout');
+    $routes->get('/all-users','UserController::allusers');
+    $routes->get('user-number/(:num)','UserController::getuserByid/$1');
+    $routes->post('/update-user/(:num)','UserController::updateuser/$1');
 
 
 
