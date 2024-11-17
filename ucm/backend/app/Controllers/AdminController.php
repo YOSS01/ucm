@@ -62,7 +62,7 @@ class AdminController extends BaseController {
 
         $adminModel = new AdminModel();
         $admin = $adminModel->where('email', $this->request->getJSON()->email)->first();
-        if($admin || password_verify($this->request->getJSON()->password, $admin['password'])){
+        if($admin && password_verify($this->request->getJSON()->password, $admin['password'])){
           
                 $session = \Config\Services::session();
                
@@ -74,11 +74,7 @@ class AdminController extends BaseController {
 
                 return $this->response->setJSON([
                     'status' => 'success',
-                    'message' => 'Login successful',
-                    'data' => [
-                        'admin_id' => $session->get('admin_id'),
-                        'email' => $session->get('email')
-                    ]
+                    'message' => 'Login successful'
                 ]);
             }else{
                 return $this->response->setJSON([
