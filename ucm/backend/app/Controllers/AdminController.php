@@ -73,8 +73,13 @@ class AdminController extends BaseController {
                 ]);
 
                 return $this->response->setJSON([
+                    
                     'status' => 'success',
-                    'message' => 'Login successful'
+                    'message' => 'Login successful',
+                    'data' => [
+                        'admin_id' => $session->get('admin_id')
+                    
+                    ]
                 ]);
             }else{
                 return $this->response->setJSON([
