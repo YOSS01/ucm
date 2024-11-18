@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-export default function Edit() {
+export default function Edit({ user }) {
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
   return (
     <>
@@ -74,7 +74,7 @@ export default function Edit() {
                       type="text"
                       id="first_name"
                       name="first_name"
-                      placeholder="Jack"
+                      placeholder={user?.first_name}
                     />
                   </div>
                 </div>
@@ -103,7 +103,7 @@ export default function Edit() {
                       type="text"
                       id="last_name"
                       name="last_name"
-                      placeholder="Finnigan"
+                      placeholder={user?.last_name}
                     />
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export default function Edit() {
                     </svg>
 
                     <div className="w-full border-b border-solid border-gray-500 py-2 px-6 text-gray-500 bg-gray-50 text-sm">
-                      <span>userexample@gmail.com</span>
+                      <span className="lowercase">{user?.email}</span>
                     </div>
                   </div>
                 </div>
@@ -153,7 +153,7 @@ export default function Edit() {
                     </svg>
 
                     <div className="w-full border-b border-solid border-gray-500 py-2 px-6 text-gray-500 bg-gray-50 text-sm">
-                      <span>JM90150</span>
+                      <span className="uppercase">{user?.cin}</span>
                     </div>
                   </div>
                 </div>

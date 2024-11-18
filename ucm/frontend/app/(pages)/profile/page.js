@@ -21,7 +21,7 @@ export default async function page() {
       <Navbar active="/profile" />
       <div className="w-full h-full flex justify-center items-center">
         <div className="h-[550px] w-full max-w-[450px] bg-white rounded-3xl flex flex-col justify-center gap-y-10 relative z-50 p-5 overflow-hidden">
-          <Edit />
+          <Edit user={user} />
           <div className="flex flex-col items-center gap-y-2">
             <div className="size-[150px] border rounded-full overflow-hidden">
               <Image

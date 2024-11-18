@@ -26,8 +26,20 @@ export default async function Navbar({ active }) {
       href: "/",
     },
     {
-      label: session ? "Account" : "Join us",
-      href: session ? "/profile" : "/login",
+      label: session
+        ? session.role === "user"
+          ? "Account"
+          : session.role === "admin"
+          ? "Dashboard"
+          : ""
+        : "Join us",
+      href: session
+        ? session.role === "user"
+          ? "/profile"
+          : session.role === "admin"
+          ? "/dashboard/admin"
+          : ""
+        : "/login",
     },
   ];
   return (
