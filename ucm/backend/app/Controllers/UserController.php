@@ -17,9 +17,9 @@ class UserController extends BaseController
  
     $validation = \Config\Services::validation();
     $validation->setRules([
-
-        'first_name' => 'required|min_length[2]',
-        'last_name' => 'required|min_length[2]',
+        'password' => 'min_length[8]',
+        'first_name' => 'min_length[2]',
+        'last_name' => 'min_length[2]',
        'puicture' => 'uploaded[picture]|max_size[picture,1024]|ext_in[picture,png,jpg,jpeg]'
     ]);
 
@@ -156,13 +156,8 @@ class UserController extends BaseController
     public function getuserByid($id){
         $userModel = new UserModel();
         $clubMembershipModel = new ClubMembershipModel();
-        
         $user = $userModel->find($id);
-        
-    
         $clubs = $clubMembershipModel->where('id_user', $id)->findAll();
-    
-       
         $userData = [
             'first_name' => $user['first_name'],
             'last_name' => $user['last_name'],
