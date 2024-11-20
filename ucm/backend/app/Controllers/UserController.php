@@ -20,7 +20,9 @@ class UserController extends BaseController
         'password' => 'min_length[8]',
         'first_name' => 'min_length[2]',
         'last_name' => 'min_length[2]',
-       'puicture' => 'uploaded[picture]|max_size[picture,1024]|ext_in[picture,png,jpg,jpeg]'
+       'puicture' => 'uploaded[picture]|max_size[picture,1024]|ext_in[picture,png,jpg,jpeg]',
+       'email' => 'valid_email|is_unique[user.email]',
+       'cin' => 'min_length[1]|is_unique[user.cin]'
     ]);
 
 
@@ -45,8 +47,11 @@ class UserController extends BaseController
     }
     $data = [
 
-       'first_name' => $this->request->getVar('first_name'),
+        'email' => $this->request->getVar('email'),
+        'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT), 
+        'first_name' => $this->request->getVar('first_name'),
         'last_name' => $this->request->getVar('last_name'),
+        'cin' => $this->request->getVar('cin'),
      
         'picture' => $picturePath
     ];
@@ -149,10 +154,7 @@ class UserController extends BaseController
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to register user']);
         }
-    }
-    
-   
-    
+    }  
     public function getuserByid($id){
         $userModel = new UserModel();
         $clubMembershipModel = new ClubMembershipModel();
@@ -168,6 +170,31 @@ class UserController extends BaseController
     
         return $this->response->setJSON($userData);
     }
+
+    // public function forgetPassword($req){
+
+    //     $userModel = new UserModel();
+
+   
+    //     $user = $userModel->where('email', $req->getVar('email'))->first();
+    //     if($user){
+
+    //         $token = bin2hex(random_bytes(50));
+    //         $userModel->update($user['id'], ['reset_token' => $token, 'reset_token_expiry' => date('Y-m-d H:i:s', strtotime('+1 hour'))]);
+
+    //         $email = \Config\Services::email();
+    //         $email->setTo($user['email']);
+    //         $email->setSubject('Password Reset Request');
+    //         $email->setMessage("Click the link to reset your password: " . base_url("reset-password?token={$token}"));
+
+    //         if ($email->send()) {
+    //             return $this->response->setJSON(['status' => 'success', 'message' => 'Password reset email sent']);
+    //         } else {
+    //             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to send password reset email']);
+    //         }
+    //     }
+
+    // }
 
    
 }

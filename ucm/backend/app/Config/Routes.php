@@ -16,8 +16,7 @@ $routes->get('/', 'Home::index');
     $routes->get('/all-users','UserController::allusers');
     $routes->get('user-number/(:num)','UserController::getuserByid/$1');
     $routes->post('/update-user/(:num)','UserController::updateuser/$1');
-
-
+    $routes->post('/forget-password', 'UserController::forgetPassword');
 
 //admin routes
 $routes->post('/add-admin','AdminController::addadmin');
