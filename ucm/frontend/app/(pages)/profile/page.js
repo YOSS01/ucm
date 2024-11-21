@@ -8,6 +8,7 @@ import { getUser } from "@/app/_lib/dal";
 import Navbar from "@/components/Navbar";
 import Logout from "./_components/Logout";
 import Edit from "./_components/Edit";
+import ResetPassword from "./_components/ResetPassword";
 
 export const metadata = {
   title: "Profile",
@@ -22,6 +23,7 @@ export default async function page() {
       <div className="w-full h-full flex justify-center items-center">
         <div className="h-[550px] w-full max-w-[450px] bg-white rounded-3xl flex flex-col justify-center gap-y-10 relative z-50 p-5 overflow-hidden">
           <Edit user={user} />
+          <ResetPassword />
           <div className="flex flex-col items-center gap-y-2">
             <div className="size-[150px] border rounded-full overflow-hidden">
               <Image

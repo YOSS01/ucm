@@ -33,6 +33,11 @@ class CreateClubsTable extends Migration
                 'constraint' => '255',
                 'null'       => true,
             ],
+            'background' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+                'null'       => true,
+            ],
             'qr_code' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',

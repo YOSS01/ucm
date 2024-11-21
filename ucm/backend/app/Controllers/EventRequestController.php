@@ -21,20 +21,17 @@ class EventRequestController extends BaseController
      $validation = \Config\Services::validation();
      $validation->setRules(([
 
-        'id_club' => 'required|integer',
         'id_visitor' => 'required|integer',
         'id_event' => 'required|integer',
-        'status' => 'required|string|max_length[255]'
      ]));
      if($validation->withRequest($this->request)->run() == false){
         return $this->response->setJSON(['status'=>'error','message'=>$validation->getErrors()]);
 
      }
     $data = [
-        'id_club'      => $this->request->getVar('id_club'),
         'id_visitor'   => $this->request->getVar('id_visitor'),
         'id_event'     => $this->request->getVar('id_event'),
-        'status'       => $this->request->getVar('status'),
+        'status'       => "pending",
        
     ];
     $data['request_date'] = date('Y-m-d H:i:s');

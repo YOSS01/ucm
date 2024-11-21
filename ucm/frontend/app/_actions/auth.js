@@ -155,8 +155,8 @@ export async function adminLogin(state, formData) {
       };
     }
 
-    // 4. Create user session
-    await createSession(1, "admin");
+    // 4. Create admin session
+    await createSession(result.data.admin_id, "admin");
   } catch (error) {
     console.error(error.message);
     return {

@@ -47,7 +47,7 @@ $routes->post('/update-event-number-request/(:num)','EventRequestController::upd
 $routes->get('/delet-event-number-request/(:num)','EventRequestController::deleteeventrequest/$1');
 
 //visitor routes
-$routes->post('addevisitor','VisitorController::addevisitor');
+$routes->post('addVisitor','VisitorController::addVisitor');
 $routes->post('/update-visitor/(:num)','VisitorController::updatevisitor/$1');
 $routes->get('/delet-visitor/(:num)','VisitorController::deletevisitor/$1');
 

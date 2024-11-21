@@ -1,0 +1,66 @@
+ERROR - 2024-11-20 12:45:00 --> mysqli_sql_exception: Unknown column 'background' in 'field list' in C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\ClubController.php(80): CodeIgniter\Model->insert(Array)
+#8 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+#9 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+#10 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\Users\Administrateur\Desktop\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2024-11-20 12:45:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'background' in 'field list'
+[Method: POST, Route: add-club]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (:id_president:, :name:, :description:, :logo:, :background:, :qr_code:, :status:, :slug:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ClubController.php(80): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 12:45:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'background' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'5\', \'Artificial Intelligence Club\', \'Club description ...\', \'Oxford_University_Exploration_Club_Logo.png\', \'photo-1674027444485-cec3da58eef4.jpg\', \'yo_ss01_qr.png\', \'pending\', \'artificial_intelligence_club\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'5\', \'Artificial Intelligence Club\', \'Club description ...\', \'Oxford_University_Exploration_Club_Logo.png\', \'photo-1674027444485-cec3da58eef4.jpg\', \'yo_ss01_qr.png\', \'pending\', \'artificial_intelligence_club\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (:id_president:, :name:, :description:, :logo:, :background:, :qr_code:, :status:, :slug:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\ClubController.php(80): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-20 12:45:00 --> [Caused by] mysqli_sql_exception: Unknown column 'background' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'5\', \'Artificial Intelligence Club\', \'Club description ...\', \'Oxford_University_Exploration_Club_Logo.png\', \'photo-1674027444485-cec3da58eef4.jpg\', \'yo_ss01_qr.png\', \'pending\', \'artificial_intelligence_club\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'5\', \'Artificial Intelligence Club\', \'Club description ...\', \'Oxford_University_Exploration_Club_Logo.png\', \'photo-1674027444485-cec3da58eef4.jpg\', \'yo_ss01_qr.png\', \'pending\', \'artificial_intelligence_club\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'5\', \'Artificial Intelligence Club\', \'Club description ...\', \'Oxford_University_Exploration_Club_Logo.png\', \'photo-1674027444485-cec3da58eef4.jpg\', \'yo_ss01_qr.png\', \'pending\', \'artificial_intelligence_club\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (:id_president:, :name:, :description:, :logo:, :background:, :qr_code:, :status:, :slug:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\ClubController.php(80): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-11-20 13:09:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-20 13:09:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-20 14:45:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-20 14:46:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
