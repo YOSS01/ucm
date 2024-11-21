@@ -15,11 +15,6 @@ class CreateEventRequestsTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_club' => [
-                'type'       => 'INT',
-                'constraint' => 5,
-                'unsigned'   => true,
-            ],
             'id_visitor' => [
                 'type'       => 'INT',
                 'constraint' => 5,

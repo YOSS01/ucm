@@ -15,7 +15,7 @@ class VisitorController extends BaseController
 
 
  }
- public function addevisitor(){
+ public function addVisitor(){
     
     $visitor = new VisitorModel();
         $validation = \Config\Services::validation();
@@ -33,7 +33,7 @@ class VisitorController extends BaseController
     ];
   
     if($visitor->insert($data)){
-        return $this->response->setJSON(['status'=>'success','message'=>'visitor added successfully']);
+        return $this->response->setJSON(['status'=>'success','message'=>'visitor added successfully', 'visitor_id' => $visitor->getInsertID()]);
     }else{
         return $this->response->setJSON(['status'=>'error','message'=>'Failed to add visitor ']);
     }

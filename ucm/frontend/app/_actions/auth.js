@@ -131,41 +131,41 @@ export async function adminLogin(state, formData) {
   }
 
   // Call the provider or db to create a user...
-  // try {
-  //   const response = await fetch(
-  //     `${process.env.NEXT_PUBLIC_APP_BASE_URL}/login`,
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(validatedFields.data),
-  //     }
-  //   );
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_APP_BASE_URL}/login-admin`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(validatedFields.data),
+      }
+    );
 
-  //   const result = await response.json();
+    const result = await response.json();
 
-  //   if (!response.ok) {
-  //     return {
-  //       message: "An error occurred. Please try again.",
-  //     };
-  //   } else if (result?.status === "error") {
-  //     return {
-  //       message: "Invalid email or password",
-  //     };
-  //   }
+    if (!response.ok) {
+      return {
+        message: "An error occurred. Please try again.",
+      };
+    } else if (result?.status === "error") {
+      return {
+        message: "Invalid email or password",
+      };
+    }
 
-  //   // 4. Create user session
-  //   await createSession(result.data.user_id);
-  // } catch (error) {
-  //   console.error(error.message);
-  //   return {
-  //     message: "An error occurred. Please try again.",
-  //   };
-  // }
+    // 4. Create admin session
+    await createSession(result.data.admin_id, "admin");
+  } catch (error) {
+    console.error(error.message);
+    return {
+      message: "An error occurred. Please try again.",
+    };
+  }
 
   // 5. Redirect user
-  // redirect("/profile");
+  redirect("/dashboard/admin");
 }
 
 export async function logout() {

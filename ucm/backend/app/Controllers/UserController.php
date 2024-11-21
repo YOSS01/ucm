@@ -166,6 +166,7 @@ class UserController extends BaseController
         $userData = [
             'first_name' => $user['first_name'],
             'last_name' => $user['last_name'],
+            'cin' => $user['cin'],
             'email' => $user['email'],
             'picture' => $user['picture'],
             'clubs' => $clubs

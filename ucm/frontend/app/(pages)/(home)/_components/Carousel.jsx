@@ -12,11 +12,12 @@ import "swiper/css/effect-cube";
 // components
 import Event from "./Event";
 
-export default function Carousel() {
+export default function Carousel({ session }) {
   const [swiper, setSwiper] = useState();
   const [index, setIndex] = useState(1);
   const data = [
     {
+      id: 1,
       title: "Tech Innovation Hackathon",
       description:
         "The Tech Innovation Hackathon is a 48-hour coding competition open to all students passionate about technology, software development, and problem-solving. Participants will work in teams to create innovative solutions to real-world problems using various programming languages and frameworks. There will be industry mentors and professors available for guidance throughout the event.",
@@ -24,6 +25,7 @@ export default function Carousel() {
         "https://images.unsplash.com/photo-1522158637959-30385a09e0da?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
+      id: 2,
       title: "Cultural Diversity Night",
       description:
         "Cultural Diversity Night is a vibrant celebration of the rich cultural heritage represented by the students on campus. The event will feature music, dance, traditional attire, and food from different countries. Students are encouraged to share and showcase their cultural traditions through performances, exhibitions, and food stalls.",
@@ -31,6 +33,7 @@ export default function Carousel() {
         "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
+      id: 3,
       title: "Startup Pitch Competition",
       description:
         "The Startup Pitch Competition provides a platform for aspiring entrepreneurs to pitch their business ideas to a panel of experienced judges, including local business leaders and venture capitalists. Students will compete for funding, mentorship, and incubation opportunities. The event is aimed at fostering innovation and supporting student startups.",
@@ -38,6 +41,7 @@ export default function Carousel() {
         "https://images.unsplash.com/photo-1560523160-754a9e25c68f?q=80&w=2036&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
+      id: 4,
       title: "Open Mic Night: Talent Showcase",
       description:
         "Open Mic Night is a platform for students to showcase their talents in front of a supportive audience. Whether it's singing, poetry, stand-up comedy, spoken word, or playing an instrument, everyone is welcome to perform. This casual event is perfect for students who want to express themselves creatively or enjoy a fun, relaxing evening with friends.",
@@ -45,6 +49,7 @@ export default function Carousel() {
         "https://images.unsplash.com/photo-1692552950929-395ee3797684?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
+      id: 5,
       title: "Game Development Jam",
       description:
         "The Game Development Jam is a 48-hour event where teams of students come together to design and develop a complete video game from scratch. Participants will be given a theme at the start of the event, and they must create a playable game based on that theme. This event is perfect for anyone interested in game design, development, and storytelling, whether they are experienced or just getting started.",
@@ -52,6 +57,7 @@ export default function Carousel() {
         "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
+      id: 6,
       title: "Debate Tournament: Environmental Policy Edition",
       description:
         "This two-day Debate Tournament will focus on the theme of environmental policy. Teams from various disciplines will engage in structured debates on key issues such as climate change, renewable energy, and governmental policies regarding environmental protection. The event aims to foster critical thinking and public speaking skills while encouraging students to engage with one of the most pressing issues of our time.",
@@ -126,7 +132,7 @@ export default function Carousel() {
       >
         {data?.map((item, key) => (
           <SwiperSlide key={key}>
-            <Event item={item} />
+            <Event item={item} session={session} />
           </SwiperSlide>
         ))}
       </Swiper>

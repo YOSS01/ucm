@@ -1,11 +1,55 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useFormState } from "react-dom";
+import { participateIn } from "@/app/_actions/event";
 
-export default function Event({ item }) {
+// Toaster
+import toast from "react-hot-toast";
+
+async function userParticipateIn(id_event, userId) {
+  try {
+    const data = {
+      id_visitor: userId,
+      id_event: id_event,
+    };
+
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_APP_BASE_URL}/add-event-request`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      toast.error("An error occurred while participate in.");
+      return;
+    } else if (result?.status === "error") {
+      console.log(result);
+      toast.error("An error occurred while participate in.");
+      return;
+    }
+
+    toast.success("You have successfully participated in.");
+    return;
+  } catch (error) {
+    console.error(error.message);
+    toast.error("An error occurred while participate in.");
+    return;
+  }
+}
+
+export default function Event({ item, session }) {
   const [isSeeMoreBttnActive, setIsSeeMoreBttnActive] = useState(false);
   const [isGetInBttnActive, setIsGetInBttnActive] = useState(false);
+
   return (
     <div className="w-full h-screen text-white relative">
       <div className="absolute bottom-10 left-10 z-10 flex flex-col gap-y-5">
@@ -21,7 +65,9 @@ export default function Event({ item }) {
           <button
             onClick={() => {
               setIsSeeMoreBttnActive(false);
-              setIsGetInBttnActive(true);
+              !session
+                ? setIsGetInBttnActive(true)
+                : userParticipateIn(item?.id, session?.userId);
             }}
             className="h-[45px] border-2 border-solid border-white rounded-full px-7 bg-white text-black hover:bg-transparent hover:text-white duration-300"
           >
@@ -43,10 +89,14 @@ export default function Event({ item }) {
           item={item}
           setIsSeeMoreBttnActive={setIsSeeMoreBttnActive}
           setIsGetInBttnActive={setIsGetInBttnActive}
+          session={session}
         />
       )}
       {isGetInBttnActive && (
-        <GetIn setIsGetInBttnActive={setIsGetInBttnActive} />
+        <GetIn
+          setIsGetInBttnActive={setIsGetInBttnActive}
+          id_event={item?.id}
+        />
       )}
 
       {/* Background */}
@@ -64,9 +114,14 @@ export default function Event({ item }) {
   );
 }
 
-function SeeMore({ item, setIsSeeMoreBttnActive, setIsGetInBttnActive }) {
+function SeeMore({
+  item,
+  setIsSeeMoreBttnActive,
+  setIsGetInBttnActive,
+  session,
+}) {
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[500px] h-fit bg-white text-black px-5 py-14 z-50">
+    <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[500px] h-fit bg-white text-black px-5 pt-14 pb-7 z-50">
       <button
         onClick={() => setIsSeeMoreBttnActive(false)}
         className="absolute right-5 top-5 z-[9999]"
@@ -130,7 +185,9 @@ function SeeMore({ item, setIsSeeMoreBttnActive, setIsGetInBttnActive }) {
 
         <button
           onClick={() => {
-            setIsGetInBttnActive(true);
+            !session
+              ? setIsGetInBttnActive(true)
+              : userParticipateIn(item?.id, session?.userId);
             setIsSeeMoreBttnActive(false);
           }}
           className="w-full h-[50px] bg-black/70 hover:bg-black duration-300 text-white mt-10"
@@ -142,9 +199,19 @@ function SeeMore({ item, setIsSeeMoreBttnActive, setIsGetInBttnActive }) {
   );
 }
 
-function GetIn({ setIsGetInBttnActive }) {
+function GetIn({ setIsGetInBttnActive, id_event }) {
+  const [state, action, pending] = useFormState(participateIn, undefined);
+
+  useEffect(() => {
+    if (state?.response) {
+      state?.response?.status === 200
+        ? toast.success(state?.response?.message) && setIsGetInBttnActive(false)
+        : state?.response?.status === 500 &&
+          toast.error(state?.response?.message);
+    }
+  }, [state]);
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[500px] h-fit bg-white text-black px-5 py-14 z-50">
+    <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[500px] h-fit bg-white text-black px-5 pt-14 pb-7 z-50">
       <button
         onClick={() => setIsGetInBttnActive(false)}
         className="absolute right-5 top-5 z-[9999]"
@@ -164,23 +231,26 @@ function GetIn({ setIsGetInBttnActive }) {
           />
         </svg>
       </button>
-      <form className="flex flex-col gap-y-10">
+      <form action={action} method="POST" className="flex flex-col gap-y-10">
         <h1 className="font-original_surfer text-3xl text-center">
           Participate in
         </h1>
         <div className="flex flex-col gap-y-5 text-sm">
+          <input type="hidden" value={id_event} name="id_event" id="" />
           <div className="flex flex-col">
             <label for="name" className="w-fit">
               Full Name
             </label>
             <input
               type="text"
-              name=""
+              name="name"
               id="name"
               placeholder="Type your name here..."
-              className="outline-none border-b py-2"
-              required
+              className="outline-none border-b py-2 focus:border-black"
             />
+            {state?.errors?.name && (
+              <p className="text-red-500 text-xs mt-1">{state.errors.name}</p>
+            )}
           </div>
           <div className="flex flex-col">
             <label for="email" className="w-fit">
@@ -188,16 +258,21 @@ function GetIn({ setIsGetInBttnActive }) {
             </label>
             <input
               type="email"
-              name=""
+              name="email"
               id="email"
               placeholder="Type your email here..."
-              className="outline-none border-b py-2"
-              required
+              className="outline-none border-b py-2 focus:border-black"
             />
+            {state?.errors?.email && (
+              <p className="text-red-500 text-xs mt-1">{state.errors.email}</p>
+            )}
           </div>
         </div>
 
-        <button className="w-full h-[50px] text-white bg-black/80 hover:bg-black duration-300 font-original_surfer">
+        <button
+          disabled={pending}
+          className="w-full h-[50px] text-white bg-black/80 hover:bg-black duration-300 font-original_surfer"
+        >
           Submit
         </button>
       </form>
