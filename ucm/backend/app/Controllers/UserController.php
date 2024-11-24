@@ -5,6 +5,9 @@ use App\Models\AdminModel;
 use App\Models\UserModel;
 use App\Models\ClubMembershipModel;
 
+use CodeIgniter\Email\Email;
+use CodeIgniter\I18n\Time;
+
 class UserController extends BaseController
 {
     public function index()
@@ -171,31 +174,58 @@ class UserController extends BaseController
     
         return $this->response->setJSON($userData);
     }
+    public function requestPasswordReset()
+    {
+        $email = $this->request->getVar('email');
+    
+        $userModel = new UserModel();
+        $user = $userModel->where('email', $email)->first();
+    
+        if (!$user) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Email not found']);
+        }
+    
+        $token = bin2hex(random_bytes(16));
+        $userModel->update($user['id'], ['reset_token' => $token, 'reset_expires' => Time::now()->addHours(1)]);
+    
+        $resetLink = site_url("/resetPassword?token=$token");
+        $emailService = \Config\Services::email();
+        $emailService->setTo($email);
+        $emailService->setFrom('from', 'name'); // Set the "From" and "name" 
+        $emailService->setSubject('Password Reset');
+        $emailService->setMessage("Click the following link to reset your password: $resetLink");
+    
+        if ($emailService->send()) {
+            return $this->response->setJSON(['status' => 'success', 'message' => 'Password reset link sent to your email']);
+        } else {
+            $error = $emailService->printDebugger(['headers']);
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to send email', 'error' => $error]);
+        }
+    }
 
-    // public function forgetPassword($req){
+    public function resetPassword()
+    {
+        $token = $this->request->getGet('token');
+        $newPassword = $this->request->getPost('new_password');
 
-    //     $userModel = new UserModel();
+        if (!$token || !$newPassword) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid request']);
+        }
 
-   
-    //     $user = $userModel->where('email', $req->getVar('email'))->first();
-    //     if($user){
+        $userModel = new UserModel();
+        $user = $userModel->where('reset_token', $token)->first();
 
-    //         $token = bin2hex(random_bytes(50));
-    //         $userModel->update($user['id'], ['reset_token' => $token, 'reset_token_expiry' => date('Y-m-d H:i:s', strtotime('+1 hour'))]);
+        if (!$user || Time::now()->isAfter($user['reset_expires'])) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid or expired token']);
+        }
 
-    //         $email = \Config\Services::email();
-    //         $email->setTo($user['email']);
-    //         $email->setSubject('Password Reset Request');
-    //         $email->setMessage("Click the link to reset your password: " . base_url("reset-password?token={$token}"));
+       
+        $userModel->update($user['id'], ['password' => password_hash($newPassword, PASSWORD_DEFAULT), 'reset_token' => null, 'reset_expires' => null]);
 
-    //         if ($email->send()) {
-    //             return $this->response->setJSON(['status' => 'success', 'message' => 'Password reset email sent']);
-    //         } else {
-    //             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to send password reset email']);
-    //         }
-    //     }
+        return $this->response->setJSON(['status' => 'success', 'message' => 'Password has been reset successfully']);
+    }
 
-    // }
 
-   
+
+
 }

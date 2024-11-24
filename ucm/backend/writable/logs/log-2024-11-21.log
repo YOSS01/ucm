@@ -1,71 +1,429 @@
-INFO - 2024-11-21 11:14:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-INFO - 2024-11-21 17:42:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-CRITICAL - 2024-11-21 17:57:52 --> BadMethodCallException: Call to undefined method App\Models\ClubModel::count
-[Method: GET, Route: statistics]
-in SYSTEMPATH\Model.php on line 932.
- 1 APPPATH\Controllers\AdminController.php(166): CodeIgniter\Model->__call('count', [])
- 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
- 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
- 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
- 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
- 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-CRITICAL - 2024-11-21 18:03:31 --> BadMethodCallException: Call to undefined method App\Models\ClubModel::count
-[Method: GET, Route: statistics]
-in SYSTEMPATH\Model.php on line 932.
- 1 APPPATH\Controllers\AdminController.php(166): CodeIgniter\Model->__call('count', [])
- 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
- 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
- 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
- 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
- 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-CRITICAL - 2024-11-21 18:04:13 --> ErrorException: Undefined variable $adminModel
-[Method: GET, Route: statistics]
-in APPPATH\Controllers\AdminController.php on line 166.
- 1 APPPATH\Controllers\AdminController.php(166): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $adminModel', 'C:\\Users\\Administrateur\\Desktop\\FSA Courses\\S5\\Programation web dynamique\\University_clubs_management\\ucm\\backend\\app\\Controllers\\AdminController.php', 166)
- 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
- 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
- 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
- 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
- 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-CRITICAL - 2024-11-21 18:05:43 --> Error: Call to a member function count() on array
-[Method: GET, Route: statistics]
-in APPPATH\Controllers\AdminController.php on line 167.
- 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
- 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+<<<<<<< HEAD
+ERROR - 2024-11-21 18:11:31 --> mysqli_sql_exception: Unknown column 'background' in 'field list' in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\ClubController.php(80): CodeIgniter\Model->insert(Array)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2024-11-21 18:11:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'background' in 'field list'
+[Method: POST, Route: add-club]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (:id_president:, :name:, :description:, :logo:, :background:, :qr_code:, :status:, :slug:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ClubController.php(80): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:11:31 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'background' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'2\', \'test_ucm\', \'test_ucm\', \'cappuccino.png\', \'cappuccino_1.png\', \'cappuccino_2.png\', \'active\', \'OJNLKJN\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'2\', \'test_ucm\', \'test_ucm\', \'cappuccino.png\', \'cappuccino_1.png\', \'cappuccino_2.png\', \'active\', \'OJNLKJN\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (:id_president:, :name:, :description:, :logo:, :background:, :qr_code:, :status:, :slug:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\ClubController.php(80): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:11:31 --> [Caused by] mysqli_sql_exception: Unknown column 'background' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'2\', \'test_ucm\', \'test_ucm\', \'cappuccino.png\', \'cappuccino_1.png\', \'cappuccino_2.png\', \'active\', \'OJNLKJN\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'2\', \'test_ucm\', \'test_ucm\', \'cappuccino.png\', \'cappuccino_1.png\', \'cappuccino_2.png\', \'active\', \'OJNLKJN\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'2\', \'test_ucm\', \'test_ucm\', \'cappuccino.png\', \'cappuccino_1.png\', \'cappuccino_2.png\', \'active\', \'OJNLKJN\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (:id_president:, :name:, :description:, :logo:, :background:, :qr_code:, :status:, :slug:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\ClubController.php(80): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-11-21 18:12:29 --> mysqli_sql_exception: Unknown column 'background' in 'field list' in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `cl...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `cl...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `cl...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `cl...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\ClubController.php(80): CodeIgniter\Model->insert(Array)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2024-11-21 18:12:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'background' in 'field list'
+[Method: POST, Route: add-club]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (:id_president:, :name:, :description:, :logo:, :background:, :qr_code:, :status:, :slug:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ClubController.php(80): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:12:29 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'background' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'1\', \'az\', \'az\', \'espresso.png\', \'espresso_1.png\', \'espresso_2.png\', \'active\', \'azaz\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'1\', \'az\', \'az\', \'espresso.png\', \'espresso_1.png\', \'espresso_2.png\', \'active\', \'azaz\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (:id_president:, :name:, :description:, :logo:, :background:, :qr_code:, :status:, :slug:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\ClubController.php(80): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:12:29 --> [Caused by] mysqli_sql_exception: Unknown column 'background' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'1\', \'az\', \'az\', \'espresso.png\', \'espresso_1.png\', \'espresso_2.png\', \'active\', \'azaz\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'1\', \'az\', \'az\', \'espresso.png\', \'espresso_1.png\', \'espresso_2.png\', \'active\', \'azaz\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (\'1\', \'az\', \'az\', \'espresso.png\', \'espresso_1.png\', \'espresso_2.png\', \'active\', \'azaz\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `clubs` (`id_president`, `name`, `description`, `logo`, `background`, `qr_code`, `status`, `slug`) VALUES (:id_president:, :name:, :description:, :logo:, :background:, :qr_code:, :status:, :slug:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\ClubController.php(80): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:13:52 --> Error: Call to a member function isValid() on null
+[Method: POST, Route: add-club]
+in APPPATH\Controllers\ClubController.php on line 44.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
  3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  6 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-CRITICAL - 2024-11-21 18:06:18 --> BadMethodCallException: Call to undefined method App\Models\ClubModel::count_all
-[Method: GET, Route: statistics]
-in SYSTEMPATH\Model.php on line 932.
- 1 APPPATH\Controllers\AdminController.php(166): CodeIgniter\Model->__call('count_all', [])
- 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
- 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
- 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
- 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
- 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-CRITICAL - 2024-11-21 18:06:35 --> BadMethodCallException: Call to undefined method App\Models\ClubModel::count_all_results
-[Method: GET, Route: statistics]
-in SYSTEMPATH\Model.php on line 932.
- 1 APPPATH\Controllers\AdminController.php(166): CodeIgniter\Model->__call('count_all_results', [])
- 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
- 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
- 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
- 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
- 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-CRITICAL - 2024-11-21 18:07:52 --> BadMethodCallException: Call to undefined method App\Models\ClubModel::count
-[Method: GET, Route: statistics]
-in SYSTEMPATH\Model.php on line 932.
- 1 APPPATH\Controllers\AdminController.php(166): CodeIgniter\Model->__call('count', [])
- 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
- 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
- 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
- 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
- 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:14:22 --> Error: Call to a member function isValid() on null
+[Method: POST, Route: add-club]
+in APPPATH\Controllers\ClubController.php on line 44.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->addClub()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-11-21 18:27:09 --> mysqli_sql_exception: Unknown column 'reset_token' in 'field list' in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('UPDATE `user` S...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `user` S...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `user` S...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(2516): CodeIgniter\Database\BaseConnection->query('UPDATE `user` S...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\BaseModel.php(1028): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(865): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(191): CodeIgniter\Model->update('3', Array)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2024-11-21 18:27:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'reset_token' in 'field list'
+[Method: POST, Route: requestPasswordReset]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2516): CodeIgniter\Database\BaseConnection->query('UPDATE `user` SET `reset_token` = :reset_token:, `reset_expires` = :reset_expires:
+WHERE `user`.`id` IN :user.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1028): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(865): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\UserController.php(191): CodeIgniter\Model->update('3', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:27:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'reset_token' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `user` SET `reset_token` = \'a6c57f4afbfd82a40c27f7f7b46b3cf8\', `reset_expires` = \'2024-11-21 19:27:09\'
+WHERE `user`.`id` IN (\'3\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `user` SET `reset_token` = \'a6c57f4afbfd82a40c27f7f7b46b3cf8\', `reset_expires` = \'2024-11-21 19:27:09\'
+WHERE `user`.`id` IN (\'3\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2516): CodeIgniter\Database\BaseConnection->query('UPDATE `user` SET `reset_token` = :reset_token:, `reset_expires` = :reset_expires:
+WHERE `user`.`id` IN :user.id:', [...], false)
+ 4 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1028): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(865): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\UserController.php(191): CodeIgniter\Model->update('3', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:27:09 --> [Caused by] mysqli_sql_exception: Unknown column 'reset_token' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('UPDATE `user` SET `reset_token` = \'a6c57f4afbfd82a40c27f7f7b46b3cf8\', `reset_expires` = \'2024-11-21 19:27:09\'
+WHERE `user`.`id` IN (\'3\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `user` SET `reset_token` = \'a6c57f4afbfd82a40c27f7f7b46b3cf8\', `reset_expires` = \'2024-11-21 19:27:09\'
+WHERE `user`.`id` IN (\'3\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `user` SET `reset_token` = \'a6c57f4afbfd82a40c27f7f7b46b3cf8\', `reset_expires` = \'2024-11-21 19:27:09\'
+WHERE `user`.`id` IN (\'3\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2516): CodeIgniter\Database\BaseConnection->query('UPDATE `user` SET `reset_token` = :reset_token:, `reset_expires` = :reset_expires:
+WHERE `user`.`id` IN :user.id:', [...], false)
+ 5 SYSTEMPATH\Model.php(461): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH\BaseModel.php(1028): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH\Model.php(865): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH\Controllers\UserController.php(191): CodeIgniter\Model->update('3', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-11-21 19:06:31 --> mysqli_sql_exception: Can't create table `clubs_managment_system`.`clubmembership` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193710_CreateClubMembershipTable.php(49): CodeIgniter\Database\Forge->createTable('clubmembership')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateClubMembershipTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2024-11-21 19:12:18 --> mysqli_sql_exception: Can't create table `clubs_managment_system`.`clubmembership` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193710_CreateClubMembershipTable.php(49): CodeIgniter\Database\Forge->createTable('clubmembership')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateClubMembershipTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\BaseCommand.php(119): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\MigrateRefresh.php(87): CodeIgniter\CLI\BaseCommand->call('migrate', Array)
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\MigrateRefresh->run(Array)
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate:refresh', Array)
+#13 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#14 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#15 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#16 {main}
+ERROR - 2024-11-21 19:12:51 --> mysqli_sql_exception: Can't create table `clubs_managment_system`.`eventrequest` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `e...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `e...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `e...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `e...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193711_CreateEventsTable.php(50): CodeIgniter\Database\Forge->createTable('eventrequest')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateEventRequestsTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\BaseCommand.php(119): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\MigrateRefresh.php(87): CodeIgniter\CLI\BaseCommand->call('migrate', Array)
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\MigrateRefresh->run(Array)
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate:refresh', Array)
+#13 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#14 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#15 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#16 {main}
+CRITICAL - 2024-11-21 19:20:14 --> ErrorException: Constant expression contains invalid operations
+[Method: POST, Route: requestPasswordReset]
+in APPPATH\Config\Email.php on line 35.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-11-21 19:20:52 --> ErrorException: Constant expression contains invalid operations
+[Method: POST, Route: requestPasswordReset]
+in APPPATH\Config\Email.php on line 35.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+ERROR - 2024-11-21 19:34:16 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): php_network_getaddresses: getaddrinfo for smtp.example.com failed: H�te inconnu.  in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): ph...', 'C:\\Users\\Oussam...', 1896)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1896): fsockopen('smtp.example.co...', 25, NULL, NULL, 5)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(197): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-11-21 19:34:16 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-11-21 19:34:16 --> 
+ERROR - 2024-11-21 19:36:46 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): php_network_getaddresses: getaddrinfo for smtp.example.com failed: H�te inconnu.  in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): ph...', 'C:\\Users\\Oussam...', 1896)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1896): fsockopen('smtp.example.co...', 25, NULL, NULL, 5)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(197): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-11-21 19:36:46 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-11-21 19:36:46 --> 
+CRITICAL - 2024-11-21 19:52:10 --> ErrorException: Constant expression contains invalid operations
+[Method: POST, Route: requestPasswordReset]
+in APPPATH\Config\Email.php on line 35.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-11-21 19:53:05 --> ErrorException: Constant expression contains invalid operations
+[Method: POST, Route: requestPasswordReset]
+in APPPATH\Config\Email.php on line 35.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-11-21 19:56:08 --> ErrorException: Constant expression contains invalid operations
+[Method: POST, Route: requestPasswordReset]
+in APPPATH\Config\Email.php on line 35.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-11-21 22:27:14 --> ErrorException: Constant expression contains invalid operations
+[Method: POST, Route: requestPasswordReset]
+in APPPATH\Config\Email.php on line 35.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+ERROR - 2024-11-21 22:27:43 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): php_network_getaddresses: getaddrinfo for smtp.example.com failed: H�te inconnu.  in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): ph...', 'C:\\Users\\Oussam...', 1896)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1896): fsockopen('smtp.example.co...', 25, NULL, NULL, 5)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(197): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-11-21 22:27:44 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-11-21 22:27:44 --> 
+ERROR - 2024-11-21 22:30:15 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A00010B:SSL routines::wrong version number in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\Users\\Oussam...', 1916)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #152, true, 121)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(197): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-11-21 22:30:15 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-11-21 22:30:15 --> 
+hello: 
+The following SMTP error was encountered: 
+starttls: 
+The following SMTP error was encountered: 
+ERROR - 2024-11-21 22:30:15 --> Email: sendWithSmtp throwed ErrorException: fwrite(): Send of 6 bytes failed with errno=10054 Une connexion existante a dû être fermée par l’hôte distant in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:2075
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(8, 'fwrite(): Send ...', 'C:\\Users\\Oussam...', 2075)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(2075): fwrite(Resource id #152, 'QUIT\r\n')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1984): CodeIgniter\Email\Email->sendData('QUIT\r\n')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(2219): CodeIgniter\Email\Email->sendCommand('quit')
+#4 [internal function]: CodeIgniter\Email\Email->__destruct()
+#5 {main}
+ERROR - 2024-11-21 22:41:51 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL: Handshake timed out in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\Users\\Oussam...', 1916)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #152, true, 121)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(197): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-11-21 22:41:51 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-11-21 22:41:51 --> 
+hello: 
+The following SMTP error was encountered: 
+starttls: 
+The following SMTP error was encountered: 
+ERROR - 2024-11-21 22:43:41 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL: Handshake timed out in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\Users\\Oussam...', 1896)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1896): fsockopen('ssl://smtp.goog...', 25, NULL, NULL, 5)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(197): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-11-21 22:43:41 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-11-21 22:43:41 --> 
+ERROR - 2024-11-21 22:45:18 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL: Handshake timed out in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\Users\\Oussam...', 1896)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1896): fsockopen('ssl://smtp.goog...', 25, NULL, NULL, 5)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(197): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-11-21 22:45:18 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-11-21 22:45:18 --> 
+=======
+INFO - 2024-11-21 11:14:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

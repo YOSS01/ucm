@@ -17,6 +17,8 @@ $routes->get('/', 'Home::index');
     $routes->get('user-number/(:num)','UserController::getuserByid/$1');
     $routes->post('/update-user/(:num)','UserController::updateuser/$1');
     $routes->post('/forget-password', 'UserController::forgetPassword');
+    $routes->post('/requestPasswordReset', 'UserController::requestPasswordReset');
+    $routes->post('/resetPassword', 'UserController::resetPassword');
 
 //admin routes
 $routes->post('/add-admin','AdminController::addadmin');
