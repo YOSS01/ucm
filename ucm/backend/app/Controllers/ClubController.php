@@ -17,6 +17,13 @@ class ClubController extends BaseController
         $clubs = $clubModel->findAll();
         return $this->response->setJSON($clubs);
     }
+
+    public function getClub($id){
+        $clubModel = new ClubModel();
+        $club = $clubModel->find($id);
+        return $this->response->setJSON($club);
+    }
+
     public function addclubview()
     {
 

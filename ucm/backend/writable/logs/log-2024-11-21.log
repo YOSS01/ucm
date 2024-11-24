@@ -1,1 +1,71 @@
 INFO - 2024-11-21 11:14:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-11-21 17:42:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-11-21 17:57:52 --> BadMethodCallException: Call to undefined method App\Models\ClubModel::count
+[Method: GET, Route: statistics]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\AdminController.php(166): CodeIgniter\Model->__call('count', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:03:31 --> BadMethodCallException: Call to undefined method App\Models\ClubModel::count
+[Method: GET, Route: statistics]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\AdminController.php(166): CodeIgniter\Model->__call('count', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:04:13 --> ErrorException: Undefined variable $adminModel
+[Method: GET, Route: statistics]
+in APPPATH\Controllers\AdminController.php on line 166.
+ 1 APPPATH\Controllers\AdminController.php(166): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $adminModel', 'C:\\Users\\Administrateur\\Desktop\\FSA Courses\\S5\\Programation web dynamique\\University_clubs_management\\ucm\\backend\\app\\Controllers\\AdminController.php', 166)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:05:43 --> Error: Call to a member function count() on array
+[Method: GET, Route: statistics]
+in APPPATH\Controllers\AdminController.php on line 167.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:06:18 --> BadMethodCallException: Call to undefined method App\Models\ClubModel::count_all
+[Method: GET, Route: statistics]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\AdminController.php(166): CodeIgniter\Model->__call('count_all', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:06:35 --> BadMethodCallException: Call to undefined method App\Models\ClubModel::count_all_results
+[Method: GET, Route: statistics]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\AdminController.php(166): CodeIgniter\Model->__call('count_all_results', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-21 18:07:52 --> BadMethodCallException: Call to undefined method App\Models\ClubModel::count
+[Method: GET, Route: statistics]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\AdminController.php(166): CodeIgniter\Model->__call('count', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->statistics()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

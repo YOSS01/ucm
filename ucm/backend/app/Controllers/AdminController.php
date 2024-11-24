@@ -1,6 +1,9 @@
 <?php
 namespace App\Controllers;
 use App\Models\AdminModel;
+use App\Models\ClubModel;
+use App\Models\UserModel;
+use App\Models\EventModel;
 
 class AdminController extends BaseController {
 
@@ -52,7 +55,7 @@ class AdminController extends BaseController {
             'email' => 'required|valid_email',
             'password' => 'required'
         ]);
-  if (!$validation->run((array)$this->request->getJSON())) {
+        if (!$validation->run((array)$this->request->getJSON())) {
             return $this->response->setJSON([
                 'status' => 'error',
                 'message' => 'Validation failed',
@@ -158,6 +161,28 @@ class AdminController extends BaseController {
         ]);
     }
     
+
+    // Statistics
+    public function statistics(){
+        // Count Clubs
+        $clubModel = new ClubModel();
+        $clubs = $clubModel->countAllResults();
+        
+        // Count Users
+        $userModel = new UserModel();
+        $users = $userModel->countAllResults();
+        
+        // Count Events
+        $eventModel = new EventModel();
+        $events = $eventModel->countAllResults();
+
+        return $this->response->setJSON( [
+            'status' => 'success',
+            'clubs' => $clubs,
+            'users' => $users,
+            'events' => $clubs
+        ]);
+    }
 }
 
 

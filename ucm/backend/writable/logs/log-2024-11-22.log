@@ -1,0 +1,27 @@
+CRITICAL - 2024-11-22 18:28:49 --> Error: Class "App\Controllers\UserModel" not found
+[Method: GET, Route: event/1]
+in APPPATH\Controllers\EventController.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEvent('1')
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-22 18:29:01 --> Error: Class "App\Controllers\UserModel" not found
+[Method: GET, Route: event/1]
+in APPPATH\Controllers\EventController.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEvent('1')
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-22 18:29:13 --> Error: Class "App\Controllers\UserModel" not found
+[Method: GET, Route: event/1]
+in APPPATH\Controllers\EventController.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEvent('1')
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
