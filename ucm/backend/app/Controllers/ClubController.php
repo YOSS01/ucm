@@ -99,59 +99,52 @@ class ClubController extends BaseController
     public function updateClub($id)
     {
         $clubModel = new ClubModel();
-        $validation = \Config\Services::validation();
-
-        $validation->setRules([
-            'id_president' => 'required|integer',
-            'name' => 'required|string|max_length[255]',
-            'description' => 'required|string',
-            'logo' => 'uploaded[logo]|max_size[logo,1024]|ext_in[logo,png,jpg,jpeg]',
-            'background' => 'uploaded[background]|max_size[background,1024]|ext_in[background,png,jpg,jpeg]',
-            'qr_code' => 'uploaded[qr_code]|max_size[qr_code,1024]|ext_in[qr_code,png,jpg,jpeg]',
-            'status' => 'required|string',
-            'slug'=>'required|String|max_length[255]'
-        ]);
-
+        $data = [];
+    
         $logo = $this->request->getFile('logo');
-        if ($logo->isValid() && !$logo->hasMoved()) {
+        if ($logo && $logo->isValid() && !$logo->hasMoved()) {
             $logo->move(FCPATH . 'public/uploads/');
-            $logoPath = $logo->getName();
-        } else {
+            $data['logo'] = $logo->getName();
+        } elseif ($logo && !$logo->isValid()) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload logo']);
         }
     
+       
         $background = $this->request->getFile('background');
-        if ($background->isValid() && !$background->hasMoved()) {
-            $background->move(WRITEPATH . 'public/uploads/');
-            $backgroundPath = $background->getName();
-        } else {
+        if ($background && $background->isValid() && !$background->hasMoved()) {
+            $background->move(FCPATH . 'public/uploads/');
+            $data['background'] = $background->getName();
+        } elseif ($background && !$background->isValid()) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload background']);
         }
     
+      
         $qr_code = $this->request->getFile('qr_code');
-        if ($qr_code->isValid() && !$qr_code->hasMoved()) {
-            $qr_code->move(WRITEPATH . 'public/uploads/');
-            $qrCodePath = $qr_code->getName();
-        } else {
+        if ($qr_code && $qr_code->isValid() && !$qr_code->hasMoved()) {
+            $qr_code->move(FCPATH . 'public/uploads/');
+            $data['qr_code'] = $qr_code->getName();
+        } elseif ($qr_code && !$qr_code->isValid()) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload QR code']);
         }
-         
-            $data = [
-                'id_president'=>$this->request->getVar('id_president'),
-                'name' => $this->request->getVar('name'),
-                'description' => $this->request->getVar('description'),
-                'logo' => $logoPath,
-                'background' =>$backgroundPath,
-                'qr_code' =>  $qrCodePath,
-                'status' => $this->request->getVar('status'),
-                'slug'=>$this->request->getVar('slug')
-            ];
-
+    
        
+        $data['id_president'] = $this->request->getVar('id_president');
+        $data['name'] = $this->request->getVar('name');
+        $data['description'] = $this->request->getVar('description');
+        $data['status'] = $this->request->getVar('status');
+        $data['slug'] = $this->request->getVar('slug');
+    
+     
         if ($clubModel->update($id, $data)) {
-            return $this->response->setJSON(['status' => 'success', 'message' => 'Club updated successfully']);
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Club updated successfully'
+            ]);
         } else {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to update club']);
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Failed to update club'
+            ]);
         }
     }
 
