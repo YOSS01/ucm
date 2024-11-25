@@ -88,10 +88,10 @@ export default function View({ club }) {
             </svg>
           </button>
           <div className="max-h-[400px] overflow-y-auto visible-scrollbar flex flex-col items-center gap-y-2">
-            <div className="min-h-[130px] min-w-[130px] size-[130px] flex justify-center items-center border rounded-full overflow-hidden mb-3">
-              {false ? (
+            <div className="min-h-[130px] min-w-[130px] size-[130px] flex justify-center items-center border rounded-full overflow-hidden mb-3 p-2">
+              {club?.logo ? (
                 <Image
-                  src={club?.logo}
+                  src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.logo}`}
                   alt="Club Logo"
                   width={500}
                   height={500}

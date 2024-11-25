@@ -140,3 +140,5 @@ function Card({ item }) {
     </div>
   );
 }
+
+export const revalidate = 0;

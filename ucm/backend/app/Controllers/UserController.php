@@ -115,20 +115,16 @@ class UserController extends BaseController
             'cin' => 'required|min_length[1]|is_unique[user.cin]'
         ]);
     
-        if (!$validation->run((array)$this->request->getJSON())) {  
+        if (!$validation->withRequest($this->request)->run()) {  
             return $this->response->setJSON([
                 'status' => 'error',
                 'message' => 'Validation failed',
                 'errors' => $validation->getErrors()
             ]);
         }
-    
         
         $userModel = new UserModel();
-        
         $insertData = [
-      
-
             'email' => $this->request->getVar('email'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT), 
             'first_name' => $this->request->getVar('first_name'),
@@ -136,14 +132,30 @@ class UserController extends BaseController
             'cin' => $this->request->getVar('cin'),
             'created_at' => date('Y-m-d H:i:s'),
         ];
+
+       // Handle optional picture upload
+        $picture = $this->request->getFile('picture');
+        if ($picture && $picture->isValid() && !$picture->hasMoved()) {
+            // Get the original file name and extension
+            $originalName = $picture->getName();
+            $fileExtension = $picture->getExtension();
+    
+            // Generate a new filename with dynamic text (e.g., a timestamp)
+            $newFileName = pathinfo($originalName, PATHINFO_FILENAME) . '_' . time() . '.' . $fileExtension;
+    
+            // Move the file with the new name
+            $picture->move(FCPATH . 'uploads/users/', $newFileName);
+    
+            // Save the new filename in the database
+            $insertData['picture'] = $newFileName;
+        }
     
         if ($userModel->insert($insertData)) {
-            
-        return $this->response->setJSON([
-            'status' => 'success',
-            'message' => 'User registered successfully',
-            'user_id' => $userModel->getInsertID()
-        ]);
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'User registered successfully',
+                'user_id' => $userModel->getInsertID()
+            ]);
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to register user']);
         }
@@ -215,7 +227,21 @@ class UserController extends BaseController
         return $this->response->setJSON(['status' => 'success', 'message' => 'Password has been reset successfully']);
     }
 
+    public function deleteUser($id) {
+        $userModel = new UserModel();
 
+        if ($userModel->delete($id)) {
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'User has been deleted successfully',
+            ]);
+        } else {
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'Failed to delete the user. Please try again.',
+                ]);
+            }
+        }
 
 
 }

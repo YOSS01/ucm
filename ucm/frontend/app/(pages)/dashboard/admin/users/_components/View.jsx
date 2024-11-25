@@ -60,7 +60,7 @@ export default function View({ user }) {
             <div className="size-[150px] flex justify-center items-center border rounded-full overflow-hidden mb-3">
               {user?.picture ? (
                 <Image
-                  src={user?.picture}
+                  src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/users/${user?.picture}`}
                   alt="Profile User"
                   width={500}
                   height={500}

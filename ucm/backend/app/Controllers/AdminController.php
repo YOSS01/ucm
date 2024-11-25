@@ -180,7 +180,7 @@ class AdminController extends BaseController {
             'status' => 'success',
             'clubs' => $clubs,
             'users' => $users,
-            'events' => $clubs
+            'events' => $events
         ]);
     }
 }

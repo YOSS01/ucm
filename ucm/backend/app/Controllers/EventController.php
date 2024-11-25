@@ -46,7 +46,7 @@ class EventController extends BaseController
 
         $picture = $this->request->getFile('picture');
         if ($picture->isValid() && !$picture->hasMoved()) {
-            $picture->move(WRITEPATH . 'uploads/');
+            $picture->move(FCPATH . 'uploads/events/');
             $picturePath = $picture->getName();
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload picture']);
@@ -58,7 +58,8 @@ class EventController extends BaseController
             'description' => $this->request->getVar('description'),
             'location' => $this->request->getVar('location'),
             'picture' => $picturePath,
-            'date' => $this->request->getVar('date')
+            'date' => $this->request->getVar('date'),
+            'created_at' => date('Y-m-d H:i:s')
         ];
 
         if ($event->insert($data)) {
@@ -103,7 +104,7 @@ class EventController extends BaseController
         }
     }
 
-    public function deleteevent($id)
+    public function deleteEvent($id)
     {
         $event = new EventModel();
         if ($event->delete($id)) {

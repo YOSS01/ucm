@@ -35,12 +35,13 @@ class ClubController extends BaseController
     
         $validation->setRules([
             'id_president' => 'required|integer',
+            'email' => 'required|string|max_length[255]',
             'name' => 'required|string|max_length[255]',
             'description' => 'required|string',
-            'logo' => 'uploaded[logo]|max_size[logo,1024]|ext_in[logo,png,jpg,jpeg]',
-            'background' => 'uploaded[background]|max_size[background,1024]|ext_in[background,png,jpg,jpeg]',
-            'qr_code' => 'uploaded[qr_code]|max_size[qr_code,1024]|ext_in[qr_code,png,jpg,jpeg]',
-            'status' => 'required|string',
+            'logo' => 'uploaded[logo]|max_size[logo,2042]|ext_in[logo,png,jpg,jpeg,webp]',
+            'background' => 'uploaded[background]|max_size[background,2042]|ext_in[background,png,jpg,jpeg,webp]',
+            // 'qr_code' => 'uploaded[qr_code]|max_size[qr_code,2042]|ext_in[qr_code,png,jpg,jpeg,webp]',
+            // 'status' => 'required|string',
             'slug'=>'required|string|max_length[255]'
         ]);
     
@@ -51,7 +52,7 @@ class ClubController extends BaseController
     
         $logo = $this->request->getFile('logo');
         if ($logo->isValid() && !$logo->hasMoved()) {
-            $logo->move(FCPATH . 'public/uploads/');
+            $logo->move(FCPATH . 'uploads/clubs/');
             $logoPath = $logo->getName();
         } else {
             log_message('error', 'Failed to upload logo');
@@ -60,30 +61,31 @@ class ClubController extends BaseController
     
         $background = $this->request->getFile('background');
         if ($background->isValid() && !$background->hasMoved()) {
-            $background->move(FCPATH . 'public/uploads/');
+            $background->move(FCPATH . 'uploads/clubs/');
             $backgroundPath = $background->getName();
         } else {
             log_message('error', 'Failed to upload background');
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload background']);
         }
     
-        $qr_code = $this->request->getFile('qr_code');
-        if ($qr_code->isValid() && !$qr_code->hasMoved()) {
-            $qr_code->move(FCPATH . 'public/uploads/');
-            $qrCodePath = $qr_code->getName();
-        } else {
-            log_message('error', 'Failed to upload QR code');
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload QR code']);
-        }
+        // $qr_code = $this->request->getFile('qr_code');
+        // if ($qr_code->isValid() && !$qr_code->hasMoved()) {
+        //     $qr_code->move(FCPATH . 'uploads/clubs/');
+        //     $qrCodePath = $qr_code->getName();
+        // } else {
+        //     log_message('error', 'Failed to upload QR code');
+        //     return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload QR code']);
+        // }
     
         $data = [
             'id_president' => $this->request->getVar('id_president'),
+            'email' => $this->request->getVar('email'),
             'name' => $this->request->getVar('name'),
             'description' => $this->request->getVar('description'),
             'logo' => $logoPath,
             'background' => $backgroundPath,
-            'qr_code' => $qrCodePath,
-            'status' => $this->request->getVar('status'),
+            // 'qr_code' => $qrCodePath,
+            'status' => "pending",
             'slug' => $this->request->getVar('slug'),
             'created_at' => date('Y-m-d H:i:s')
         ];
