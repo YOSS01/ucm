@@ -20,6 +20,11 @@ class CreateClubsTable extends Migration
                 'constraint' => 5,
                 'unsigned'   => true,
             ],
+            'email' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+                'unique' => true,
+            ],
             'name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',

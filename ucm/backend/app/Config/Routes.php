@@ -27,9 +27,11 @@ $routes->post('/logout-admin','AdminController::logout_admin');
 $routes->get('/all-admins','AdminController::alladmins');
 $routes->post('/update-admin/(:num)','AdminController::update_admin/$1');
 $routes->get('/delet-admin/(:num)','AdminController::delete_admin/$1');
+$routes->get('/statistics','AdminController::statistics');
 
 
 //club routes
+$routes->get('/club/(:num)','ClubController::getClub/$1');
 $routes->get("/all-clubs","ClubController::allclubs");
 $routes->get('/add-club-view','ClubController::addclubview');
 $routes->post('/add-club','ClubController::addClub');
@@ -38,6 +40,8 @@ $routes->get('/delet-club-number/(:num)','ClubController::deleteClub/$1');
 
 
 //event routes
+$routes->get('/event/(:num)','EventController::getEvent/$1');
+$routes->get('/all-events','EventController::allEvents'); 
 $routes->post('/add-event','EventController::addevent'); 
 $routes->post('/update-event-number/(:num)','EventController::updateevent/$1');
 $routes->get('/delet-event-number/(:num)','EventController::deleteevent/$1');

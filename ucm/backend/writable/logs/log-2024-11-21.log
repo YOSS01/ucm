@@ -427,4 +427,3 @@ ERROR - 2024-11-21 22:45:18 --> Email: Unable to send email using SMTP. Your ser
 ERROR - 2024-11-21 22:45:18 --> 
 =======
 INFO - 2024-11-21 11:14:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
->>>>>>> 10e6ef1d9b45792fcab6759d6411658cdad57a78

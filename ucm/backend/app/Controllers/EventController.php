@@ -13,6 +13,19 @@ class EventController extends BaseController
         // return view();
     }
 
+    public function allEvents()
+    {
+        $eventModel = new EventModel();
+        $events = $eventModel->findAll();
+        return $this->response->setJSON($events);
+    }
+
+    public function getEvent($id){
+        $eventModel = new EventModel();
+        $event = $eventModel->find($id);
+        return $this->response->setJSON($event);
+    }
+
     public function addevent()
     {
         $event = new EventModel();
