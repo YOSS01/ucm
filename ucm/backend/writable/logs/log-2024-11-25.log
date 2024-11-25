@@ -1,0 +1,29 @@
+CRITICAL - 2024-11-25 13:06:43 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: user-number/2]
+in APPPATH\Controllers\UserController.php on line 150.
+ 1 APPPATH\Controllers\UserController.php(150): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\app\\Controllers\\UserController.php', 150)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('2')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-25 13:07:20 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: user-number/2]
+in APPPATH\Controllers\UserController.php on line 150.
+ 1 APPPATH\Controllers\UserController.php(150): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\app\\Controllers\\UserController.php', 150)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('2')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-25 13:08:16 --> Error: Call to a member function isValid() on null
+[Method: POST, Route: update-user/1]
+in APPPATH\Controllers\UserController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->updateUser('1')
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

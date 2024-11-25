@@ -16,55 +16,45 @@ class UserController extends BaseController
     }
 
 
-   public function updateUser($id){
- 
-    $validation = \Config\Services::validation();
-    $validation->setRules([
-        'password' => 'min_length[8]',
-        'first_name' => 'min_length[2]',
-        'last_name' => 'min_length[2]',
-       'puicture' => 'uploaded[picture]|max_size[picture,1024]|ext_in[picture,png,jpg,jpeg]',
-       'email' => 'valid_email|is_unique[user.email]',
-       'cin' => 'min_length[1]|is_unique[user.cin]'
-    ]);
+    public function updateUser($id)
+    {
+        $userModel = new UserModel();
+        $data = [];
 
+  
+        $picture = $this->request->getFile('user_picture');
+        if ($picture && $picture->isValid() && !$picture->hasMoved()) {
+            $picture->move(FCPATH . 'uploads/');
+            $data['picture'] = $picture->getName();
+        } elseif ($picture && !$picture->isValid()) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload picture']);
+        }
 
-    if(!$validation->withRequest($this->request)->run()){
-        return $this->response->setJSON([
-            'status' => 'error',
-            'message' => 'Validation failed',
-            'errors' => $validation->getErrors()
-        ]);
-    }
       
-   
-    $userModel = new UserModel();
-    $picture = $this->request->getFile('user_picture');
-    if($picture->isValid() && !$picture->hasMoved()){
-        $picture->move(WRITEPATH . 'uploads/');
-        $picturePath = $picture->getName();
+        $password = $this->request->getVar('password');
+        if ($password) {
+            $data['password'] = password_hash($password, PASSWORD_BCRYPT);
+        }
 
-    }else{
-        return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload picture']);
+       
+        $data['email'] = $this->request->getVar('email');
+        $data['first_name'] = $this->request->getVar('first_name');
+        $data['last_name'] = $this->request->getVar('last_name');
+        $data['cin'] = $this->request->getVar('cin');
 
+        
+        if ($userModel->update($id, $data)) {
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'User updated successfully'
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Failed to update user'
+            ]);
+        }
     }
-    $data = [
-
-        'email' => $this->request->getVar('email'),
-        'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT), 
-        'first_name' => $this->request->getVar('first_name'),
-        'last_name' => $this->request->getVar('last_name'),
-        'cin' => $this->request->getVar('cin'),
-     
-        'picture' => $picturePath
-    ];
-    if($userModel->update($id, $data)){
-        return $this->response->setJSON([
-            'status' => 'success',
-            'message' => 'User updated successfully'
-        ]);
-
-   }}
 
     public function allusers(){
         $userModel = new UserModel();
