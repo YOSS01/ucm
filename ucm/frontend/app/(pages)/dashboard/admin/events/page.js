@@ -76,15 +76,17 @@ export default async function Events() {
               <div className="w-full flex justify-center items-center">
                 <div className="group w-full max-w-[300px] h-[300px] rounded-3xl border flex flex-col justify-start items-center overflow-hidden">
                   <div className="w-full h-1/2 overflow-hidden border-b">
-                    <Image
-                      src={
-                        "https://images.unsplash.com/photo-1560523160-754a9e25c68f?q=80&w=2036&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      }
-                      alt="Background Event"
-                      width={500}
-                      height={500}
-                      className="w-full h-full object-cover pointer-events-none"
-                    />
+                    {item?.picture ? (
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/events/${item?.picture}`}
+                        alt="Background Event"
+                        width={500}
+                        height={500}
+                        className="w-full h-full object-cover pointer-events-none"
+                      />
+                    ) : (
+                      <></>
+                    )}
                   </div>
                   <div className="w-full h-1/2 flex flex-col justify-between items-center gap-y-3 p-3 text-sm">
                     <h2 className="font-original_surfer text-center line-clamp-2">
@@ -119,3 +121,5 @@ export default async function Events() {
     </div>
   );
 }
+
+export const revalidate = 0;

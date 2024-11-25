@@ -82,7 +82,7 @@ export default async function Users() {
                   <div className="size-24 border rounded-full flex justify-center items-center overflow-hidden">
                     {item?.picture ? (
                       <Image
-                        src={item?.picture}
+                        src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/users/${item?.picture}`}
                         alt="Profile User"
                         width={500}
                         height={500}

@@ -23,14 +23,18 @@ export async function signup(state, formData) {
 
   // Call the provider or db to create a user...
   try {
+    const formData = new FormData();
+    formData.append("first_name", validatedFields.data.first_name);
+    formData.append("last_name", validatedFields.data.last_name);
+    formData.append("cin", validatedFields.data.cin);
+    formData.append("email", validatedFields.data.email);
+    formData.append("password", validatedFields.data.password);
+
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_APP_BASE_URL}/register`,
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(validatedFields.data),
+        body: formData,
       }
     );
 

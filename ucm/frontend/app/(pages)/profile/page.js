@@ -10,6 +10,9 @@ import Logout from "./_components/Logout";
 import Edit from "./_components/Edit";
 import ResetPassword from "./_components/ResetPassword";
 
+// images
+import userPic from "@/public/images/user.svg";
+
 export const metadata = {
   title: "Profile",
 };
@@ -26,13 +29,23 @@ export default async function page() {
           <ResetPassword />
           <div className="flex flex-col items-center gap-y-2">
             <div className="size-[150px] border rounded-full overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1528892952291-009c663ce843?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="user pic"
-                width={500}
-                height={500}
-                className="w-full h-full object-cover pointer-events-none"
-              />
+              {user?.picture ? (
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/users/${user?.picture}`}
+                  alt="user pic"
+                  width={500}
+                  height={500}
+                  className="w-full h-full object-cover pointer-events-none"
+                />
+              ) : (
+                <Image
+                  src={userPic}
+                  alt="user pic"
+                  width={500}
+                  height={500}
+                  className="w-full h-full object-cover pointer-events-none"
+                />
+              )}
             </div>
             <h1 className="font-original_surfer">
               {user?.first_name + " " + user?.last_name}

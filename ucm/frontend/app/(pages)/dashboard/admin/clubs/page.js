@@ -77,9 +77,9 @@ export default async function Clubs() {
               <div className="w-full flex justify-center items-center">
                 <div className="group w-full max-w-[300px] h-[300px] rounded-3xl border flex flex-col gap-y-3 justify-center items-center p-2 relative">
                   <div className="size-24 border rounded-full p-2 flex justify-center items-center overflow-hidden">
-                    {false ? (
+                    {item?.logo ? (
                       <Image
-                        src={item?.logo}
+                        src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${item?.logo}`}
                         alt="Club Logo"
                         width={500}
                         height={500}

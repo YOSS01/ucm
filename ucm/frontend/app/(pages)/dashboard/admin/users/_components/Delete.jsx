@@ -1,8 +1,40 @@
 "use client";
 import { useState } from "react";
 
+// Toaster
+import toast from "react-hot-toast";
+
 export default function Delete({ id }) {
   const [isDeleteBttnActive, setIsDeleteBttnActive] = useState(false);
+
+  const deleteUser = async (id) => {
+    // Delete user logic here
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_APP_BASE_URL}/deleteUser/${id}`,
+        {
+          method: "GET",
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        toast.error("Error");
+        return;
+      } else if (result?.status === "error") {
+        toast.error("Failed to delete the user. Please try again.");
+        return;
+      }
+
+      toast.success("User has been deleted successfully!");
+      setIsDeleteBttnActive(false);
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.message);
+    }
+  };
+
   return (
     <>
       <button
@@ -33,7 +65,10 @@ export default function Delete({ id }) {
             </p>
 
             <div className="w-full flex gap-x-5">
-              <button className="w-full h-[50px] text-red-500 bg-white/90 hover:bg-white duration-300 font-original_surfer">
+              <button
+                onClick={() => deleteUser(id)}
+                className="w-full h-[50px] text-red-500 bg-white/90 hover:bg-white duration-300 font-original_surfer"
+              >
                 Confirm
               </button>
               <button

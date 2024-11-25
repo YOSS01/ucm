@@ -19,6 +19,7 @@ $routes->get('/', 'Home::index');
     $routes->post('/forget-password', 'UserController::forgetPassword');
     $routes->post('/requestPasswordReset', 'UserController::requestPasswordReset');
     $routes->post('/resetPassword', 'UserController::resetPassword');
+    $routes->get('/deleteUser/(:num)','UserController::deleteUser/$1');
 
 //admin routes
 $routes->post('/add-admin','AdminController::addadmin');
@@ -36,7 +37,7 @@ $routes->get("/all-clubs","ClubController::allclubs");
 $routes->get('/add-club-view','ClubController::addclubview');
 $routes->post('/add-club','ClubController::addClub');
 $routes->post('/update-club-number/(:num)','ClubController::updateClub/$1');
-$routes->get('/delet-club-number/(:num)','ClubController::deleteClub/$1');
+$routes->get('/deleteClub/(:num)','ClubController::deleteClub/$1');
 
 
 //event routes
@@ -44,7 +45,7 @@ $routes->get('/event/(:num)','EventController::getEvent/$1');
 $routes->get('/all-events','EventController::allEvents'); 
 $routes->post('/add-event','EventController::addevent'); 
 $routes->post('/update-event-number/(:num)','EventController::updateevent/$1');
-$routes->get('/delet-event-number/(:num)','EventController::deleteevent/$1');
+$routes->get('/deleteEvent/(:num)','EventController::deleteEvent/$1');
 
 //event request routes
 $routes->post('/add-event-request','EventRequestController::addeventrequest');

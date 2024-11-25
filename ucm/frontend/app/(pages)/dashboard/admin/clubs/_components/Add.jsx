@@ -1,5 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import { addClub } from "@/app/_actions/clubs";
+import toast from "react-hot-toast";
 
 const generateSlug = (text) => {
   return text
@@ -11,7 +14,9 @@ const generateSlug = (text) => {
 };
 
 export default function Add() {
-  const [isEditBttnActive, setIsEditBttnActive] = useState(false);
+  const [isAddBttnActive, setIsAddBttnActive] = useState(false);
+  const [state, action] = useFormState(addClub, undefined);
+
   const [users, setUsers] = useState([]);
   const [name, setName] = useState("");
   const [slug, setSlug] = useState("");
@@ -45,11 +50,20 @@ export default function Add() {
 
     getUsers();
   }, []);
+
+  useEffect(() => {
+    if (state?.response?.status === 500) {
+      toast.error(state?.response?.message);
+    } else if (state?.response?.status === 200) {
+      toast.success(state?.response?.message);
+      setIsAddBttnActive(false);
+    }
+  }, [state]);
   return (
     <>
       <button
         type="button"
-        onClick={() => setIsEditBttnActive(true)}
+        onClick={() => setIsAddBttnActive(true)}
         className="size-7 bg-green-500/80 text-white flex justify-center items-center rounded text-sm hover:bg-green-500/100 duration-300"
       >
         <svg
@@ -68,10 +82,10 @@ export default function Add() {
         </svg>
       </button>
 
-      {isEditBttnActive && (
+      {isAddBttnActive && (
         <div className="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[500px] h-fit bg-[#252525] text-white px-5 py-5 z-50">
           <button
-            onClick={() => setIsEditBttnActive(false)}
+            onClick={() => setIsAddBttnActive(false)}
             type="button"
             className="absolute right-5 top-5 z-[9999]"
           >
@@ -90,7 +104,11 @@ export default function Add() {
               />
             </svg>
           </button>
-          <form className="flex flex-col items-center gap-y-8">
+          <form
+            action={action}
+            method="POST"
+            className="flex flex-col items-center gap-y-8"
+          >
             <h1 className="font-original_surfer text-3xl text-center">
               Add Club
             </h1>
@@ -104,9 +122,15 @@ export default function Add() {
                     type="file"
                     name="logo"
                     id="logo"
-                    className="w-full outline-none border-b py-2 bg-transparent focus:border-white"
-                    required
+                    className="w-full outline-none border-b py-2 bg-transparent focus:border-white file:mr-4 file:py-2 file:px-4
+                    file:rounded-full file:border-0
+                    file:text-xs
+                  file:bg-white/80 file:text-black
+                  hover:file:bg-white file:duration-300"
                   />
+                  {state?.errors?.logo && (
+                    <p className="text-red-500 text-xs">{state.errors.logo}</p>
+                  )}
                 </div>
                 <div className="w-full flex flex-col">
                   <label htmlFor="background" className="w-fit">
@@ -116,9 +140,17 @@ export default function Add() {
                     type="file"
                     name="background"
                     id="background"
-                    className="w-full outline-none border-b py-2 bg-transparent focus:border-white"
-                    required
+                    className="w-full outline-none border-b py-2 bg-transparent focus:border-white file:mr-4 file:py-2 file:px-4
+                    file:rounded-full file:border-0
+                    file:text-xs
+                  file:bg-white/80 file:text-black
+                  hover:file:bg-white file:duration-300"
                   />
+                  {state?.errors?.background && (
+                    <p className="text-red-500 text-xs">
+                      {state.errors.background}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="flex flex-col">
@@ -126,10 +158,9 @@ export default function Add() {
                   President
                 </label>
                 <select
-                  name="president"
+                  name="presidentID"
                   id="president"
                   className="outline-none border-b py-2 bg-transparent focus:border-white cursor-pointer"
-                  required
                 >
                   {users?.map((item, key) => (
                     <option key={key} value={item?.id} className="text-black">
@@ -137,6 +168,11 @@ export default function Add() {
                     </option>
                   ))}
                 </select>
+                {state?.errors?.presidentID && (
+                  <p className="text-red-500 text-xs">
+                    {state.errors.presidentID}
+                  </p>
+                )}
               </div>
 
               <div className="flex flex-col">
@@ -145,12 +181,14 @@ export default function Add() {
                 </label>
                 <input
                   type="email"
-                  name=""
+                  name="email"
                   id="email"
                   placeholder="Email"
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
                 />
+                {state?.errors?.email && (
+                  <p className="text-red-500 text-xs">{state.errors.email}</p>
+                )}
               </div>
 
               <div className="flex flex-col">
@@ -163,10 +201,12 @@ export default function Add() {
                   id="name"
                   placeholder="Name"
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
                   value={name}
                   onChange={({ target }) => setName(target.value)}
                 />
+                {state?.errors?.name && (
+                  <p className="text-red-500 text-xs">{state.errors.name}</p>
+                )}
               </div>
 
               <div className="flex flex-col">
@@ -178,8 +218,12 @@ export default function Add() {
                   id="description"
                   placeholder="Description ..."
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
                 />
+                {state?.errors?.description && (
+                  <p className="text-red-500 text-xs">
+                    {state.errors.description}
+                  </p>
+                )}
               </div>
 
               <div className="flex flex-col">
@@ -193,7 +237,6 @@ export default function Add() {
                     id="slug"
                     placeholder="Slug"
                     className="w-full outline-none border-b py-2 bg-transparent focus:border-white"
-                    required
                     value={generateSlug(slug)}
                     onChange={({ target }) => setSlug(target.value)}
                   />
@@ -205,18 +248,29 @@ export default function Add() {
                     Generate
                   </button>
                 </div>
+                {state?.errors?.slug && (
+                  <p className="text-red-500 text-xs">{state.errors.slug}</p>
+                )}
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="w-full h-[50px] text-black bg-white/90 hover:bg-white duration-300 font-original_surfer"
-            >
-              Save
-            </button>
+            <SubmitButton />
           </form>
         </div>
       )}
     </>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      disabled={pending}
+      type="submit"
+      className="w-full h-[50px] text-black bg-white/90 hover:bg-white duration-300 font-original_surfer"
+    >
+      Save
+    </button>
   );
 }
