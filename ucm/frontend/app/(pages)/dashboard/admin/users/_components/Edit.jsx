@@ -1,9 +1,29 @@
 "use client";
-import { useState } from "react";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import { editUser } from "@/app/_actions/users";
+
+// Toaster
+import toast from "react-hot-toast";
 
 export default function Edit({ user }) {
+  const [userPic, setUserPic] = useState(
+    user?.picture
+      ? `${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/users/${user?.picture}`
+      : ""
+  );
   const [isEditBttnActive, setIsEditBttnActive] = useState(false);
+  const [state, action] = useFormState(editUser, undefined);
 
+  useEffect(() => {
+    if (state?.response?.status === 500) {
+      toast.error(state?.response?.message);
+    } else if (state?.response?.status === 200) {
+      toast.success(state?.response?.message);
+      setIsEditBttnActive(false);
+    }
+  }, [state]);
   return (
     <>
       <button
@@ -48,22 +68,44 @@ export default function Edit({ user }) {
               />
             </svg>
           </button>
-          <form className="flex flex-col items-center gap-y-8">
+          <form
+            action={action}
+            method="POST"
+            className="flex flex-col items-center gap-y-8"
+          >
             <h1 className="font-original_surfer text-3xl text-center">
               Edit User
             </h1>
-            <div className="w-full flex flex-col gap-y-5 text-sm">
+            <div className="w-full flex flex-col gap-y-5 text-sm max-h-[400px] overflow-y-auto visible-scrollbar">
+              <input type="hidden" name="userID" id="userID" value={user?.id} />
               <div className="flex flex-col">
                 <label for="picture" className="w-fit">
                   Picture
                 </label>
-                <input
-                  type="file"
-                  name="picture"
-                  id="picture"
-                  className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
-                />
+                <div className="w-full flex items-center gap-x-3 border-b">
+                  {userPic && (
+                    <Image
+                      src={userPic}
+                      alt="pic"
+                      width={100}
+                      height={100}
+                      className="min-w-10 min-h-10 size-10 rounded-full object-cover border"
+                    />
+                  )}
+                  <input
+                    type="file"
+                    name="picture"
+                    id="picture"
+                    className="w-full outline-none py-2 bg-transparent focus:border-white file:mr-4 file:py-2 file:px-4
+                    file:rounded-full file:border-0
+                    file:text-xs
+                  file:bg-white/80 file:text-black
+                  hover:file:bg-white file:duration-300"
+                    onChange={({ target }) =>
+                      setUserPic(URL.createObjectURL(target.files[0]))
+                    }
+                  />
+                </div>
               </div>
               <div className="flex flex-col">
                 <label for="first_name" className="w-fit">
@@ -75,7 +117,6 @@ export default function Edit({ user }) {
                   id="first_name"
                   placeholder={user?.first_name}
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
                 />
               </div>
               <div className="flex flex-col">
@@ -88,7 +129,6 @@ export default function Edit({ user }) {
                   id="last_name"
                   placeholder={user?.last_name}
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
                 />
               </div>
               <div className="flex flex-col">
@@ -101,7 +141,6 @@ export default function Edit({ user }) {
                   id="cin"
                   placeholder={user?.cin}
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
                 />
               </div>
               <div className="flex flex-col">
@@ -110,21 +149,43 @@ export default function Edit({ user }) {
                 </label>
                 <input
                   type="email"
-                  name=""
+                  name="email"
                   id="email"
                   placeholder={user?.email}
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
+                />
+              </div>
+              <div className="flex flex-col">
+                <label for="password" className="w-fit">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  className="outline-none border-b py-2 bg-transparent focus:border-white"
                 />
               </div>
             </div>
 
-            <button className="w-full h-[50px] text-black bg-white/90 hover:bg-white duration-300 font-original_surfer">
-              Save
-            </button>
+            <SubmitButton />
           </form>
         </div>
       )}
     </>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      disabled={pending}
+      type="submit"
+      className="w-full h-[50px] text-black bg-white/90 hover:bg-white duration-300 font-original_surfer"
+    >
+      Save
+    </button>
   );
 }

@@ -148,14 +148,14 @@ export async function addEvent(state, formData) {
       return {
         response: {
           status: 500,
-          message: "An error occurred while creating the club.",
+          message: "An error occurred while creating the event.",
         },
       };
     } else if (result?.status === "error") {
       return {
         response: {
           status: 500,
-          message: "An error occurred while creating the club.",
+          message: "An error occurred while creating the event.",
         },
       };
     }
@@ -171,10 +171,73 @@ export async function addEvent(state, formData) {
     return {
       response: {
         status: 500,
-        message: "An error occurred while creating the club.",
+        message: "An error occurred while creating the event.",
       },
     };
   }
 }
 
 // Edit Event
+export async function editEvent(state, formData) {
+  const id = formData.get("eventID");
+  const data = new FormData();
+
+  // Handle the picture field separately
+  const pictureFile = formData.get("picture");
+  if (pictureFile && pictureFile.size > 0) {
+    data.append("picture", pictureFile);
+  }
+
+  // Handle other attributes dynamically
+  const attributes = ["id_club", "name", "description", "location", "date"];
+  attributes.forEach((attr) => {
+    const value = formData.get(attr);
+    if (value) {
+      data.append(attr, value);
+    }
+  });
+
+  // Call the provider or db ...
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_APP_BASE_URL}/update-event/${id}`,
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      return {
+        response: {
+          status: 500,
+          message: "An error occurred while updating the event.",
+        },
+      };
+    } else if (result?.status === "error") {
+      return {
+        response: {
+          status: 500,
+          message: result?.message,
+        },
+      };
+    }
+
+    return {
+      response: {
+        status: 200,
+        message: "Event Updated Successfully",
+      },
+    };
+  } catch (error) {
+    console.error(error.message);
+    return {
+      response: {
+        status: 500,
+        message: "An error occurred while updating the event.",
+      },
+    };
+  }
+}

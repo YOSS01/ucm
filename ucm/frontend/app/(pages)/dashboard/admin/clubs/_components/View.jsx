@@ -87,33 +87,16 @@ export default function View({ club }) {
               />
             </svg>
           </button>
-          <div className="max-h-[400px] overflow-y-auto visible-scrollbar flex flex-col items-center gap-y-2">
-            <div className="min-h-[130px] min-w-[130px] size-[130px] flex justify-center items-center border rounded-full overflow-hidden mb-3 p-2">
-              {club?.logo ? (
-                <Image
-                  src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.logo}`}
-                  alt="Club Logo"
-                  width={500}
-                  height={500}
-                  className="w-full h-full object-cover pointer-events-none"
-                />
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1}
-                  stroke="currentColor"
-                  className="size-12 text-gray-300"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                  />
-                </svg>
-              )}
-            </div>
+          <div className="max-h-[450px] overflow-y-auto visible-scrollbar flex flex-col items-center gap-y-2">
+            {club?.logo && (
+              <Image
+                src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.logo}`}
+                alt="Club Logo"
+                width={500}
+                height={500}
+                className="min-h-[120px] min-w-[120px] size-[120px] overflow-hidden mb-3 object-contain pointer-events-none"
+              />
+            )}
             <h1 className="font-original_surfer">
               {club?.name} /{" "}
               <Link
@@ -157,6 +140,9 @@ export default function View({ club }) {
                     {president?.email}
                   </Link>
                 </span>
+              </p>
+              <p className="text-white/80 font-light">
+                Members: <span className="text-green-500">55</span>
               </p>
               <p className="text-white/80 font-light">
                 Created At:{" "}

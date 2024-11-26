@@ -18,43 +18,56 @@ class UserController extends BaseController
 
     public function updateUser($id)
     {
+        $validation = \Config\Services::validation();
+
+        // Define validation rules (all fields optional but validated if provided)
+        $validation->setRules([
+            'email' => 'permit_empty|valid_email|max_length[255]',
+            'first_name' => 'permit_empty|string|max_length[255]',
+            'last_name' => 'permit_empty|string|max_length[255]',
+            'password' => 'permit_empty|min_length[8]',
+            'picture' => 'permit_empty|uploaded[picture]|max_size[picture,1024]|ext_in[picture,png,jpg,jpeg,avif,webp]',
+            'cin' => 'permit_empty|string|min_length[2]',
+        ]);
+
+        // Validate the incoming data
+        if (!$validation->withRequest($this->request)->run()) {
+            return $this->response->setJSON(['status' => 'error', 'message' => $validation->getErrors()]);
+        }
+
         $userModel = new UserModel();
+
+        // Check if the user exists
+        $user = $userModel->find($id);
+        if (!$user) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'User not found']);
+        }
+
+        // Prepare data for update
         $data = [];
+        $fields = ['email', 'first_name', 'last_name', 'password', 'cin'];
+        foreach ($fields as $field) {
+            $value = $this->request->getVar($field);
+            if (!is_null($value)) {
+                $data[$field] = $field === 'password' ? password_hash($value, PASSWORD_BCRYPT) : $value;
+            }
+        }
 
-  
-        $picture = $this->request->getFile('user_picture');
+        // Handle picture upload if provided
+        $picture = $this->request->getFile('picture');
         if ($picture && $picture->isValid() && !$picture->hasMoved()) {
-            $picture->move(FCPATH . 'uploads/');
+            $picture->move(FCPATH . 'uploads/users/');
             $data['picture'] = $picture->getName();
-        } elseif ($picture && !$picture->isValid()) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload picture']);
         }
 
-      
-        $password = $this->request->getVar('password');
-        if ($password) {
-            $data['password'] = password_hash($password, PASSWORD_BCRYPT);
+        // Update user
+        if (!empty($data) && $userModel->update($id, $data)) {
+            return $this->response->setJSON(['status' => 'success', 'message' => 'User updated successfully']);
         }
 
-       
-        $data['email'] = $this->request->getVar('email');
-        $data['first_name'] = $this->request->getVar('first_name');
-        $data['last_name'] = $this->request->getVar('last_name');
-        $data['cin'] = $this->request->getVar('cin');
-
-        
-        if ($userModel->update($id, $data)) {
-            return $this->response->setJSON([
-                'status' => 'success',
-                'message' => 'User updated successfully'
-            ]);
-        } else {
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'Failed to update user'
-            ]);
-        }
+        return $this->response->setJSON(['status' => 'error', 'message' => 'No changes made or update failed']);
     }
+
 
     public function allusers(){
         $userModel = new UserModel();

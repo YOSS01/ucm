@@ -8,7 +8,7 @@ class EventModel extends Model
 {
     protected $table = 'event';
      protected $primaryKey = 'id';
-    protected $allowedFields = ['id_club', 'name', 'description', 'location', 'date', 'picture'];
+    protected $allowedFields = ['id_club', 'name', 'description', 'location', 'date', 'picture', 'created_at'];
    
 
     public function getClub($eventId){

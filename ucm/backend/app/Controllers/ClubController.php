@@ -38,8 +38,8 @@ class ClubController extends BaseController
             'email' => 'required|string|max_length[255]',
             'name' => 'required|string|max_length[255]',
             'description' => 'required|string',
-            'logo' => 'uploaded[logo]|max_size[logo,2042]|ext_in[logo,png,jpg,jpeg,webp]',
-            'background' => 'uploaded[background]|max_size[background,2042]|ext_in[background,png,jpg,jpeg,webp]',
+            'logo' => 'uploaded[logo]|max_size[logo,2042]|ext_in[logo,png,jpg,jpeg,webp,avif]',
+            'background' => 'uploaded[background]|max_size[background,2042]|ext_in[background,png,jpg,jpeg,webp,avif]',
             // 'qr_code' => 'uploaded[qr_code]|max_size[qr_code,2042]|ext_in[qr_code,png,jpg,jpeg,webp]',
             // 'status' => 'required|string',
             'slug'=>'required|string|max_length[255]'
@@ -100,54 +100,58 @@ class ClubController extends BaseController
  
     public function updateClub($id)
     {
+        $validation = \Config\Services::validation();
+
+        $validation->setRules([
+            'id_president' => 'permit_empty|integer|max_length[255]',
+            'email' => 'permit_empty|valid_email|max_length[255]',
+            'name' => 'permit_empty|string|max_length[255]',
+            'description' => 'permit_empty|string|max_length[255]',
+            'logo' => 'permit_empty|uploaded[logo]|max_size[logo,1024]|ext_in[logo,png,jpg,jpeg,avif,webp]',
+            'background' => 'permit_empty|uploaded[background]|max_size[background,1024]|ext_in[background,png,jpg,jpeg,avif,webp]',
+            'status' => 'permit_empty|string|min_length[2]',
+            'slug' => 'permit_empty|string|min_length[2]',
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            return $this->response->setJSON(['status' => 'error', 'message' => $validation->getErrors()]);
+        }
+
         $clubModel = new ClubModel();
+
+        $club = $clubModel->find($id);
+        if (!$club) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Club not found']);
+        }
+
         $data = [];
-    
+        $fields = ['id_president', 'email', 'name', 'description', 'status', 'slug'];
+        foreach ($fields as $field) {
+            $value = $this->request->getVar($field);
+            if (!is_null($value)) {
+                $data[$field] = $value;
+            }
+        }
+
         $logo = $this->request->getFile('logo');
         if ($logo && $logo->isValid() && !$logo->hasMoved()) {
-            $logo->move(FCPATH . 'public/uploads/');
+            $logo->move(FCPATH . 'uploads/clubs/');
             $data['logo'] = $logo->getName();
-        } elseif ($logo && !$logo->isValid()) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload logo']);
         }
-    
-       
+
+        // Handle background upload if provided
         $background = $this->request->getFile('background');
         if ($background && $background->isValid() && !$background->hasMoved()) {
-            $background->move(FCPATH . 'public/uploads/');
+            $background->move(FCPATH . 'uploads/clubs/');
             $data['background'] = $background->getName();
-        } elseif ($background && !$background->isValid()) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload background']);
         }
-    
-      
-        $qr_code = $this->request->getFile('qr_code');
-        if ($qr_code && $qr_code->isValid() && !$qr_code->hasMoved()) {
-            $qr_code->move(FCPATH . 'public/uploads/');
-            $data['qr_code'] = $qr_code->getName();
-        } elseif ($qr_code && !$qr_code->isValid()) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload QR code']);
+
+        // Update Club
+        if (!empty($data) && $clubModel->update($id, $data)) {
+            return $this->response->setJSON(['status' => 'success', 'message' => 'Club updated successfully']);
         }
-    
-       
-        $data['id_president'] = $this->request->getVar('id_president');
-        $data['name'] = $this->request->getVar('name');
-        $data['description'] = $this->request->getVar('description');
-        $data['status'] = $this->request->getVar('status');
-        $data['slug'] = $this->request->getVar('slug');
-    
-     
-        if ($clubModel->update($id, $data)) {
-            return $this->response->setJSON([
-                'status' => 'success',
-                'message' => 'Club updated successfully'
-            ]);
-        } else {
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'Failed to update club'
-            ]);
-        }
+
+        return $this->response->setJSON(['status' => 'error', 'message' => 'No changes made or update failed']);
     }
 
     public function deleteClub($id)

@@ -1,11 +1,32 @@
 "use client";
+import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import { editEvent } from "@/app/_actions/event";
+
+// Toaster
+import toast from "react-hot-toast";
 
 export default function Edit({ event }) {
+  const [eventPicture, setEventPicture] = useState(
+    event?.picture
+      ? `${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/events/${event?.picture}`
+      : ""
+  );
   const [isEditBttnActive, setIsEditBttnActive] = useState(false);
   const [clubs, setClubs] = useState([]);
   const [name, setName] = useState("");
   const [date, setDate] = useState(event?.date);
+  const [state, action] = useFormState(editEvent, undefined);
+
+  useEffect(() => {
+    if (state?.response?.status === 500) {
+      toast.error(state?.response?.message);
+    } else if (state?.response?.status === 200) {
+      toast.success(state?.response?.message);
+      setIsEditBttnActive(false);
+    }
+  }, [state]);
 
   useEffect(() => {
     // Fetch Clubs
@@ -81,32 +102,58 @@ export default function Edit({ event }) {
               />
             </svg>
           </button>
-          <form className="flex flex-col items-center gap-y-8">
+          <form
+            action={action}
+            method="POST"
+            className="flex flex-col items-center gap-y-8"
+          >
             <h1 className="font-original_surfer text-3xl text-center">
               Edit Event
             </h1>
             <div className="w-full flex flex-col gap-y-5 text-sm max-h-[400px] overflow-y-auto visible-scrollbar pe-3">
+              <input
+                type="hidden"
+                name="eventID"
+                id="eventID"
+                value={event?.id}
+              />
               <div className="w-full flex flex-col">
                 <label htmlFor="picture" className="w-fit">
                   Picture
                 </label>
-                <input
-                  type="file"
-                  name="picture"
-                  id="picture"
-                  className="w-full outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
-                />
+                <div className="flex items-center gap-x-1 border-b">
+                  {eventPicture && (
+                    <Image
+                      src={eventPicture}
+                      alt="background"
+                      width={100}
+                      height={100}
+                      className="min-w-10 min-h-10 size-10 rounded-full object-cover border"
+                    />
+                  )}
+                  <input
+                    type="file"
+                    name="picture"
+                    id="picture"
+                    className="w-full outline-none py-2 bg-transparent focus:border-white file:mr-4 file:py-2 file:px-4
+                      file:rounded-full file:border-0
+                      file:text-xs
+                    file:bg-white/80 file:text-black
+                    hover:file:bg-white file:duration-300"
+                    onChange={({ target }) =>
+                      setEventPicture(URL.createObjectURL(target.files[0]))
+                    }
+                  />
+                </div>
               </div>
               <div className="flex flex-col">
-                <label htmlFor="club" className="w-fit">
+                <label htmlFor="id_club" className="w-fit">
                   Club
                 </label>
                 <select
-                  name="club"
-                  id="club"
+                  name="id_club"
+                  id="id_club"
                   className="outline-none border-b py-2 bg-transparent focus:border-white cursor-pointer"
-                  required
                   defaultValue={event?.id_club}
                 >
                   {clubs?.map((item, key) => (
@@ -127,7 +174,6 @@ export default function Edit({ event }) {
                   id="name"
                   placeholder={event?.name}
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
                   value={name}
                   onChange={({ target }) => setName(target.value)}
                 />
@@ -142,7 +188,6 @@ export default function Edit({ event }) {
                   id="description"
                   placeholder={event?.description}
                   className="outline-none border-b py-2 bg-transparent focus:border-white placeholder:line-clamp-1"
-                  required
                 />
               </div>
 
@@ -156,7 +201,6 @@ export default function Edit({ event }) {
                   id="location"
                   placeholder={event?.location}
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
                 />
               </div>
 
@@ -166,26 +210,33 @@ export default function Edit({ event }) {
                 </label>
                 <input
                   type="datetime-local"
-                  name="datetime"
+                  name="date"
                   id="datetime"
                   placeholder={event?.date}
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
                   value={date}
                   onChange={({ target }) => setDate(target.value)}
                 />
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="w-full h-[50px] text-black bg-white/90 hover:bg-white duration-300 font-original_surfer"
-            >
-              Save
-            </button>
+            <SubmitButton />
           </form>
         </div>
       )}
     </>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      disabled={pending}
+      type="submit"
+      className="w-full h-[50px] text-black bg-white/90 hover:bg-white duration-300 font-original_surfer"
+    >
+      Save
+    </button>
   );
 }

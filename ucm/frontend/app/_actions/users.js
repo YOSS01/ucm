@@ -85,3 +85,66 @@ export async function addUser(state, formData) {
 }
 
 // Edit User
+export async function editUser(state, formData) {
+  const id = formData.get("userID");
+  const data = new FormData();
+
+  // Handle the picture field separately
+  const pictureFile = formData.get("picture");
+  if (pictureFile && pictureFile.size > 0) {
+    data.append("picture", pictureFile);
+  }
+
+  // Handle other attributes dynamically
+  const attributes = ["first_name", "last_name", "cin", "email", "password"];
+  attributes.forEach((attr) => {
+    const value = formData.get(attr);
+    if (value) {
+      data.append(attr, value);
+    }
+  });
+
+  // Call the provider or db to create a user...
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_APP_BASE_URL}/update-user/${id}`,
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      return {
+        response: {
+          status: 500,
+          message: "An error occurred while updating the account.",
+        },
+      };
+    } else if (result?.status === "error") {
+      return {
+        response: {
+          status: 500,
+          message: result?.message,
+        },
+      };
+    }
+
+    return {
+      response: {
+        status: 200,
+        message: "User Updated Successfully",
+      },
+    };
+  } catch (error) {
+    console.error(error.message);
+    return {
+      response: {
+        status: 500,
+        message: "An error occurred while updating the account.",
+      },
+    };
+  }
+}

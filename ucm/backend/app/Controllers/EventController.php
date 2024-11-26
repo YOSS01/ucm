@@ -36,7 +36,7 @@ class EventController extends BaseController
             'name' => 'required|string|max_length[255]',
             'description' => 'required|string',
             'location' => 'required|string|max_length[255]',
-            'picture' => 'uploaded[picture]|max_size[picture,1024]|ext_in[picture,png,jpg,jpeg]',
+            'picture' => 'uploaded[picture]|max_size[picture,1024]|ext_in[picture,png,jpg,jpeg,avif,webp]',
             'date' => 'required|valid_date'
         ]);
 
@@ -69,39 +69,51 @@ class EventController extends BaseController
         }
     }
 
-    public function updateevent($id)
+    public function updateEvent($id)
     {
-        $event = new EventModel();
+        $validation = \Config\Services::validation();
+
+        $validation->setRules([
+            'id_club' => 'permit_empty|integer|max_length[255]',
+            'name' => 'permit_empty|string|max_length[255]',
+            'description' => 'permit_empty|string|max_length[255]',
+            'picture' => 'permit_empty|uploaded[picture]|max_size[picture,1024]|ext_in[picture,png,jpg,jpeg,avif,webp]',
+            'location' => 'permit_empty|string|min_length[2]',
+            'date' => 'permit_empty|valid_date',
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            return $this->response->setJSON(['status' => 'error', 'message' => $validation->getErrors()]);
+        }
+
+        $eventModel = new EventModel();
+
+        $event = $eventModel->find($id);
+        if (!$event) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Event not found']);
+        }
+
         $data = [];
-    
-   
+        $fields = ['id_club', 'name', 'description', 'location', 'date'];
+        foreach ($fields as $field) {
+            $value = $this->request->getVar($field);
+            if (!is_null($value)) {
+                $data[$field] = $value;
+            }
+        }
+
         $picture = $this->request->getFile('picture');
         if ($picture && $picture->isValid() && !$picture->hasMoved()) {
-            $picture->move(FCPATH . 'uploads/');
+            $picture->move(FCPATH . 'uploads/events/');
             $data['picture'] = $picture->getName();
-        } elseif ($picture && !$picture->isValid()) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload picture']);
         }
-    
-      
-        $data['id_club'] = $this->request->getVar('id_club');
-        $data['name'] = $this->request->getVar('name');
-        $data['description'] = $this->request->getVar('description');
-        $data['location'] = $this->request->getVar('location');
-        $data['date'] = $this->request->getVar('date');
-    
-       
-        if ($event->update($id, $data)) {
-            return $this->response->setJSON([
-                'status' => 'success',
-                'message' => 'Event updated successfully'
-            ]);
-        } else {
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'Failed to update event'
-            ]);
+
+        // Update event
+        if (!empty($data) && $eventModel->update($id, $data)) {
+            return $this->response->setJSON(['status' => 'success', 'message' => 'Event updated successfully']);
         }
+
+        return $this->response->setJSON(['status' => 'error', 'message' => 'No changes made or update failed']);
     }
 
     public function deleteEvent($id)

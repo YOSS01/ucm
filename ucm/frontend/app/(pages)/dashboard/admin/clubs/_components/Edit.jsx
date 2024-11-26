@@ -1,5 +1,11 @@
 "use client";
+import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import { editClub } from "@/app/_actions/clubs";
+
+// Toaster
+import toast from "react-hot-toast";
 
 const generateSlug = (text) => {
   return text
@@ -11,10 +17,30 @@ const generateSlug = (text) => {
 };
 
 export default function Edit({ club }) {
+  const [clubLogo, setClubLogo] = useState(
+    club?.logo
+      ? `${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.logo}`
+      : ""
+  );
+  const [clubBackground, setClubBackground] = useState(
+    club?.background
+      ? `${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.background}`
+      : ""
+  );
   const [isEditBttnActive, setIsEditBttnActive] = useState(false);
   const [users, setUsers] = useState([]);
   const [name, setName] = useState("");
   const [slug, setSlug] = useState("");
+  const [state, action] = useFormState(editClub, undefined);
+
+  useEffect(() => {
+    if (state?.response?.status === 500) {
+      toast.error(state?.response?.message);
+    } else if (state?.response?.status === 200) {
+      toast.success(state?.response?.message);
+      setIsEditBttnActive(false);
+    }
+  }, [state]);
 
   useEffect(() => {
     // Fetch Users
@@ -31,7 +57,7 @@ export default function Edit({ club }) {
         );
 
         if (!response.ok) {
-          // toast.error("Faild to load users!");
+          toast.error("Faild to load users!");
           return;
         }
 
@@ -90,50 +116,88 @@ export default function Edit({ club }) {
               />
             </svg>
           </button>
-          <form className="flex flex-col items-center gap-y-8">
+          <form
+            action={action}
+            method="POST"
+            className="flex flex-col items-center gap-y-8"
+          >
             <h1 className="font-original_surfer text-3xl text-center">
               Edit Club
             </h1>
             <div className="w-full flex flex-col gap-y-5 text-sm max-h-[400px] overflow-y-auto visible-scrollbar pe-3">
+              <input type="hidden" name="clubID" id="clubID" value={club?.id} />
               <div className="w-full flex gap-x-3">
                 <div className="w-full flex flex-col">
                   <label htmlFor="logo" className="w-fit">
                     Logo
                   </label>
-                  <input
-                    type="file"
-                    name="logo"
-                    id="logo"
-                    className="w-full outline-none border-b py-2 bg-transparent focus:border-white"
-                    required
-                  />
+                  <div className="flex items-center gap-x-1 border-b">
+                    {clubLogo && (
+                      <Image
+                        src={clubLogo}
+                        alt="logo"
+                        width={100}
+                        height={100}
+                        className="min-w-8 min-h-8 size-8 object-contain"
+                      />
+                    )}
+                    <input
+                      type="file"
+                      name="logo"
+                      id="logo"
+                      className="w-full outline-none py-2 bg-transparent focus:border-white file:mr-4 file:py-2 file:px-4
+                      file:rounded-full file:border-0
+                      file:text-xs
+                    file:bg-white/80 file:text-black
+                    hover:file:bg-white file:duration-300"
+                      onChange={({ target }) =>
+                        setClubLogo(URL.createObjectURL(target.files[0]))
+                      }
+                    />
+                  </div>
                 </div>
                 <div className="w-full flex flex-col">
                   <label htmlFor="background" className="w-fit">
                     Background
                   </label>
-                  <input
-                    type="file"
-                    name="background"
-                    id="background"
-                    className="w-full outline-none border-b py-2 bg-transparent focus:border-white"
-                    required
-                  />
+                  <div className="flex items-center gap-x-1 border-b">
+                    {clubBackground && (
+                      <Image
+                        src={clubBackground}
+                        alt="background"
+                        width={100}
+                        height={100}
+                        className="min-w-8 min-h-8 size-8 rounded-full object-cover border"
+                      />
+                    )}
+                    <input
+                      type="file"
+                      name="background"
+                      id="background"
+                      className="w-full outline-none py-2 bg-transparent focus:border-white file:mr-4 file:py-2 file:px-4
+                      file:rounded-full file:border-0
+                      file:text-xs
+                    file:bg-white/80 file:text-black
+                    hover:file:bg-white file:duration-300"
+                      onChange={({ target }) =>
+                        setClubBackground(URL.createObjectURL(target.files[0]))
+                      }
+                    />
+                  </div>
                 </div>
               </div>
               <div className="flex flex-col">
-                <label htmlFor="status" className="w-fit">
+                <label htmlFor="id_president" className="w-fit">
                   President
                 </label>
                 <select
-                  name="status"
-                  id="status"
+                  name="id_president"
+                  id="id_president"
                   className="outline-none border-b py-2 bg-transparent focus:border-white cursor-pointer"
-                  required
                   defaultValue={club?.id_president}
                 >
                   {users?.map((item, key) => (
-                    <option value={item?.id} className="text-black">
+                    <option key={key} value={item?.id} className="text-black">
                       {item?.first_name + " " + item?.last_name}
                     </option>
                   ))}
@@ -150,7 +214,6 @@ export default function Edit({ club }) {
                   id="email"
                   placeholder={club?.email}
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
                 />
               </div>
 
@@ -164,7 +227,6 @@ export default function Edit({ club }) {
                   id="name"
                   placeholder={club?.name}
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
-                  required
                   value={name}
                   onChange={({ target }) => setName(target.value)}
                 />
@@ -179,7 +241,6 @@ export default function Edit({ club }) {
                   id="description"
                   placeholder={club?.description}
                   className="outline-none border-b py-2 bg-transparent focus:border-white placeholder:line-clamp-1"
-                  required
                 />
               </div>
 
@@ -191,7 +252,6 @@ export default function Edit({ club }) {
                   name="status"
                   id="status"
                   className="outline-none border-b py-2 bg-transparent focus:border-white cursor-pointer"
-                  required
                   defaultValue={club?.status}
                 >
                   <option value="approved" className="text-black">
@@ -217,7 +277,6 @@ export default function Edit({ club }) {
                     id="slug"
                     placeholder={club?.slug}
                     className="w-full outline-none border-b py-2 bg-transparent focus:border-white"
-                    required
                     value={generateSlug(slug)}
                     onChange={({ target }) => setSlug(target.value)}
                   />
@@ -232,15 +291,23 @@ export default function Edit({ club }) {
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="w-full h-[50px] text-black bg-white/90 hover:bg-white duration-300 font-original_surfer"
-            >
-              Save
-            </button>
+            <SubmitButton />
           </form>
         </div>
       )}
     </>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      disabled={pending}
+      type="submit"
+      className="w-full h-[50px] text-black bg-white/90 hover:bg-white duration-300 font-original_surfer"
+    >
+      Save
+    </button>
   );
 }

@@ -36,7 +36,7 @@ $routes->get('/club/(:num)','ClubController::getClub/$1');
 $routes->get("/all-clubs","ClubController::allclubs");
 $routes->get('/add-club-view','ClubController::addclubview');
 $routes->post('/add-club','ClubController::addClub');
-$routes->post('/update-club-number/(:num)','ClubController::updateClub/$1');
+$routes->post('/update-club/(:num)','ClubController::updateClub/$1');
 $routes->get('/deleteClub/(:num)','ClubController::deleteClub/$1');
 
 
@@ -44,7 +44,7 @@ $routes->get('/deleteClub/(:num)','ClubController::deleteClub/$1');
 $routes->get('/event/(:num)','EventController::getEvent/$1');
 $routes->get('/all-events','EventController::allEvents'); 
 $routes->post('/add-event','EventController::addevent'); 
-$routes->post('/update-event-number/(:num)','EventController::updateevent/$1');
+$routes->post('/update-event/(:num)','EventController::updateEvent/$1');
 $routes->get('/deleteEvent/(:num)','EventController::deleteEvent/$1');
 
 //event request routes

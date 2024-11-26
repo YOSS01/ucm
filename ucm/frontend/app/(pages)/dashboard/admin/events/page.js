@@ -93,7 +93,7 @@ export default async function Events() {
                       {item?.name}
                     </h2>
                     <div className="w-full flex flex-col gap-y-1 text-xs text-gray-600">
-                      <span>
+                      <span className="line-clamp-1">
                         Location:{" "}
                         <span className="text-black font-medium">
                           {item?.location}
