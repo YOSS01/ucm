@@ -55,7 +55,7 @@ export default function Event({ item, session }) {
       <div className="absolute bottom-10 left-10 z-10 flex flex-col gap-y-5">
         <div className="flex flex-col gap-y-3">
           <h1 className="text-3xl font-original_surfer font-black">
-            {item?.title}
+            {item?.name}
           </h1>
           <p className="max-w-[500px] text-sm font-light line-clamp-4">
             {item?.description}
@@ -102,7 +102,7 @@ export default function Event({ item, session }) {
       {/* Background */}
       <>
         <Image
-          src={item?.image}
+          src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/events/${item?.picture}`}
           alt="Event Background"
           width={2070}
           height={1080}
@@ -120,6 +120,34 @@ function SeeMore({
   setIsGetInBttnActive,
   session,
 }) {
+  const [club, setClub] = useState({});
+
+  useEffect(() => {
+    // Fetch Users
+    const getClub = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_APP_BASE_URL}/club/${item?.id_club}`,
+          {
+            method: "GET",
+          }
+        );
+
+        if (!response.ok) {
+          // toast.error("Faild to load club!");
+          return;
+        }
+
+        const result = await response.json();
+        setClub(result);
+        return;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getClub();
+  }, []);
   return (
     <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[500px] h-fit bg-white text-black px-5 pt-14 pb-7 z-50">
       <button
@@ -143,7 +171,7 @@ function SeeMore({
       </button>
       <div className="flex flex-col gap-y-5">
         <div className="flex flex-col gap-y-2">
-          <h1 className="text-2xl font-original_surfer">{item?.title}</h1>
+          <h1 className="text-2xl font-original_surfer">{item?.name}</h1>
           <p className="text-xs text-black/80 text-justify">
             {item?.description}
           </p>
@@ -152,19 +180,19 @@ function SeeMore({
         <div className="flex flex-col gap-y-2 text-sm text-black/80">
           <div className="flex gap-x-2">
             <span>Location:</span>
-            <span className="text-black font-medium">New York, NY</span>
+            <span className="text-black font-medium">{item?.location}</span>
           </div>
           <div className="flex gap-x-2">
             <span>Date:</span>
-            <span className="text-black font-medium">2024-12-05</span>
+            <span className="text-black font-medium">{item?.date}</span>
           </div>
           <div className="flex gap-x-2">
             <span>Organized by:</span>
             <Link
-              href="/clubs/ecoaction_club"
+              href={`/clubs/${club?.slug}`}
               className="text-black font-medium font-original_surfer flex items-center gap-x-1"
             >
-              EcoAction Club{" "}
+              {club?.name}{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

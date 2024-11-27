@@ -10,61 +10,7 @@ import { useGSAP } from "@gsap/react";
 import Observer from "gsap/Observer";
 gsap.registerPlugin(useGSAP, Observer);
 
-// images
-import oxford_logo from "@/public/images/clubs/Oxford_University_Exploration_Club_Logo.png";
-
-// data
-const events = [
-  {
-    title: "Tech Innovation Hackathon",
-    image:
-      "https://images.unsplash.com/photo-1522158637959-30385a09e0da?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Cultural Diversity Night",
-    image:
-      "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Startup Pitch Competition",
-    image:
-      "https://images.unsplash.com/photo-1560523160-754a9e25c68f?q=80&w=2036&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Open Mic Night: Talent Showcase",
-    description:
-      "Open Mic Night is a platform for students to showcase their talents in front of a supportive audience. Whether it's singing, poetry, stand-up comedy, spoken word, or playing an instrument, everyone is welcome to perform. This casual event is perfect for students who want to express themselves creatively or enjoy a fun, relaxing evening with friends.",
-    image:
-      "https://images.unsplash.com/photo-1692552950929-395ee3797684?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Game Development Jam",
-    image:
-      "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Debate Tournament: Environmental Policy Edition",
-    image:
-      "https://images.unsplash.com/photo-1451847251646-8a6c0dd1510c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Soon ...",
-    image:
-      "https://images.unsplash.com/photo-1661697522368-f09157f69b6c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Soon ...",
-    image:
-      "https://images.unsplash.com/photo-1664575599736-c5197c684128?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Soon ...",
-    image:
-      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-];
-
-export default function ObserverContainer() {
+export default function ObserverContainer({ club, president, events }) {
   useEffect(() => {
     let sections = document.querySelectorAll(".section"),
       images = document.querySelectorAll(".bg"),
@@ -123,14 +69,18 @@ export default function ObserverContainer() {
   }, []);
   return (
     <>
-      <SectionOne />
-      <SectionTwo />
-      <SectionThree />
+      <SectionOne logo={club?.logo} name={club?.name} />
+      <SectionTwo
+        description={club?.description}
+        createdAt={club?.created_at}
+        events={events}
+      />
+      <SectionThree clubID={club?.id} president={president} />
     </>
   );
 }
 
-function SectionOne() {
+function SectionOne({ logo, name }) {
   return (
     <section className="section first">
       <div className="outer">
@@ -139,14 +89,16 @@ function SectionOne() {
             <div className="flex flex-col items-center gap-y-7 z-10 text-white text-center">
               <div className="size-[150px] bg-white/5 rounded-full flex justify-center items-center p-2">
                 <Image
-                  src={oxford_logo}
+                  src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${logo}`}
                   alt="Logo club"
+                  width={500}
+                  height={500}
                   className="max-w-full max-h-full object-contain pointer-events-none"
                 />
               </div>
 
               <h1 className="font-original_surfer text-6xl font-black">
-                Photography and Film Club
+                {name}
               </h1>
             </div>
           </div>
@@ -156,7 +108,7 @@ function SectionOne() {
   );
 }
 
-function SectionTwo() {
+function SectionTwo({ description, createdAt, events }) {
   return (
     <section className="section second">
       <div className="outer">
@@ -164,27 +116,20 @@ function SectionTwo() {
           <div className="bg">
             <div className="w-full h-full flex items-center justify-between mx-[5%] z-10">
               <div className="flex flex-col gap-y-5 text-white">
-                <p className="max-w-[500px] text-base">
-                  The Photography and Film Club brings together students
-                  passionate about visual storytelling through photography and
-                  filmmaking. The club focuses on enhancing students' creative
-                  and technical skills by exploring various genres and styles.
-                  Whether you're a beginner or an experienced photographer or
-                  filmmaker, the club offers a space to collaborate, learn, and
-                  showcase your work.
-                </p>
+                <p className="max-w-[500px] text-base">{description}</p>
                 <ul className="flex items-center gap-x-3 text-xs">
                   <li>
-                    Created At: <span className="font-semibold">08/2023</span>
+                    Created At:{" "}
+                    <span className="font-semibold">{createdAt}</span>
                   </li>
                   <li>
                     Members: <span className="font-semibold">24</span>
                   </li>
                 </ul>
               </div>
-              <div className="deadzone h-full max-h-full flex justify-center items-start px-10 overflow-y-auto">
+              <div className="deadzone h-full max-h-full flex justify-center items-start px-10">
                 <ul className="grid grid-cols-2 gap-x-5 mt-32 mb-10">
-                  {events?.map((item, key) => (
+                  {events?.slice(0, 6)?.map((item, key) => (
                     <li
                       key={key}
                       className={`group w-[280px] h-[170px] skew-x-12 relative opacity-50 hover:opacity-100 duration-300 ${
@@ -192,10 +137,10 @@ function SectionTwo() {
                       }`}
                     >
                       <h3 className="text-white text-start absolute top-1 left-1 text-xs opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 duration-300">
-                        {item?.title}
+                        {item?.name}
                       </h3>
                       <Image
-                        src={item?.image}
+                        src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/events/${item?.picture}`}
                         className="w-full h-full object-cover"
                         alt="event backgorund"
                         width={600}
@@ -213,7 +158,7 @@ function SectionTwo() {
   );
 }
 
-function SectionThree() {
+function SectionThree({ president }) {
   return (
     <section className="section third">
       <div className="outer">
@@ -221,7 +166,7 @@ function SectionThree() {
           <div className="bg">
             <div className="flex flex-col items-center gap-y-7 z-10 text-white text-center">
               <Image
-                src="https://images.unsplash.com/photo-1517630800677-932d836ab680?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/users/${president?.picture}`}
                 alt="President Img"
                 width={300}
                 height={300}
@@ -229,16 +174,16 @@ function SectionThree() {
               />
               <div className="flex flex-col items-center gap-y-2">
                 <h1 className="font-original_surfer text-xl font-black">
-                  Taylor Wright{" "}
+                  {president?.first_name + " " + president?.last_name}{" "}
                   <span className="font-extralight text-white/70 text-sm">
                     /Owner
                   </span>
                 </h1>
                 <Link
-                  href="mailto:clubexample@gmail.com"
+                  href={`mailto:${president?.email}`}
                   className="text-xs text-white/80"
                 >
-                  clubexample@gmail.com
+                  {president?.email}
                 </Link>
                 <button className="group size-[40px] rounded-full border border-solid border-white flex justify-center items-center mt-5 relative">
                   <span className="absolute -bottom-8 text-xs text-nowrap bg-black p-1 rounded text-white/90 scale-0 opacity-0 group-hover:opacity-100 group-hover:scale-100 duration-300">

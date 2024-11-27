@@ -179,6 +179,7 @@ class UserController extends BaseController
         $user = $userModel->find($id);
         $clubs = $clubMembershipModel->where('id_user', $id)->findAll();
         $userData = [
+            'id' => $user['id'],
             'first_name' => $user['first_name'],
             'last_name' => $user['last_name'],
             'cin' => $user['cin'],

@@ -1,8 +1,29 @@
 "use client";
-import { useState } from "react";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import { editUser } from "@/app/_actions/users";
+
+// Toaster
+import toast from "react-hot-toast";
 
 export default function Edit({ user }) {
+  const [userPic, setUserPic] = useState(
+    user?.picture
+      ? `${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/users/${user?.picture}`
+      : ""
+  );
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
+  const [state, action] = useFormState(editUser, undefined);
+
+  useEffect(() => {
+    if (state?.response?.status === 500) {
+      toast.error(state?.response?.message);
+    } else if (state?.response?.status === 200) {
+      toast.success(state?.response?.message);
+      setIsEditFormOpen(false);
+    }
+  }, [state]);
   return (
     <>
       <button
@@ -29,6 +50,7 @@ export default function Edit({ user }) {
       {isEditFormOpen && (
         <div className="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 max-w-[500px] w-full h-fit bg-[#252525] text-white px-5 py-5 z-50">
           <form
+            action={action}
             method="POST"
             className="w-full flex flex-col items-center gap-y-8"
           >
@@ -36,6 +58,36 @@ export default function Edit({ user }) {
               Edit Infos
             </h1>
             <div className="w-full flex flex-col gap-y-5 text-sm">
+              <input type="hidden" name="userID" id="userID" value={user?.id} />
+              <div className="flex flex-col">
+                <label htmlFor="picture" className="w-fit">
+                  Picture
+                </label>
+                <div className="w-full flex items-center gap-x-3 border-b">
+                  {userPic && (
+                    <Image
+                      src={userPic}
+                      alt="pic"
+                      width={100}
+                      height={100}
+                      className="min-w-10 min-h-10 size-10 rounded-full object-cover border"
+                    />
+                  )}
+                  <input
+                    type="file"
+                    name="picture"
+                    id="picture"
+                    className="w-full outline-none py-2 bg-transparent focus:border-white file:mr-4 file:py-2 file:px-4
+                    file:rounded-full file:border-0
+                    file:text-xs
+                  file:bg-white/80 file:text-black
+                  hover:file:bg-white file:duration-300"
+                    onChange={({ target }) =>
+                      setUserPic(URL.createObjectURL(target.files[0]))
+                    }
+                  />
+                </div>
+              </div>
               <div className="w-full flex flex-col gap-y-1">
                 <label htmlFor="first_name">First name</label>
                 <input
@@ -71,11 +123,17 @@ export default function Edit({ user }) {
             </div>
 
             <div className="w-full flex gap-x-5">
-              <button className="w-full h-[50px] text-white bg-green-500/80 hover:bg-green-500 duration-300 font-original_surfer">
-                Save
-              </button>
+              <SubmitButton />
               <button
-                onClick={() => setIsEditFormOpen(false)}
+                onClick={() => {
+                  setUserPic(
+                    user?.picture
+                      ? `${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/users/${user?.picture}`
+                      : ""
+                  );
+                  setIsEditFormOpen(false);
+                }}
+                type="button"
                 className="w-full h-[50px] text-black bg-white/90 hover:bg-white duration-300 font-original_surfer"
               >
                 Cancel
@@ -85,5 +143,18 @@ export default function Edit({ user }) {
         </div>
       )}
     </>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      disabled={pending}
+      type="submit"
+      className="w-full h-[50px] text-white bg-green-500/80 hover:bg-green-500 duration-300 font-original_surfer"
+    >
+      Save
+    </button>
   );
 }

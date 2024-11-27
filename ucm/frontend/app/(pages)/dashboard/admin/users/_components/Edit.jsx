@@ -79,7 +79,7 @@ export default function Edit({ user }) {
             <div className="w-full flex flex-col gap-y-5 text-sm max-h-[400px] overflow-y-auto visible-scrollbar">
               <input type="hidden" name="userID" id="userID" value={user?.id} />
               <div className="flex flex-col">
-                <label for="picture" className="w-fit">
+                <label htmlFor="picture" className="w-fit">
                   Picture
                 </label>
                 <div className="w-full flex items-center gap-x-3 border-b">
@@ -108,7 +108,7 @@ export default function Edit({ user }) {
                 </div>
               </div>
               <div className="flex flex-col">
-                <label for="first_name" className="w-fit">
+                <label htmlFor="first_name" className="w-fit">
                   First Name
                 </label>
                 <input
@@ -120,7 +120,7 @@ export default function Edit({ user }) {
                 />
               </div>
               <div className="flex flex-col">
-                <label for="last_name" className="w-fit">
+                <label htmlFor="last_name" className="w-fit">
                   Last Name
                 </label>
                 <input
@@ -132,7 +132,7 @@ export default function Edit({ user }) {
                 />
               </div>
               <div className="flex flex-col">
-                <label for="cin" className="w-fit">
+                <label htmlFor="cin" className="w-fit">
                   CIN
                 </label>
                 <input
@@ -144,7 +144,7 @@ export default function Edit({ user }) {
                 />
               </div>
               <div className="flex flex-col">
-                <label for="email" className="w-fit">
+                <label htmlFor="email" className="w-fit">
                   Email
                 </label>
                 <input
@@ -156,7 +156,7 @@ export default function Edit({ user }) {
                 />
               </div>
               <div className="flex flex-col">
-                <label for="password" className="w-fit">
+                <label htmlFor="password" className="w-fit">
                   Password
                 </label>
                 <input

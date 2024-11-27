@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\ClubModel;
+use App\Models\UserModel;
+use App\Models\EventModel;
 use CodeIgniter\HTTP\IncomingRequest;
 class ClubController extends BaseController
 {
@@ -22,6 +24,38 @@ class ClubController extends BaseController
         $clubModel = new ClubModel();
         $club = $clubModel->find($id);
         return $this->response->setJSON($club);
+    }
+
+    public function getClubBySlug($slug)
+    {
+        $clubModel = new ClubModel();
+        $club = $clubModel->where('slug', $slug)->first();
+
+        if ($club) {
+            $userModel = new UserModel();
+            $user = $userModel->find($club['id_president']);
+
+            $eventModel = new EventModel();
+            $events = $eventModel->where('id_club', $club['id'])->findAll();
+
+            if($user) {
+                return $this->response->setJSON([
+                    'status' => 'success',
+                    'club'=> $club,
+                    'president'=> $user,
+                    'events' => $events
+                ], 200);
+            }
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'President not found'
+            ], 404);
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Club not found'
+            ], 404);
+        }
     }
 
     public function addclubview()

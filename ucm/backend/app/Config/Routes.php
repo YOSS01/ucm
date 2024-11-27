@@ -33,6 +33,7 @@ $routes->get('/statistics','AdminController::statistics');
 
 //club routes
 $routes->get('/club/(:num)','ClubController::getClub/$1');
+$routes->get('/club-slug/(:any)','ClubController::getClubBySlug/$1');
 $routes->get("/all-clubs","ClubController::allclubs");
 $routes->get('/add-club-view','ClubController::addclubview');
 $routes->post('/add-club','ClubController::addClub');
