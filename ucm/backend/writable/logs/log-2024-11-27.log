@@ -359,3 +359,393 @@ in APPPATH\Controllers\ClubController.php on line 37.
  5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  6 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 INFO - 2024-11-27 14:02:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-11-27 23:53:25 --> mysqli_sql_exception: Table 'clubs_managment_system.club' doesn't exist in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `club`.`...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-11-27 23:53:25 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'clubs_managment_system.club' doesn't exist
+[Method: GET, Route: user-number/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 2 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-27 23:53:25 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'clubs_managment_system.club' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 4 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-27 23:53:25 --> [Caused by] mysqli_sql_exception: Table 'clubs_managment_system.club' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 5 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-11-27 23:53:38 --> mysqli_sql_exception: Table 'clubs_managment_system.club' doesn't exist in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `club`.`...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-11-27 23:53:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'clubs_managment_system.club' doesn't exist
+[Method: GET, Route: user-number/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 2 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-27 23:53:38 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'clubs_managment_system.club' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 4 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-27 23:53:38 --> [Caused by] mysqli_sql_exception: Table 'clubs_managment_system.club' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 5 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-11-27 23:54:04 --> mysqli_sql_exception: Table 'clubs_managment_system.club' doesn't exist in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `club`.`...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-11-27 23:54:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'clubs_managment_system.club' doesn't exist
+[Method: GET, Route: user-number/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 2 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-27 23:54:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'clubs_managment_system.club' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 4 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-27 23:54:04 --> [Caused by] mysqli_sql_exception: Table 'clubs_managment_system.club' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 5 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-11-27 23:55:15 --> mysqli_sql_exception: Table 'clubs_managment_system.club' doesn't exist in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `club`.`...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-11-27 23:55:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'clubs_managment_system.club' doesn't exist
+[Method: GET, Route: user-number/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 2 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-27 23:55:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'clubs_managment_system.club' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 4 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-27 23:55:15 --> [Caused by] mysqli_sql_exception: Table 'clubs_managment_system.club' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 5 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-11-27 23:57:58 --> mysqli_sql_exception: Table 'clubs_managment_system.club' doesn't exist in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `club`.`...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-11-27 23:57:58 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'clubs_managment_system.club' doesn't exist
+[Method: GET, Route: user-number/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 2 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-27 23:57:58 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'clubs_managment_system.club' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 4 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-11-27 23:57:58 --> [Caused by] mysqli_sql_exception: Table 'clubs_managment_system.club' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `club`.`name` as `club_name`, `club`.`id` as `club_id`
+FROM `clubmembership`
+JOIN `club` ON `club`.`id` = `clubmembership`.`id_club`
+WHERE `clubmembership`.`id` = :clubmembership.id:', [...], false)
+ 5 APPPATH\Models\ClubMembershipModel.php(18): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\UserController.php(191): App\Models\ClubMembershipModel->getClub('1')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('1')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

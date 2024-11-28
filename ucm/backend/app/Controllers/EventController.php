@@ -6,6 +6,9 @@ use App\Models\ClubModel;
 use CodeIgniter\HTTP\IncomingRequest;
 use App\Models\EventModel;
 
+use App\Models\UserModel;
+use App\Models\ClubMembershipModel;
+
 class EventController extends BaseController
 {
     public function index()
@@ -108,7 +111,7 @@ class EventController extends BaseController
             $data['picture'] = $picture->getName();
         }
 
-        // Update event
+       
         if (!empty($data) && $eventModel->update($id, $data)) {
             return $this->response->setJSON(['status' => 'success', 'message' => 'Event updated successfully']);
         }
@@ -125,4 +128,39 @@ class EventController extends BaseController
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to delete event']);
         }
     }
+
+
+    // public function getClubEvents($id)
+    // {
+    //     $clubModel = new ClubModel();
+    //     $eventModel = new EventModel();
+    
+    //     // Check if the club exists
+    //     $club = $clubModel->find($id);
+    //     if (!$club) {
+    //         log_message('error', 'Club not found: ' . $id);
+    //         return $this->response->setJSON(['status' => 'error', 'message' => 'Club not found'], 404);
+    //     }
+    
+    //     // Fetch events for the club
+    //     $events = $eventModel->where('id_club', $id)->findAll();
+    //     if (!$events) {
+    //         log_message('error', 'No events found for club: ' . $id);
+    //         return $this->response->setJSON(['status' => 'error', 'message' => 'No events found for club'], 404);
+    //     }
+    
+    //     $eventDetails = [];
+    //     foreach ($events as $event) {
+    //         $eventDetails[] = [
+    //             'event_id' => $event['id'],
+    //             'event_name' => $event['name'],
+    //             'description' => $event['description'],
+    //             'location' => $event['location'],
+    //             'date' => $event['date'],
+    //             'picture' => $event['picture']
+    //         ];
+    //     }
+    
+    //     return $this->response->setJSON(['status' => 'success', 'events' => $eventDetails]);
+    // }
 }

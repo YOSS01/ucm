@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\AdminModel;
+use App\Models\ClubModel;
 use App\Models\UserModel;
 use App\Models\ClubMembershipModel;
 
@@ -173,11 +173,38 @@ class UserController extends BaseController
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to register user']);
         }
     }  
-    public function getuserByid($id){
+    public function getuserByid($id)
+    {
         $userModel = new UserModel();
         $clubMembershipModel = new ClubMembershipModel();
+        
+        
+
         $user = $userModel->find($id);
-        $clubs = $clubMembershipModel->where('id_user', $id)->findAll();
+        if (!$user) {
+         
+            return $this->response->setJSON(['status' => 'error', 'message' => 'User not found'], 404);
+        }
+    
+       
+        $memberships = $clubMembershipModel->where('id_user', $id)->findAll();
+      
+        $clubs = [];
+        foreach ($memberships as $membership) {
+            $clubDetails = $clubMembershipModel->getClub($membership['id']);
+            if ($clubDetails) {
+                $clubs[] = [
+                    'membership_id' => $membership['id'],
+                    'club_id' => $clubDetails->club_id,
+                    'club_name' => $clubDetails->club_name,
+                    'role' => $membership['role'],
+                    'join_date' => $membership['join_date'],
+                    'status' => $membership['status']
+                ];
+            }
+        }
+    
+       
         $userData = [
             'id' => $user['id'],
             'first_name' => $user['first_name'],
@@ -256,6 +283,44 @@ class UserController extends BaseController
                 ]);
             }
         }
+    
 
+        public function getClubUsers($id)
+        {
+            $clubModel = new ClubModel();
+            $clubMembershipModel = new ClubMembershipModel();
+            $userModel = new UserModel();
+        
+            $club = $clubModel->find($id);
+            if (!$club) {
+                log_message('error', 'Club not found: ' . $id);
+                return $this->response->setJSON(['status' => 'error', 'message' => 'Club not found'], 404);
+            }
+        
+            
+            $memberships = $clubMembershipModel->where('id_club', $id)->findAll();
+            if (!$memberships) {
+                log_message('error', 'No memberships found for club: ' . $id);
+            }
+            $users = [];
+            foreach ($memberships as $membership) {
+                $userDetails = $userModel->find($membership['id_user']);
+                if ($userDetails) {
+                    $users[] = [
+                        'membership_id' => $membership['id'],
+                        'user_id' => $userDetails['id'],
+                        'user_name' => $userDetails['first_name'] . ' ' . $userDetails['last_name'],
+                        'role' => $membership['role'],
+                        'join_date' => $membership['join_date'],
+                        'status' => $membership['status']
+                    ];
+                } else {
+                    log_message('error', 'User details not found for membership: ' . $membership['id']);
+                }
+            }
+        
+            return $this->response->setJSON(['status' => 'success', 'users' => $users]);
+        }
 
+    
 }
