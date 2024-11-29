@@ -20,6 +20,7 @@ $routes->get('/', 'Home::index');
     $routes->post('/requestPasswordReset', 'UserController::requestPasswordReset');
     $routes->post('/resetPassword', 'UserController::resetPassword');
     $routes->get('/deleteUser/(:num)','UserController::deleteUser/$1');
+    $routes->get('/userclubs/(:num)','UserController::getClubUsers/$1');
 
 //admin routes
 $routes->post('/add-admin','AdminController::addadmin');
@@ -42,7 +43,7 @@ $routes->get('/deleteClub/(:num)','ClubController::deleteClub/$1');
 // dashboard
 $routes->get('/club-events/(:num)','EventController::getClubEvents/$1');
 $routes->get('/club-users/(:num)','UserController::getClubUsers/$1');
-
+$routes->get('club-statistics/(:num)', 'ClubController::clubstatistics/$1');
 
 
 //event routes

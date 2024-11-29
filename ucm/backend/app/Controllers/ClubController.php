@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ClubModel;
 use App\Models\UserModel;
+use App\Models\ClubMembershipModel;
 use App\Models\EventModel;
 use CodeIgniter\HTTP\IncomingRequest;
 class ClubController extends BaseController
@@ -173,14 +174,12 @@ class ClubController extends BaseController
             $data['logo'] = $logo->getName();
         }
 
-        // Handle background upload if provided
         $background = $this->request->getFile('background');
         if ($background && $background->isValid() && !$background->hasMoved()) {
             $background->move(FCPATH . 'uploads/clubs/');
             $data['background'] = $background->getName();
         }
 
-        // Update Club
         if (!empty($data) && $clubModel->update($id, $data)) {
             return $this->response->setJSON(['status' => 'success', 'message' => 'Club updated successfully']);
         }
@@ -197,5 +196,42 @@ class ClubController extends BaseController
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to delete club']);
         }
+    }
+
+
+    
+    public function clubstatistics($id)
+    {
+        $userModel = new UserModel();
+        $eventModel = new EventModel();
+        $clubMembershipModel = new ClubMembershipModel();
+    
+       
+        $clubModel = new ClubModel();
+        $club = $clubModel->find($id);
+        if (!$club) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Club not found'], 404);
+        }
+    
+  
+        $totalUsers = $clubMembershipModel->where('id_club', $id)->countAllResults();
+    
+       
+        // $approvedUsers = $clubMembershipModel->where('id_club', $id)->where('status', 'approved')->countAllResults();
+    
+        
+        $totalEvents = $eventModel->where('id_club', $id)->countAllResults();
+    
+        $totalMemberships = $clubMembershipModel->where('id_club', $id)->countAllResults();
+    
+        
+        $statistics = [
+            'total_users' => $totalUsers,
+            // 'approved_users' => $approvedUsers,
+            'total_events' => $totalEvents,
+            'total_memberships' => $totalMemberships
+        ];
+    
+        return $this->response->setJSON(['status' => 'success', 'statistics' => $statistics]);
     }
 }
