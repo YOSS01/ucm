@@ -130,37 +130,36 @@ class EventController extends BaseController
     }
 
 
-    // public function getClubEvents($id)
-    // {
-    //     $clubModel = new ClubModel();
-    //     $eventModel = new EventModel();
+    public function getClubEvents($id)
+    {
+        $clubModel = new ClubModel();
+        $eventModel = new EventModel();
     
-    //     // Check if the club exists
-    //     $club = $clubModel->find($id);
-    //     if (!$club) {
-    //         log_message('error', 'Club not found: ' . $id);
-    //         return $this->response->setJSON(['status' => 'error', 'message' => 'Club not found'], 404);
-    //     }
+        // Check if the club exists
+        $club = $clubModel->find($id);
+        if (!$club) {
+            log_message('error', 'Club not found: ' . $id);
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Club not found'], 404);
+        }
     
-    //     // Fetch events for the club
-    //     $events = $eventModel->where('id_club', $id)->findAll();
-    //     if (!$events) {
-    //         log_message('error', 'No events found for club: ' . $id);
-    //         return $this->response->setJSON(['status' => 'error', 'message' => 'No events found for club'], 404);
-    //     }
+        // Fetch events for the club
+        $events = $eventModel->where('id_club', $id)->findAll();
     
-    //     $eventDetails = [];
-    //     foreach ($events as $event) {
-    //         $eventDetails[] = [
-    //             'event_id' => $event['id'],
-    //             'event_name' => $event['name'],
-    //             'description' => $event['description'],
-    //             'location' => $event['location'],
-    //             'date' => $event['date'],
-    //             'picture' => $event['picture']
-    //         ];
-    //     }
+        $eventDetails = [];
+        foreach ($events as $event) {
+            $eventDetails[] = [
+                'id' => $event['id'],
+                'name' => $event['name'],
+                'description' => $event['description'],
+                'location' => $event['location'],
+                'date' => $event['date'],
+                'picture' => $event['picture'],
+                'created_at' => $event['created_at'],
+                'club_name' => $club['name'],
+                'club_slug' => $club['slug']
+            ];
+        }
     
-    //     return $this->response->setJSON(['status' => 'success', 'events' => $eventDetails]);
-    // }
+        return $this->response->setJSON(['status' => 'success', 'events' => $eventDetails]);
+    }
 }

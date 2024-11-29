@@ -309,7 +309,9 @@ class UserController extends BaseController
                     $users[] = [
                         'membership_id' => $membership['id'],
                         'user_id' => $userDetails['id'],
-                        'user_name' => $userDetails['first_name'] . ' ' . $userDetails['last_name'],
+                        'name' => $userDetails['first_name'] . ' ' . $userDetails['last_name'],
+                        'email' => $userDetails['email'],
+                        'picture' => $userDetails['picture'],
                         'role' => $membership['role'],
                         'join_date' => $membership['join_date'],
                         'status' => $membership['status']

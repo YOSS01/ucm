@@ -83,7 +83,7 @@ export default async function Clubs() {
                         alt="Club Logo"
                         width={500}
                         height={500}
-                        className="w-full h-full object-cover pointer-events-none"
+                        className="w-full h-full object-contain pointer-events-none"
                       />
                     ) : (
                       <svg

@@ -8,7 +8,5 @@ class ClubModel extends Model
     protected $table = 'clubs';
     protected $primaryKey = 'id';
     protected $allowedFields = [
-        'id_president', 'email', 'name', 'description', 'logo', 'qr_code', 'status','slug','created_at' ];
-   
-
+        'id_president', 'email', 'name', 'description', 'logo', 'background', 'qr_code', 'status','slug','created_at' ];
 }
