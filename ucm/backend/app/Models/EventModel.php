@@ -14,11 +14,12 @@ class EventModel extends Model
     public function getClub($eventId){
         $db = \Config\Database::connect();
         $builder = $db->table('event');
-        $builder->select('club.name as club_name, club.id as club_id');
-        $builder->join('club', 'club.id = event.id_club');
+        $builder->select('clubs.name as club_name, clubs.id as club_id');
+        $builder->join('clubs', 'clubs.id = event.id_club');
         $builder->where('event.id', $eventId);
         $query = $builder->get();
         return $query->getRow();
     }
     
 }
+

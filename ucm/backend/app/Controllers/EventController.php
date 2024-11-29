@@ -129,38 +129,48 @@ class EventController extends BaseController
         }
     }
 
-
-    // public function getClubEvents($id)
-    // {
-    //     $clubModel = new ClubModel();
-    //     $eventModel = new EventModel();
+  
     
-    //     // Check if the club exists
-    //     $club = $clubModel->find($id);
-    //     if (!$club) {
-    //         log_message('error', 'Club not found: ' . $id);
-    //         return $this->response->setJSON(['status' => 'error', 'message' => 'Club not found'], 404);
-    //     }
+    public function getClubEvents($id)
+    {
+        $clubModel = new ClubModel();
+        $eventModel = new EventModel();
     
-    //     // Fetch events for the club
-    //     $events = $eventModel->where('id_club', $id)->findAll();
-    //     if (!$events) {
-    //         log_message('error', 'No events found for club: ' . $id);
-    //         return $this->response->setJSON(['status' => 'error', 'message' => 'No events found for club'], 404);
-    //     }
+        // Check if the club exists
+        $club = $clubModel->find($id);
+        if (!$club) {
+            log_message('error', 'Club not found: ' . $id);
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Club not found'], 404);
+        }
     
-    //     $eventDetails = [];
-    //     foreach ($events as $event) {
-    //         $eventDetails[] = [
-    //             'event_id' => $event['id'],
-    //             'event_name' => $event['name'],
-    //             'description' => $event['description'],
-    //             'location' => $event['location'],
-    //             'date' => $event['date'],
-    //             'picture' => $event['picture']
-    //         ];
-    //     }
+        // Fetch events for the club
+        $events = $eventModel->where('id_club', $id)->findAll();
+        if (!$events) {
+            log_message('error', 'No events found for club: ' . $id);
+            return $this->response->setJSON(['status' => 'error', 'message' => 'No events found for club'], 404);
+        }
     
-    //     return $this->response->setJSON(['status' => 'success', 'events' => $eventDetails]);
-    // }
+        $eventDetails = [];
+        foreach ($events as $event) {
+            log_message('debug', 'Processing event: ' . json_encode($event));
+            $clubDetails = $eventModel->getClub($event['id']);
+            if ($clubDetails) {
+                log_message('debug', 'Club details found: ' . json_encode($clubDetails));
+                $eventDetails[] = [
+                    'event_id' => $event['id'],
+                    'event_name' => $event['name'],
+                    'description' => $event['description'],
+                    'location' => $event['location'],
+                    'date' => $event['date'],
+                    'picture' => $event['picture'],
+                    'club_name' => $clubDetails->club_name,
+                    'club_id' => $clubDetails->club_id
+                ];
+            } else {
+                log_message('error', 'Club details not found for event: ' . $event['id']);
+            }
+        }
+    
+        return $this->response->setJSON(['status' => 'success', 'events' => $eventDetails]);
+    }
 }
