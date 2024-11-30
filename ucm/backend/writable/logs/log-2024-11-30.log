@@ -1,0 +1,13 @@
+CRITICAL - 2024-11-30 10:15:35 --> CodeIgniter\HTTP\Exceptions\HTTPException: Failed to parse JSON string. Error: Syntax error
+[Method: POST, Route: update-club-status/1]
+in SYSTEMPATH\HTTP\IncomingRequest.php on line 537.
+ 1 SYSTEMPATH\HTTP\IncomingRequest.php(537): CodeIgniter\HTTP\Exceptions\HTTPException::forInvalidJSON('Syntax error')
+ 2 SYSTEMPATH\HTTP\IncomingRequest.php(557): CodeIgniter\HTTP\IncomingRequest->getJSON(true)
+ 3 SYSTEMPATH\HTTP\IncomingRequest.php(505): CodeIgniter\HTTP\IncomingRequest->getJsonVar('status', false, null, null)
+ 4 APPPATH\Controllers\ClubMembershipController.php(20): CodeIgniter\HTTP\IncomingRequest->getVar('status')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubMembershipController->updateClubeStatus('1')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubMembershipController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -234,4 +234,6 @@ class ClubController extends BaseController
     
         return $this->response->setJSON(['status' => 'success', 'statistics' => $statistics]);
     }
+
+    
 }

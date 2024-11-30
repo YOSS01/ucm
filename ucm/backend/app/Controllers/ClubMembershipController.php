@@ -12,12 +12,27 @@ class ClubMembershipController extends BaseController {
         
         return $this->response->setJSON($data['all_Members']);
 
-        //    return view('', $data);
+        
     }
-    public function getclubmembers() {
-
-       
+ public function updateClubeStatus($id){
+    $clubMembershipModel = new ClubMembershipModel();
     
-    }
+    $status = $this->request->getVar('status');
 
-}
+    $data = [
+        'status' => $status,
+    ];
+
+       if(!$clubMembershipModel->update($id, $data)){
+        return $this->response->setJson([
+            'status' => 'error',
+            'message' => 'Club Membership not found'
+        ], 404);
+       } 
+       else {
+        return $this->response->setJson([
+            'status' => 'success',
+            'message' => 'Club Membership updated successfully'
+        ], 200);
+       }
+    }}
