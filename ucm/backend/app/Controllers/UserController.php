@@ -324,5 +324,29 @@ class UserController extends BaseController
             return $this->response->setJSON(['status' => 'success', 'users' => $users]);
         }
 
+        public function push()
+        {
+            $to = 'alahyane900@gmail.com';//Type here the mail address where you want to send
+            $subject = 'Subject of Email';//Write here Subject of Email
+            $message="Conngrats ! You did it.";//Write the message you want to send
+            $email = \Config\Services::email();
+            $email->setTo($to);
+            $email->setFrom('alahyane900@gmail.com','Mail Testing');//set From
+            $email->setSubject($subject);
+            $email->setMessage($message);
+            if($email->send())
+            {
+                return $this->response->setJSON([
+                    'status' => 'success',
+                    'message' => 'Email has been Sent.',
+                ]);
+            }
+            else{
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'Something went wrong !',
+                ]);
+            }
+        }
     
 }

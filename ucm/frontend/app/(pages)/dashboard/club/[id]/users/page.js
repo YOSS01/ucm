@@ -1,65 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// data
-const users = [
-  {
-    name: "Alice Johnson",
-    email: "alice.johnson@example.com",
-    picture:
-      "https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    role: "President",
-    status: "Approved",
-  },
-  {
-    name: "Bob Smith",
-    email: "bob.smith@example.com",
-    picture:
-      "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    role: "Member",
-    status: "Request",
-  },
-  {
-    name: "Charlie Brown",
-    email: "charlie.brown@example.com",
-    picture:
-      "https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    role: "Member",
-    status: "Approved",
-  },
-  {
-    name: "Diana Prince",
-    email: "diana.prince@example.com",
-    picture:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    role: "Member",
-    status: "Approved",
-  },
-  {
-    name: "Evan Martinez",
-    email: "evan.martinez@example.com",
-    picture:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    role: "Vice President",
-    status: "Rejected",
-  },
-  {
-    name: "Fiona Green",
-    email: "fiona.green@example.com",
-    picture:
-      "https://images.unsplash.com/photo-1475048975523-705992b13a68?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    role: "Member",
-    status: "Approved",
-  },
-  {
-    name: "George White",
-    email: "george.white@example.com",
-    picture:
-      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    role: "Member",
-    status: "Rejected",
-  },
-];
+// components
+import Edit from "./_components/Edit";
+import Delete from "./_components/Delete";
 
 // Fetch Users
 const getUsers = async (id) => {
@@ -154,9 +98,9 @@ export default async function Users({ params }) {
           {data?.map((item, key) => (
             <li key={key}>
               <div className="w-full flex justify-center items-center">
-                <div className="w-full max-w-[300px] h-[300px] rounded-3xl border flex flex-col gap-y-3 justify-center items-center">
-                  <div className="size-24 border rounded-full overflow-hidden">
-                    {item?.picture && (
+                <div className="group w-full max-w-[300px] h-[300px] rounded-3xl border flex flex-col gap-y-3 justify-center items-center relative">
+                  <div className="size-24 border rounded-full flex justify-center items-center overflow-hidden">
+                    {item?.picture ? (
                       <Image
                         src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/users/${item?.picture}`}
                         alt="Profile User"
@@ -164,6 +108,21 @@ export default async function Users({ params }) {
                         height={500}
                         className="w-full h-full object-cover pointer-events-none"
                       />
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1}
+                        stroke="currentColor"
+                        className="size-10 text-gray-300"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                        />
+                      </svg>
                     )}
                   </div>
                   <div className="flex flex-col items-center">
@@ -213,6 +172,12 @@ export default async function Users({ params }) {
                     />
                     <span className="capitalize">{item?.status}</span>
                   </div>
+                  {item?.role !== "president" && (
+                    <div className="absolute top-3 right-3 w-full flex justify-end items-center gap-x-1">
+                      <Edit user={item} />
+                      <Delete />
+                    </div>
+                  )}
                 </div>
               </div>
             </li>

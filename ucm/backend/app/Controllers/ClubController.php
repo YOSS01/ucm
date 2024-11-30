@@ -217,19 +217,17 @@ class ClubController extends BaseController
         $totalUsers = $clubMembershipModel->where('id_club', $id)->countAllResults();
     
        
-        // $approvedUsers = $clubMembershipModel->where('id_club', $id)->where('status', 'approved')->countAllResults();
+        $approvedUsers = $clubMembershipModel->where('id_club', $id)->where('status', 'approved')->countAllResults();
     
         
         $totalEvents = $eventModel->where('id_club', $id)->countAllResults();
     
-        $totalMemberships = $clubMembershipModel->where('id_club', $id)->countAllResults();
     
         
         $statistics = [
-            'total_users' => $totalUsers,
-            // 'approved_users' => $approvedUsers,
+            'total_requests' => $totalUsers,
+            'total_members' => $approvedUsers,
             'total_events' => $totalEvents,
-            'total_memberships' => $totalMemberships
         ];
     
         return $this->response->setJSON(['status' => 'success', 'statistics' => $statistics]);
