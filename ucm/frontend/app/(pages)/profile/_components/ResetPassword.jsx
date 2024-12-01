@@ -1,8 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import { resetPassword } from "@/app/_actions/users";
 
-export default function ResetPassword() {
+// Toaster
+import toast from "react-hot-toast";
+
+export default function ResetPassword({ id }) {
   const [isResetFormOpen, setIsResetFormOpen] = useState(false);
+  const [state, action] = useFormState(resetPassword, undefined);
+
+  useEffect(() => {
+    if (state?.response?.status === 500) {
+      toast.error(state?.response?.message);
+    } else if (state?.response?.status === 200) {
+      toast.success(state?.response?.message);
+      setIsResetFormOpen(false);
+    }
+  }, [state]);
   return (
     <>
       <button
@@ -28,20 +43,30 @@ export default function ResetPassword() {
       </button>
       {isResetFormOpen && (
         <div className="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[500px] h-fit bg-[#252525] text-white px-5 py-5 z-50">
-          <form method="POST" className="flex flex-col items-center gap-y-8">
+          <form
+            action={action}
+            method="POST"
+            className="flex flex-col items-center gap-y-8"
+          >
             <h1 className="font-original_surfer text-3xl text-center">
               Reset Password
             </h1>
             <div className="w-full flex flex-col gap-y-5 text-sm">
+              <input type="hidden" name="userID" id="userID" value={id} />
               <div className="w-full flex flex-col gap-y-0">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="currentPassword">Password</label>
                 <input
                   className="outline-none border-b py-2 bg-transparent focus:border-white"
                   type="password"
-                  id="password"
-                  name="password"
+                  id="currentPassword"
+                  name="currentPassword"
                   placeholder="Password"
                 />
+                {state?.errors?.currentPassword && (
+                  <p className="text-red-500 text-xs">
+                    {state.errors.currentPassword}
+                  </p>
+                )}
               </div>
               <div className="w-full flex flex-col gap-y-0">
                 <label htmlFor="newPassword">New Password</label>
@@ -52,6 +77,11 @@ export default function ResetPassword() {
                   name="newPassword"
                   placeholder="New Password"
                 />
+                {state?.errors?.newPassword && (
+                  <p className="text-red-500 text-xs">
+                    {state.errors.newPassword}
+                  </p>
+                )}
               </div>
               <div className="w-full flex flex-col gap-y-0">
                 <label htmlFor="confirmPassword">Confrim password</label>
@@ -62,13 +92,16 @@ export default function ResetPassword() {
                   name="confirmPassword"
                   placeholder="Confirm Password"
                 />
+                {state?.errors?.confirmPassword && (
+                  <p className="text-red-500 text-xs">
+                    {state.errors.confirmPassword}
+                  </p>
+                )}
               </div>
             </div>
 
             <div className="w-full flex gap-x-5">
-              <button className="w-full h-[50px] text-red-500 bg-white/90 hover:bg-white duration-300 font-original_surfer">
-                Confirm
-              </button>
+              <SubmitButton />
               <button
                 onClick={() => setIsResetFormOpen(false)}
                 className="w-full h-[50px] text-black bg-white/90 hover:bg-white duration-300 font-original_surfer"
@@ -80,5 +113,18 @@ export default function ResetPassword() {
         </div>
       )}
     </>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      disabled={pending}
+      type="submit"
+      className="w-full h-[50px] text-red-500 bg-white/90 hover:bg-white duration-300 font-original_surfer"
+    >
+      Confirm
+    </button>
   );
 }

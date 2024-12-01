@@ -3,7 +3,6 @@ import Link from "next/link";
 
 // components
 import Edit from "./_components/Edit";
-import Delete from "./_components/Delete";
 
 // Fetch Users
 const getUsers = async (id) => {
@@ -175,7 +174,6 @@ export default async function Users({ params }) {
                   {item?.role !== "president" && (
                     <div className="absolute top-3 right-3 w-full flex justify-end items-center gap-x-1">
                       <Edit user={item} />
-                      <Delete />
                     </div>
                   )}
                 </div>

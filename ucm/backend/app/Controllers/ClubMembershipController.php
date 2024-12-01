@@ -14,7 +14,7 @@ class ClubMembershipController extends BaseController {
 
         
     }
- public function updateClubeStatus($id){
+ public function updateClubMembershipStatus($id){
     $clubMembershipModel = new ClubMembershipModel();
     
     $status = $this->request->getVar('status');

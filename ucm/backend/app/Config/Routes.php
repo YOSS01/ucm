@@ -18,7 +18,7 @@ $routes->get('/', 'Home::index');
     $routes->post('/update-user/(:num)','UserController::updateuser/$1');
     $routes->post('/forget-password', 'UserController::forgetPassword');
     $routes->post('/requestPasswordReset', 'UserController::requestPasswordReset');
-    $routes->post('/resetPassword', 'UserController::resetPassword');
+    $routes->post('/resetPassword/(:num)', 'UserController::resetPassword/$1');
     $routes->get('/deleteUser/(:num)','UserController::deleteUser/$1');
     $routes->get('/userclubs/(:num)','UserController::getClubUsers/$1');
 
@@ -67,7 +67,7 @@ $routes->get('/delet-visitor/(:num)','VisitorController::deletevisitor/$1');
 
 //club membership routes
 $routes->get('club-mumbers','ClubMembershipController::index');
-$routes->post('/update-club-status/(:num)','ClubMembershipController::updateClubeStatus/$1');
+$routes->post('/update-clubmembership/(:num)','ClubMembershipController::updateClubMembershipStatus/$1');
 
 $routes->get('send-email','UserController::push');
 

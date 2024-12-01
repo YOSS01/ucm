@@ -12,6 +12,7 @@ import ResetPassword from "./_components/ResetPassword";
 
 // images
 import userPic from "@/public/images/user.svg";
+import logo from "@/public/images/clubs/photography_logo.png";
 
 export const metadata = {
   title: "Profile",
@@ -26,7 +27,7 @@ export default async function page() {
       <div className="w-full h-full flex justify-center items-center">
         <div className="h-[550px] w-full max-w-[450px] bg-white rounded-3xl flex flex-col justify-center gap-y-10 relative z-50 p-5 overflow-hidden">
           <Edit user={user} />
-          <ResetPassword />
+          <ResetPassword id={user?.id} />
           <div className="flex flex-col items-center gap-y-2">
             <div className="size-[150px] border rounded-full overflow-hidden">
               {user?.picture ? (
@@ -59,8 +60,20 @@ export default async function page() {
           </div>
           <div>
             <h2 className="text-sm">Clubs:</h2>
-            <ul className="min-h-[100px] flex justify-center items-center text-xs text-black/40">
-              Not member in any club yet
+            <ul className="min-h-[100px] flex flex-wrap justify-center items-center gap-2 text-xs text-black/40">
+              {user?.clubs?.length !== 0
+                ? user?.clubs?.map((club, key) => (
+                    <li key={key}>
+                      <Image
+                        src={logo}
+                        alt="Club Logo"
+                        width={100}
+                        height={100}
+                        className="size-14 object-contain"
+                      />
+                    </li>
+                  ))
+                : "Not member in any club yet"}
             </ul>
           </div>
           <Logout />
