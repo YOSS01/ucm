@@ -40,6 +40,7 @@ $routes->get('/add-club-view','ClubController::addclubview');
 $routes->post('/add-club','ClubController::addClub');
 $routes->post('/update-club/(:num)','ClubController::updateClub/$1');
 $routes->get('/deleteClub/(:num)','ClubController::deleteClub/$1');
+
 // dashboard
 $routes->get('/club-events/(:num)','EventController::getClubEvents/$1');
 $routes->get('/club-users/(:num)','UserController::getClubUsers/$1');
