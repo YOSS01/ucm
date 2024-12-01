@@ -302,6 +302,8 @@ class UserController extends BaseController
             if (!$memberships) {
                 log_message('error', 'No memberships found for club: ' . $id);
             }
+
+            $logoUrl = base_url('public/uploads/' . $club['logo']);
             $users = [];
             foreach ($memberships as $membership) {
                 $userDetails = $userModel->find($membership['id_user']);
@@ -314,7 +316,8 @@ class UserController extends BaseController
                         'picture' => $userDetails['picture'],
                         'role' => $membership['role'],
                         'join_date' => $membership['join_date'],
-                        'status' => $membership['status']
+                        'status' => $membership['status'],
+                       'logo' => $logoUrl,
                     ];
                 } else {
                     log_message('error', 'User details not found for membership: ' . $membership['id']);
