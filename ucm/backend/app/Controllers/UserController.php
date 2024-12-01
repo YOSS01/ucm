@@ -199,7 +199,8 @@ class UserController extends BaseController
                     'club_name' => $clubDetails->club_name,
                     'role' => $membership['role'],
                     'join_date' => $membership['join_date'],
-                    'status' => $membership['status']
+                    'status' => $membership['status'],
+                    'logo' => $clubDetails->club_logo
                 ];
             }
         }

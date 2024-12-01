@@ -12,7 +12,6 @@ import ResetPassword from "./_components/ResetPassword";
 
 // images
 import userPic from "@/public/images/user.svg";
-import logo from "@/public/images/clubs/photography_logo.png";
 
 export const metadata = {
   title: "Profile",
@@ -60,17 +59,29 @@ export default async function page() {
           </div>
           <div>
             <h2 className="text-sm">Clubs:</h2>
-            <ul className="min-h-[100px] flex flex-wrap justify-center items-center gap-2 text-xs text-black/40">
+            <ul className="min-h-[80px] max-h-[80px] flex flex-wrap justify-center items-center py-3 gap-2 text-xs text-black/40 overflow-y-auto">
               {user?.clubs?.length !== 0
                 ? user?.clubs?.map((club, key) => (
                     <li key={key}>
-                      <Image
-                        src={logo}
-                        alt="Club Logo"
-                        width={100}
-                        height={100}
-                        className="size-14 object-contain"
-                      />
+                      {club?.role === "president" ? (
+                        <Link href={`/dashboard/club/${club?.club_id}`}>
+                          <Image
+                            src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.logo}`}
+                            alt="Club Logo"
+                            width={100}
+                            height={100}
+                            className="size-14 object-contain"
+                          />
+                        </Link>
+                      ) : (
+                        <Image
+                          src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.logo}`}
+                          alt="Club Logo"
+                          width={100}
+                          height={100}
+                          className="size-14 object-contain"
+                        />
+                      )}
                     </li>
                   ))
                 : "Not member in any club yet"}

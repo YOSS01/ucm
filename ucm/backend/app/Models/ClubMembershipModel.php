@@ -12,7 +12,7 @@ class ClubMembershipModel extends Model
     {
         $db = \Config\Database::connect();
         $builder = $db->table('clubmembership');
-        $builder->select('clubs.name as club_name, clubs.id as club_id');
+        $builder->select('clubs.name as club_name, clubs.id as club_id, clubs.logo as club_logo');
         $builder->join('clubs', 'clubs.id = clubmembership.id_club');
         $builder->where('clubmembership.id', $membershipId);
         $query = $builder->get();
