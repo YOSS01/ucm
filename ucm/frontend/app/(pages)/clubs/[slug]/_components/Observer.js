@@ -158,7 +158,7 @@ function SectionTwo({ description, createdAt, events }) {
   );
 }
 
-function SectionThree({ president }) {
+function SectionThree({ clubID, president }) {
   return (
     <section className="section third">
       <div className="outer">

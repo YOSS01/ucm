@@ -14,6 +14,7 @@ export default function Form() {
   return (
     <form
       action={action}
+      method="POST"
       className="w-full max-h-[450px] flex flex-col gap-y-5 overflow-y-auto"
     >
       <div className="flex justify-between items-center gap-x-2">

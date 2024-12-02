@@ -63,8 +63,18 @@ export default async function page() {
               {user?.clubs?.length !== 0
                 ? user?.clubs?.map((club, key) => (
                     <li key={key}>
-                      {club?.role === "president" ? (
-                        <Link href={`/dashboard/club/${club?.club_id}`}>
+                      {club?.status === "approved" ? (
+                        club?.role === "president" ? (
+                          <Link href={`/dashboard/club/${club?.club_id}`}>
+                            <Image
+                              src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.logo}`}
+                              alt="Club Logo"
+                              width={100}
+                              height={100}
+                              className="size-14 object-contain"
+                            />
+                          </Link>
+                        ) : (
                           <Image
                             src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.logo}`}
                             alt="Club Logo"
@@ -72,15 +82,9 @@ export default async function page() {
                             height={100}
                             className="size-14 object-contain"
                           />
-                        </Link>
+                        )
                       ) : (
-                        <Image
-                          src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.logo}`}
-                          alt="Club Logo"
-                          width={100}
-                          height={100}
-                          className="size-14 object-contain"
-                        />
+                        ""
                       )}
                     </li>
                   ))

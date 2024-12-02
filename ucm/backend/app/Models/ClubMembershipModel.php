@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 class ClubMembershipModel extends Model
 {
     protected $table = 'clubmembership';
-    protected $allowedFields = ['id_club', 'id_user', 'role', 'join_date', 'status'];
+    protected $allowedFields = ['id_club', 'id_user', 'role', 'join_date', 'status', 'created_at', 'updated_at'];
 
     public function getClub($membershipId)
     {

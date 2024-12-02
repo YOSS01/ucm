@@ -68,6 +68,7 @@ $routes->get('/delet-visitor/(:num)','VisitorController::deletevisitor/$1');
 
 //club membership routes
 $routes->get('club-mumbers','ClubMembershipController::index');
+$routes->post('/add-clubmembership', 'ClubMembershipController::addClubMembership');
 $routes->post('/update-clubmembership/(:num)','ClubMembershipController::updateClubMembershipStatus/$1');
 
 $routes->get('send-email','UserController::push');

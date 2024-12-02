@@ -17,7 +17,7 @@ export default function Club({ item, session }) {
           </p>
         </div>
         <div className="text-sm flex items-center gap-x-5">
-          <Signup session={session} />
+          <Signup session={session} clubID={item?.id} />
           <Link
             href={`/clubs/${item?.slug}`}
             className="h-[45px] flex justify-center items-center border-2 border-solid border-white rounded-full px-7 hover:bg-white hover:text-black duration-300"
@@ -41,12 +41,39 @@ export default function Club({ item, session }) {
   );
 }
 
-const Signup = ({ session }) => {
-  function handleSignup() {
+const Signup = ({ session, clubID }) => {
+  async function handleSignup() {
     if (!session) {
       toast("Please create an account to proceed!", {
         icon: "🔔",
       });
+    } else {
+      const formData = new FormData();
+      formData.append("id_user", session?.userId);
+      formData.append("id_club", clubID);
+
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_APP_BASE_URL}/add-clubmembership`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+        if (!response.ok) {
+          toast.error("An error occurred while sending request.");
+          return;
+        }
+        const result = await response.json();
+        if (result?.status === "error") {
+          toast.error(result?.message);
+        } else {
+          toast.success(result?.message);
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error("An error occurred while sending request.");
+      }
     }
   }
   return (

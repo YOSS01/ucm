@@ -18,9 +18,12 @@ export const SignupFormSchema = z
     picture: z
       .any()
       .optional()
-      .refine((file) => file?.size <= MAX_FILE_SIZE, `Max image size is 1MB.`)
       .refine(
-        (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+        (file) => !file || file.size <= MAX_FILE_SIZE,
+        `Max image size is 1MB.`
+      )
+      .refine(
+        (file) => !file || ACCEPTED_IMAGE_TYPES.includes(file.type),
         "Only .jpg, .jpeg, .png, .avif and .webp formats are supported."
       ),
     first_name: z
