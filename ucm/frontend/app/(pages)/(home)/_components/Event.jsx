@@ -32,8 +32,7 @@ async function userParticipateIn(id_event, userId) {
       toast.error("An error occurred while participate in.");
       return;
     } else if (result?.status === "error") {
-      console.log(result);
-      toast.error("An error occurred while participate in.");
+      toast.error(result?.message);
       return;
     }
 

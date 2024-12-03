@@ -17,25 +17,38 @@ class EventRequestController extends BaseController
  }
  public function addeventrequest(){
     
-    $eventreq = new EventRequestModel();
-     $validation = \Config\Services::validation();
-     $validation->setRules(([
+    $eventRequest = new EventRequestModel();
 
-        'id_visitor' => 'required|integer',
-        'id_event' => 'required|integer',
-     ]));
-     if($validation->withRequest($this->request)->run() == false){
-        return $this->response->setJSON(['status'=>'error','message'=>$validation->getErrors()]);
+    $validation = \Config\Services::validation();
+    $validation->setRules(([
+    'id_visitor' => 'required|integer',
+    'id_event' => 'required|integer',
+    ]));
 
-     }
+    if($validation->withRequest($this->request)->run() == false){
+    return $this->response->setJSON(['status'=>'error','message'=>$validation->getErrors()]);
+    }
+
+    // Check if the request is already exists
+    $existingEventRequest = $eventRequest->where('id_visitor', $this->request->getVar('id_visitor'))
+    ->where('id_event', $this->request->getVar('id_event'))
+    ->first();
+
+    if ($existingEventRequest) {
+        return $this->response->setJSON([
+            'status' => 'error',
+            'message' => 'Request for this event has already been submitted.',
+        ]);
+    }
+
     $data = [
         'id_visitor'   => $this->request->getVar('id_visitor'),
         'id_event'     => $this->request->getVar('id_event'),
         'status'       => "pending",
-       
+        'request_date' => date('Y-m-d H:i:s')
     ];
-    $data['request_date'] = date('Y-m-d H:i:s');
-    if($eventreq->insert($data)){
+
+    if($eventRequest->insert($data)){
         return $this->response->setJSON(['status'=>'success','message'=>'Event request added successfully']);
     }else{
         return $this->response->setJSON(['status'=>'error','message'=>'Failed to add event request ']);
