@@ -181,3 +181,7 @@ export const ResetPasswordFormSchema = z
       });
     }
   });
+
+export const ForgetPasswordFormSchema = z.object({
+  email: z.string().email({ message: "Please enter a valid email." }).trim(),
+});

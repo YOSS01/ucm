@@ -71,5 +71,5 @@ $routes->get('club-mumbers','ClubMembershipController::index');
 $routes->post('/add-clubmembership', 'ClubMembershipController::addClubMembership');
 $routes->post('/update-clubmembership/(:num)','ClubMembershipController::updateClubMembershipStatus/$1');
 
-$routes->get('send-email','UserController::push');
+$routes->post('/forgot-password','UserController::forgotPassword');
 

@@ -332,7 +332,7 @@ class UserController extends BaseController
         $message="Conngrats ! You did it.";//Write the message you want to send
         $email = \Config\Services::email();
         $email->setTo($to);
-        $email->setFrom('alahyane900@gmail.com','Mail Testing');//set From
+        $email->setFrom('alahyane900@gmail.com','Reset Password');//set From
         $email->setSubject($subject);
         $email->setMessage($message);
         if($email->send())
@@ -350,6 +350,7 @@ class UserController extends BaseController
         }
     }
     
+    // Reset Password
     public function resetPassword($id)
     {
         $validation = \Config\Services::validation();
@@ -409,5 +410,69 @@ class UserController extends BaseController
             'message' => 'Password has been reset successfully',
         ]);
     }
+
+    // Reset Forgot Password
+    public function forgotPassword()
+    {
+        $validation = \Config\Services::validation();
+
+        // Validate email input
+        $validation->setRules([
+            'email' => 'required|valid_email',
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => $validation->getErrors(),
+            ]);
+        }
+
+        $emailInput = $this->request->getVar('email');
+
+        // Load UserModel
+        $userModel = new \App\Models\UserModel();
+
+        // Check if the email exists in the database
+        $user = $userModel->where('email', $emailInput)->first();
+
+        if (!$user) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'No account associated with this email address.',
+            ]);
+        }
+
+        // Generate a new password
+        $newPassword = bin2hex(random_bytes(4)); // Generates a random 8-character password
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+        // Update the user's password in the database
+        $userModel->update($user['id'], ['password' => $hashedPassword]);
+
+        // Prepare email
+        $to = $emailInput;
+        $subject = 'Password Reset';
+        $message = "Hello {$user['first_name']},\n\nYour password has been reset. Here is your new password:\n\n$newPassword\n\nPlease change your password after logging in.";
+
+        $email = \Config\Services::email();
+        $email->setTo($to);
+        $email->setFrom('alahyane900@gmail.com', 'UCM'); // Replace with your "From" address
+        $email->setSubject($subject);
+        $email->setMessage($message);
+
+        if ($email->send()) {
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'A new password has been sent to your email address.',
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Failed to send the email. Please try again later.',
+            ]);
+        }
+    }
+
 
 }
