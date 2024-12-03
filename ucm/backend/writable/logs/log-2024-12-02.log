@@ -1,0 +1,329 @@
+ERROR - 2024-12-02 09:59:29 --> Error connecting to the database: mysqli_sql_exception: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'clubs_Managment...', 3306, '', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(225): CodeIgniter\BaseModel->first()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(225): CodeIgniter\BaseModel->first()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-12-02 09:59:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[Method: POST, Route: requestPasswordReset]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\UserController.php(225): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-02 10:00:17 --> Error connecting to the database: mysqli_sql_exception: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'clubs_Managment...', 3306, '', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(225): CodeIgniter\BaseModel->first()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(225): CodeIgniter\BaseModel->first()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-12-02 10:00:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[Method: POST, Route: requestPasswordReset]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\UserController.php(225): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-02 10:02:37 --> Error connecting to the database: mysqli_sql_exception: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'clubs_Managment...', 3306, '', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(226): CodeIgniter\BaseModel->first()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(226): CodeIgniter\BaseModel->first()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-12-02 10:02:37 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[Method: POST, Route: requestPasswordReset]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\UserController.php(226): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-02 10:03:40 --> Error connecting to the database: mysqli_sql_exception: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'clubs_Managment...', 3306, '', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(226): CodeIgniter\BaseModel->first()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(226): CodeIgniter\BaseModel->first()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-12-02 10:03:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[Method: POST, Route: requestPasswordReset]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\UserController.php(226): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-02 10:04:27 --> Email not found: amaaliousama771@gmail.com
+CRITICAL - 2024-12-02 10:05:01 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: requestPasswordReset]
+in SYSTEMPATH\BaseModel.php on line 1011.
+ 1 SYSTEMPATH\BaseModel.php(1011): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(865): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\UserController.php(234): CodeIgniter\Model->update('2', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-02 10:05:38 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: requestPasswordReset]
+in SYSTEMPATH\BaseModel.php on line 1011.
+ 1 SYSTEMPATH\BaseModel.php(1011): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(865): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\UserController.php(234): CodeIgniter\Model->update('4', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-02 10:06:53 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: requestPasswordReset]
+in SYSTEMPATH\BaseModel.php on line 1011.
+ 1 SYSTEMPATH\BaseModel.php(1011): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(865): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\UserController.php(235): CodeIgniter\Model->update('4', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-02 10:07:36 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: requestPasswordReset]
+in SYSTEMPATH\BaseModel.php on line 1011.
+ 1 SYSTEMPATH\BaseModel.php(1011): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(865): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\UserController.php(235): CodeIgniter\Model->update('4', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-02 10:09:38 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\Users\\Oussam...', 1896)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1896): fsockopen('tls://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(245): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-12-02 10:09:38 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-12-02 10:09:38 --> 
+ERROR - 2024-12-02 10:09:38 --> Failed to send email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Mon, 2 Dec 2024 10:09:38 +0000
+To: amaaliousama771@gmail.com
+From: &quot;Password Reset&quot; &lt;alahyane900@gmail.com&gt;
+Return-Path: &lt;alahyane900@gmail.com&gt;
+Subject: =?UTF-8?Q?Password=20Reset?=
+Reply-To: &lt;alahyane900@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: alahyane900@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;674d8762087f76.80096506@gmail.com&gt;
+Mime-Version: 1.0
+
+</pre>
+CRITICAL - 2024-12-02 10:18:01 --> ErrorException: Constant expression contains invalid operations
+[Method: POST, Route: requestPasswordReset]
+in APPPATH\Config\Email.php on line 35.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-12-02 10:18:40 --> ErrorException: Constant expression contains invalid operations
+[Method: POST, Route: requestPasswordReset]
+in APPPATH\Config\Email.php on line 35.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-12-02 10:23:23 --> ErrorException: Constant expression contains invalid operations
+[Method: POST, Route: requestPasswordReset]
+in APPPATH\Config\Email.php on line 35.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+ERROR - 2024-12-02 10:23:44 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\Users\\Oussam...', 1896)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1896): fsockopen('tls://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(242): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->requestPasswordReset()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-12-02 10:23:44 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-12-02 10:23:44 --> 
+ERROR - 2024-12-02 10:23:44 --> Failed to send email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Mon, 2 Dec 2024 10:23:43 +0000
+To: amaaliousama771@gmail.com
+From: &quot;Password Reset&quot; &lt;alahyane900@gmail.com&gt;
+Return-Path: &lt;alahyane900@gmail.com&gt;
+Subject: =?UTF-8?Q?Password=20Reset?=
+Reply-To: &lt;alahyane900@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: alahyane900@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;674d8aaf21bee5.24995338@gmail.com&gt;
+Mime-Version: 1.0
+
+</pre>
+CRITICAL - 2024-12-02 10:23:51 --> ErrorException: Constant expression contains invalid operations
+[Method: POST, Route: requestPasswordReset]
+in APPPATH\Config\Email.php on line 35.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()

@@ -1,0 +1,89 @@
+ERROR - 2024-12-03 18:32:23 --> mysqli_sql_exception: Unknown column 'id_event' in 'where clause' in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\EventController.php(36): CodeIgniter\Model->countAllResults()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-12-03 18:32:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_event' in 'where clause'
+[Method: GET, Route: all-events]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `clubmembership`
+WHERE `id_event` = :id_event:', [...], false)
+ 2 SYSTEMPATH\Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 3 APPPATH\Controllers\EventController.php(36): CodeIgniter\Model->countAllResults()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-03 18:32:23 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_event' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `clubmembership`
+WHERE `id_event` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `clubmembership`
+WHERE `id_event` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `clubmembership`
+WHERE `id_event` = :id_event:', [...], false)
+ 4 SYSTEMPATH\Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 5 APPPATH\Controllers\EventController.php(36): CodeIgniter\Model->countAllResults()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-03 18:32:23 --> [Caused by] mysqli_sql_exception: Unknown column 'id_event' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `clubmembership`
+WHERE `id_event` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `clubmembership`
+WHERE `id_event` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `clubmembership`
+WHERE `id_event` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1728): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `clubmembership`
+WHERE `id_event` = :id_event:', [...], false)
+ 5 SYSTEMPATH\Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 6 APPPATH\Controllers\EventController.php(36): CodeIgniter\Model->countAllResults()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-03 19:05:53 --> mysqli_sql_exception: Can't create table `clubs_managment_system`.`clubmembership` (errno: 150 "Foreign key constraint is incorrectly formed") in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `c...', 0)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193710_CreateClubMembershipTable.php(54): CodeIgniter\Database\Forge->createTable('clubmembership')
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateClubMembershipTable->up()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\BaseCommand.php(119): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Commands\Database\MigrateRefresh.php(87): CodeIgniter\CLI\BaseCommand->call('migrate', Array)
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\MigrateRefresh->run(Array)
+#12 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate:refresh', Array)
+#13 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#14 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#15 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#16 {main}

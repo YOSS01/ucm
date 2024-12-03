@@ -1,0 +1,72 @@
+ERROR - 2024-12-01 17:34:26 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\Users\\Oussam...', 1896)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1896): fsockopen('tls://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(313): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->push()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-12-01 17:34:26 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-12-01 17:34:26 --> 
+ERROR - 2024-12-01 17:34:42 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\Users\\Oussam...', 1896)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1896): fsockopen('tls://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(313): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->push()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-12-01 17:34:42 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-12-01 17:34:42 --> 
+ERROR - 2024-12-01 17:36:26 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\Users\\Oussam...', 1896)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1896): fsockopen('tls://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(313): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->push()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-12-01 17:36:26 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-12-01 17:36:26 --> 
+ERROR - 2024-12-01 17:36:36 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\Users\\Oussam...', 1896)
+#1 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1896): fsockopen('tls://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\app\Controllers\UserController.php(313): CodeIgniter\Email\Email->send()
+#6 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\UserController->push()
+#7 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\Oussama\Desktop\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-12-01 17:36:36 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-12-01 17:36:36 --> 
