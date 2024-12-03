@@ -1,6 +1,12 @@
 // components
 import Navbar from "@/components/Navbar";
 import Observer from "./_components/Observer";
+
+// auth
+import { cookies } from "next/headers";
+import { decrypt } from "@/app/_lib/session";
+
+// Redirect
 import { notFound } from "next/navigation";
 
 export const metadata = {
@@ -31,6 +37,10 @@ const getClub = async (slug) => {
 export default async function Club({ params }) {
   const slug = params.slug;
   const data = await getClub(slug);
+
+  const cookie = (await cookies()).get("session")?.value;
+  const session = await decrypt(cookie);
+
   if (data) {
     return (
       <div className="w-full h-screen bg-black">
@@ -39,6 +49,7 @@ export default async function Club({ params }) {
           club={data?.club}
           president={data?.president}
           events={data?.events}
+          session={session}
         />
       </div>
     );
