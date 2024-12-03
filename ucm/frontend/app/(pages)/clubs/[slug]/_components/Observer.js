@@ -4,13 +4,21 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+// Toaster
+import toast from "react-hot-toast";
+
 // gsap
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Observer from "gsap/Observer";
 gsap.registerPlugin(useGSAP, Observer);
 
-export default function ObserverContainer({ club, president, events }) {
+export default function ObserverContainer({
+  session,
+  club,
+  president,
+  events,
+}) {
   useEffect(() => {
     let sections = document.querySelectorAll(".section"),
       images = document.querySelectorAll(".bg"),
@@ -75,7 +83,7 @@ export default function ObserverContainer({ club, president, events }) {
         createdAt={club?.created_at}
         events={events}
       />
-      <SectionThree clubID={club?.id} president={president} />
+      <SectionThree session={session} clubID={club?.id} president={president} />
     </>
   );
 }
@@ -158,7 +166,7 @@ function SectionTwo({ description, createdAt, events }) {
   );
 }
 
-function SectionThree({ president }) {
+function SectionThree({ session, clubID, president }) {
   return (
     <section className="section third">
       <div className="outer">
@@ -185,25 +193,7 @@ function SectionThree({ president }) {
                 >
                   {president?.email}
                 </Link>
-                <button className="group size-[40px] rounded-full border border-solid border-white flex justify-center items-center mt-5 relative">
-                  <span className="absolute -bottom-8 text-xs text-nowrap bg-black p-1 rounded text-white/90 scale-0 opacity-0 group-hover:opacity-100 group-hover:scale-100 duration-300">
-                    Join the club
-                  </span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="size-4"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 4.5v15m7.5-7.5h-15"
-                    />
-                  </svg>
-                </button>
+                <Signup session={session} clubID={clubID} />
               </div>
             </div>
           </div>
@@ -212,3 +202,64 @@ function SectionThree({ president }) {
     </section>
   );
 }
+
+const Signup = ({ session, clubID }) => {
+  async function handleSignup() {
+    if (!session) {
+      toast("Please create an account to proceed!", {
+        icon: "🔔",
+      });
+    } else {
+      const formData = new FormData();
+      formData.append("id_user", session?.userId);
+      formData.append("id_club", clubID);
+
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_APP_BASE_URL}/add-clubmembership`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+        if (!response.ok) {
+          toast.error("An error occurred while sending request.");
+          return;
+        }
+        const result = await response.json();
+        if (result?.status === "error") {
+          toast.error(result?.message);
+        } else {
+          toast.success(result?.message);
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error("An error occurred while sending request.");
+      }
+    }
+  }
+  return (
+    <button
+      onClick={handleSignup}
+      className="group size-[40px] rounded-full border border-solid border-white flex justify-center items-center mt-5 relative"
+    >
+      <span className="absolute -bottom-8 text-xs text-nowrap bg-black p-1 rounded text-white/90 scale-0 opacity-0 group-hover:opacity-100 group-hover:scale-100 duration-300">
+        Join the club
+      </span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="size-4"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 4.5v15m7.5-7.5h-15"
+        />
+      </svg>
+    </button>
+  );
+};

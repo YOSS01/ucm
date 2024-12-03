@@ -75,8 +75,6 @@ class ClubController extends BaseController
             'description' => 'required|string',
             'logo' => 'uploaded[logo]|max_size[logo,2042]|ext_in[logo,png,jpg,jpeg,webp,avif]',
             'background' => 'uploaded[background]|max_size[background,2042]|ext_in[background,png,jpg,jpeg,webp,avif]',
-            // 'qr_code' => 'uploaded[qr_code]|max_size[qr_code,2042]|ext_in[qr_code,png,jpg,jpeg,webp]',
-            // 'status' => 'required|string',
             'slug'=>'required|string|max_length[255]'
         ]);
     
@@ -103,15 +101,6 @@ class ClubController extends BaseController
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload background']);
         }
     
-        // $qr_code = $this->request->getFile('qr_code');
-        // if ($qr_code->isValid() && !$qr_code->hasMoved()) {
-        //     $qr_code->move(FCPATH . 'uploads/clubs/');
-        //     $qrCodePath = $qr_code->getName();
-        // } else {
-        //     log_message('error', 'Failed to upload QR code');
-        //     return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to upload QR code']);
-        // }
-    
         $data = [
             'id_president' => $this->request->getVar('id_president'),
             'email' => $this->request->getVar('email'),
@@ -119,14 +108,26 @@ class ClubController extends BaseController
             'description' => $this->request->getVar('description'),
             'logo' => $logoPath,
             'background' => $backgroundPath,
-            // 'qr_code' => $qrCodePath,
             'status' => "pending",
             'slug' => $this->request->getVar('slug'),
             'created_at' => date('Y-m-d H:i:s')
         ];
     
         if ($clubModel->insert($data)) {
-            return $this->response->setJSON(['status' => 'success', 'message' => 'Club added successfully']);
+            $clubMembership = new ClubMembershipModel();
+            $membershipData = [
+                'id_club' => $clubModel->getInsertID(),
+                'id_user' => $this->request->getVar('id_president'),
+                'join_date' => date('Y-m-d H:i:s'),
+                'role' => "president",
+                'status' => "approved",
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ];
+            if($clubMembership->insert($membershipData)) {
+                return $this->response->setJSON(['status' => 'success', 'message' => 'Club added successfully']);
+            }
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Membership Failed']);
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to add club']);
         }

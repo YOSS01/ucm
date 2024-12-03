@@ -1,5 +1,8 @@
 "use server";
-import { AddClubFormSchema } from "@/app/_lib/definitions";
+import {
+  AddClubFormSchema,
+  EditClubMembershipFormSchema,
+} from "@/app/_lib/definitions";
 
 // Administrator API
 
@@ -150,6 +153,69 @@ export async function editClub(state, formData) {
       response: {
         status: 500,
         message: "An error occurred while updating the club.",
+      },
+    };
+  }
+}
+
+// Edit Club User
+export async function editClubUser(state, formData) {
+  // Validate form fields
+  const validatedFields = EditClubMembershipFormSchema.safeParse({
+    membershipID: formData.get("membershipID"),
+    status: formData.get("status"),
+  });
+
+  // If any form fields are invalid, return early
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+
+  // Call the provider or db ...
+  try {
+    const formData = new FormData();
+    formData.append("status", validatedFields.data.status);
+
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_APP_BASE_URL}/update-clubmembership/${validatedFields.data.membershipID}`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      return {
+        response: {
+          status: 500,
+          message: "An error occurred while updating the status.",
+        },
+      };
+    } else if (result?.status === "error") {
+      return {
+        response: {
+          status: 500,
+          message: "An error occurred while updating the status.",
+        },
+      };
+    }
+
+    return {
+      response: {
+        status: 200,
+        message: "Status Updated Successfully",
+      },
+    };
+  } catch (error) {
+    console.error(error.message);
+    return {
+      response: {
+        status: 500,
+        message: "An error occurred while updating the status.",
       },
     };
   }

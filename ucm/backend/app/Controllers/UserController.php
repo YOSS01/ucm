@@ -199,7 +199,8 @@ class UserController extends BaseController
                     'club_name' => $clubDetails->club_name,
                     'role' => $membership['role'],
                     'join_date' => $membership['join_date'],
-                    'status' => $membership['status']
+                    'status' => $membership['status'],
+                    'logo' => $clubDetails->club_logo
                 ];
             }
         }
@@ -246,27 +247,27 @@ class UserController extends BaseController
         }
     }
 
-    public function resetPassword()
-    {
-        $token = $this->request->getGet('token');
-        $newPassword = $this->request->getPost('new_password');
+    // public function resetPassword()
+    // {
+    //     $token = $this->request->getGet('token');
+    //     $newPassword = $this->request->getPost('new_password');
 
-        if (!$token || !$newPassword) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid request']);
-        }
+    //     if (!$token || !$newPassword) {
+    //         return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid request']);
+    //     }
 
-        $userModel = new UserModel();
-        $user = $userModel->where('reset_token', $token)->first();
+    //     $userModel = new UserModel();
+    //     $user = $userModel->where('reset_token', $token)->first();
 
-        if (!$user || Time::now()->isAfter($user['reset_expires'])) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid or expired token']);
-        }
+    //     if (!$user || Time::now()->isAfter($user['reset_expires'])) {
+    //         return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid or expired token']);
+    //     }
 
        
-        $userModel->update($user['id'], ['password' => password_hash($newPassword, PASSWORD_DEFAULT), 'reset_token' => null, 'reset_expires' => null]);
+    //     $userModel->update($user['id'], ['password' => password_hash($newPassword, PASSWORD_DEFAULT), 'reset_token' => null, 'reset_expires' => null]);
 
-        return $this->response->setJSON(['status' => 'success', 'message' => 'Password has been reset successfully']);
-    }
+    //     return $this->response->setJSON(['status' => 'success', 'message' => 'Password has been reset successfully']);
+    // }
 
     public function deleteUser($id) {
         $userModel = new UserModel();
@@ -277,79 +278,201 @@ class UserController extends BaseController
                 'message' => 'User has been deleted successfully',
             ]);
         } else {
-                return $this->response->setJSON([
-                    'status' => 'error',
-                    'message' => 'Failed to delete the user. Please try again.',
-                ]);
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Failed to delete the user. Please try again.',
+            ]);
+        }
+    }
+    
+
+    public function getClubUsers($id)
+    {
+        $clubModel = new ClubModel();
+        $clubMembershipModel = new ClubMembershipModel();
+        $userModel = new UserModel();
+    
+        $club = $clubModel->find($id);
+        if (!$club) {
+            log_message('error', 'Club not found: ' . $id);
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Club not found'], 404);
+        }
+    
+        
+        $memberships = $clubMembershipModel->where('id_club', $id)->findAll();
+        if (!$memberships) {
+            log_message('error', 'No memberships found for club: ' . $id);
+        }
+        $users = [];
+        foreach ($memberships as $membership) {
+            $userDetails = $userModel->find($membership['id_user']);
+            if ($userDetails) {
+                $users[] = [
+                    'membership_id' => $membership['id'],
+                    'user_id' => $userDetails['id'],
+                    'name' => $userDetails['first_name'] . ' ' . $userDetails['last_name'],
+                    'email' => $userDetails['email'],
+                    'picture' => $userDetails['picture'],
+                    'role' => $membership['role'],
+                    'join_date' => $membership['join_date'],
+                    'status' => $membership['status']
+                ];
+            } else {
+                log_message('error', 'User details not found for membership: ' . $membership['id']);
             }
         }
     
+        return $this->response->setJSON(['status' => 'success', 'users' => $users]);
+    }
 
-        public function getClubUsers($id)
+    public function push()
+    {
+        $to = 'alahyane900@gmail.com';//Type here the mail address where you want to send
+        $subject = 'Subject of Email';//Write here Subject of Email
+        $message="Conngrats ! You did it.";//Write the message you want to send
+        $email = \Config\Services::email();
+        $email->setTo($to);
+        $email->setFrom('alahyane900@gmail.com','Reset Password');//set From
+        $email->setSubject($subject);
+        $email->setMessage($message);
+        if($email->send())
         {
-            $clubModel = new ClubModel();
-            $clubMembershipModel = new ClubMembershipModel();
-            $userModel = new UserModel();
-        
-            $club = $clubModel->find($id);
-            if (!$club) {
-                log_message('error', 'Club not found: ' . $id);
-                return $this->response->setJSON(['status' => 'error', 'message' => 'Club not found'], 404);
-            }
-        
-            
-            $memberships = $clubMembershipModel->where('id_club', $id)->findAll();
-            if (!$memberships) {
-                log_message('error', 'No memberships found for club: ' . $id);
-            }
-
-            $logoUrl = base_url('public/uploads/' . $club['logo']);
-            $users = [];
-            foreach ($memberships as $membership) {
-                $userDetails = $userModel->find($membership['id_user']);
-                if ($userDetails) {
-                    $users[] = [
-                        'membership_id' => $membership['id'],
-                        'user_id' => $userDetails['id'],
-                        'name' => $userDetails['first_name'] . ' ' . $userDetails['last_name'],
-                        'email' => $userDetails['email'],
-                        'picture' => $userDetails['picture'],
-                        'role' => $membership['role'],
-                        'join_date' => $membership['join_date'],
-                        'status' => $membership['status'],
-                       'logo' => $logoUrl,
-                    ];
-                } else {
-                    log_message('error', 'User details not found for membership: ' . $membership['id']);
-                }
-            }
-        
-            return $this->response->setJSON(['status' => 'success', 'users' => $users]);
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Email has been Sent.',
+            ]);
         }
-
-        public function push()
-        {
-            $to = 'alahyane900@gmail.com';//Type here the mail address where you want to send
-            $subject = 'Subject of Email';//Write here Subject of Email
-            $message="Conngrats ! You did it.";//Write the message you want to send
-            $email = \Config\Services::email();
-            $email->setTo($to);
-            $email->setFrom('alahyane900@gmail.com','Mail Testing');//set From
-            $email->setSubject($subject);
-            $email->setMessage($message);
-            if($email->send())
-            {
-                return $this->response->setJSON([
-                    'status' => 'success',
-                    'message' => 'Email has been Sent.',
-                ]);
-            }
-            else{
-                return $this->response->setJSON([
-                    'status' => 'error',
-                    'message' => 'Something went wrong !',
-                ]);
-            }
+        else{
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Something went wrong !',
+            ]);
         }
+    }
     
+    // Reset Password
+    public function resetPassword($id)
+    {
+        $validation = \Config\Services::validation();
+
+        // Define validation rules
+        $validation->setRules([
+            'currentPassword' => 'required',
+            'newPassword' => 'required|min_length[8]',
+        ]);
+
+        // Validate input
+        if (!$validation->withRequest($this->request)->run()) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validation->getErrors(),
+            ]);
+        }
+
+        $currentPassword = $this->request->getVar('currentPassword');
+        $newPassword = $this->request->getVar('newPassword');
+
+        // Load the user model
+        $userModel = new UserModel();
+        $user = $userModel->find($id);
+
+        // Check if the user exists
+        if (!$user) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'User not found',
+            ], 404);
+        }
+
+        // Verify the current password
+        if (!password_verify($currentPassword, $user['password'])) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Current password is incorrect',
+            ], 403);
+        }
+
+        // Check if the new password is the same as the current password
+        if (password_verify($newPassword, $user['password'])) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'New password must be different from the current password',
+            ], 400);
+        }
+
+        // Update the user's password
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        $userModel->update($id, ['password' => $hashedPassword]);
+
+        return $this->response->setJSON([
+            'status' => 'success',
+            'message' => 'Password has been reset successfully',
+        ]);
+    }
+
+    // Reset Forgot Password
+    public function forgotPassword()
+    {
+        $validation = \Config\Services::validation();
+
+        // Validate email input
+        $validation->setRules([
+            'email' => 'required|valid_email',
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => $validation->getErrors(),
+            ]);
+        }
+
+        $emailInput = $this->request->getVar('email');
+
+        // Load UserModel
+        $userModel = new \App\Models\UserModel();
+
+        // Check if the email exists in the database
+        $user = $userModel->where('email', $emailInput)->first();
+
+        if (!$user) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'No account associated with this email address.',
+            ]);
+        }
+
+        // Generate a new password
+        $newPassword = bin2hex(random_bytes(4)); // Generates a random 8-character password
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+        // Update the user's password in the database
+        $userModel->update($user['id'], ['password' => $hashedPassword]);
+
+        // Prepare email
+        $to = $emailInput;
+        $subject = 'Password Reset';
+        $message = "Hello {$user['first_name']},\n\nYour password has been reset. Here is your new password:\n\n$newPassword\n\nPlease change your password after logging in.";
+
+        $email = \Config\Services::email();
+        $email->setTo($to);
+        $email->setFrom('alahyane900@gmail.com', 'UCM'); // Replace with your "From" address
+        $email->setSubject($subject);
+        $email->setMessage($message);
+
+        if ($email->send()) {
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'A new password has been sent to your email address.',
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Failed to send the email. Please try again later.',
+            ]);
+        }
+    }
+
+
 }

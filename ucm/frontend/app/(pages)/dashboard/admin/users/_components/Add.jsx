@@ -110,7 +110,7 @@ export default function Add() {
                     type="text"
                     id="last_name"
                     name="last_name"
-                    placeholder="First name"
+                    placeholder="Last name"
                   />
                   {state?.errors?.last_name && (
                     <p className="text-red-500 text-xs">

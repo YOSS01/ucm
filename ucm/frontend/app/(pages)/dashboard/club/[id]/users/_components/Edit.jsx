@@ -1,20 +1,14 @@
 "use client";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
-import { editUser } from "@/app/_actions/users";
+import { editClubUser } from "@/app/_actions/clubs";
 
 // Toaster
 import toast from "react-hot-toast";
 
 export default function Edit({ user }) {
-  const [userPic, setUserPic] = useState(
-    user?.picture
-      ? `${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/users/${user?.picture}`
-      : ""
-  );
   const [isEditBttnActive, setIsEditBttnActive] = useState(false);
-  const [state, action] = useFormState(editUser, undefined);
+  const [state, action] = useFormState(editClubUser, undefined);
 
   useEffect(() => {
     if (state?.response?.status === 500) {
@@ -24,6 +18,7 @@ export default function Edit({ user }) {
       setIsEditBttnActive(false);
     }
   }, [state]);
+
   return (
     <>
       <button
@@ -75,7 +70,12 @@ export default function Edit({ user }) {
           >
             <h1 className="font-original_surfer text-3xl text-center">Edit</h1>
             <div className="w-full flex flex-col gap-y-5 text-sm max-h-[400px] overflow-y-auto visible-scrollbar">
-              <input type="hidden" name="userID" id="userID" value={user?.id} />
+              <input
+                type="hidden"
+                name="membershipID"
+                id="membershipID"
+                value={user?.membership_id}
+              />
               <div className="flex flex-col">
                 <label htmlFor="status" className="w-fit">
                   Status

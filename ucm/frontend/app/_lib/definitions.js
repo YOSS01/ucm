@@ -18,9 +18,12 @@ export const SignupFormSchema = z
     picture: z
       .any()
       .optional()
-      .refine((file) => file?.size <= MAX_FILE_SIZE, `Max image size is 1MB.`)
       .refine(
-        (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
+        (file) => !file || file.size <= MAX_FILE_SIZE,
+        `Max image size is 1MB.`
+      )
+      .refine(
+        (file) => !file || ACCEPTED_IMAGE_TYPES.includes(file.type),
         "Only .jpg, .jpeg, .png, .avif and .webp formats are supported."
       ),
     first_name: z
@@ -140,4 +143,45 @@ export const AddClubFormSchema = z.object({
     .string()
     .min(2, { message: "Slug must be at least 2 characters long." })
     .trim(),
+});
+
+export const EditClubMembershipFormSchema = z.object({
+  membershipID: z.string(),
+  status: z.string(),
+});
+
+//
+// Users
+//
+
+export const ResetPasswordFormSchema = z
+  .object({
+    userID: z.string(),
+    currentPassword: z.string({ message: "Password must not be null." }),
+    newPassword: z
+      .string()
+      .min(8, { message: "Be at least 8 characters long. " })
+      .regex(/[a-zA-Z]/, { message: "Contain at least one letter. " })
+      .regex(/[0-9]/, { message: "Contain at least one number. " })
+      .regex(/[^a-zA-Z0-9]/, {
+        message: "Contain at least one special character. ",
+      })
+      .trim(),
+
+    confirmPassword: z
+      .string()
+      .min(8, { message: "Be at least 8 characters long. " }),
+  })
+  .superRefine(({ confirmPassword, newPassword }, ctx) => {
+    if (confirmPassword !== newPassword) {
+      ctx.addIssue({
+        code: "custom",
+        message: "The passwords did not match",
+        path: ["confirmPassword"],
+      });
+    }
+  });
+
+export const ForgetPasswordFormSchema = z.object({
+  email: z.string().email({ message: "Please enter a valid email." }).trim(),
 });

@@ -26,7 +26,7 @@ export default async function page() {
       <div className="w-full h-full flex justify-center items-center">
         <div className="h-[550px] w-full max-w-[450px] bg-white rounded-3xl flex flex-col justify-center gap-y-10 relative z-50 p-5 overflow-hidden">
           <Edit user={user} />
-          <ResetPassword />
+          <ResetPassword id={user?.id} />
           <div className="flex flex-col items-center gap-y-2">
             <div className="size-[150px] border rounded-full overflow-hidden">
               {user?.picture ? (
@@ -59,8 +59,36 @@ export default async function page() {
           </div>
           <div>
             <h2 className="text-sm">Clubs:</h2>
-            <ul className="min-h-[100px] flex justify-center items-center text-xs text-black/40">
-              Not member in any club yet
+            <ul className="min-h-[80px] max-h-[80px] flex flex-wrap justify-center items-center py-3 gap-2 text-xs text-black/40 overflow-y-auto">
+              {user?.clubs?.length !== 0
+                ? user?.clubs?.map((club, key) => (
+                    <li key={key}>
+                      {club?.status === "approved" ? (
+                        club?.role === "president" ? (
+                          <Link href={`/dashboard/club/${club?.club_id}`}>
+                            <Image
+                              src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.logo}`}
+                              alt="Club Logo"
+                              width={100}
+                              height={100}
+                              className="size-14 object-contain"
+                            />
+                          </Link>
+                        ) : (
+                          <Image
+                            src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.logo}`}
+                            alt="Club Logo"
+                            width={100}
+                            height={100}
+                            className="size-14 object-contain"
+                          />
+                        )
+                      ) : (
+                        ""
+                      )}
+                    </li>
+                  ))
+                : "Not member in any club yet"}
             </ul>
           </div>
           <Logout />
