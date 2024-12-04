@@ -20,6 +20,22 @@ class EventController extends BaseController
     {
         $eventModel = new EventModel();
         $events = $eventModel->findAll();
+        $clubModel = new ClubModel();
+        $clubMembershipModel = new ClubMembershipModel(); 
+    
+        foreach ($events as &$event) {
+            
+            $club = $clubModel->find($event['id_club']);
+            if ($club) {
+                $event['club_name'] = $club['name'];
+            } else {
+                $event['club_name'] = 'Unknown Club';
+            }
+    
+            $participantCount = $clubMembershipModel->where('id_event', $event['id'])->countAllResults();
+            $event['participant_count'] = $participantCount;
+        }
+    
         return $this->response->setJSON($events);
     }
 
@@ -135,14 +151,14 @@ class EventController extends BaseController
         $clubModel = new ClubModel();
         $eventModel = new EventModel();
     
-        // Check if the club exists
+      
         $club = $clubModel->find($id);
         if (!$club) {
             log_message('error', 'Club not found: ' . $id);
             return $this->response->setJSON(['status' => 'error', 'message' => 'Club not found'], 404);
         }
     
-        // Fetch events for the club
+      
         $events = $eventModel->where('id_club', $id)->findAll();
     
         $eventDetails = [];
