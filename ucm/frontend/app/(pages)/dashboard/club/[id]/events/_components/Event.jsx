@@ -4,8 +4,10 @@ import Image from "next/image";
 import View from "./View";
 import Edit from "./Edit";
 import Delete from "./Delete";
+import Link from "next/link";
 
 export default function Event({ item, id }) {
+  console.log(item);
   return (
     <li>
       <div className="w-full flex justify-center items-center">
@@ -23,7 +25,9 @@ export default function Event({ item, id }) {
           </div>
           <div className="w-full h-1/2 flex flex-col justify-between items-center gap-y-3 p-3 text-sm">
             <h2 className="font-original_surfer text-center line-clamp-2">
-              {item?.name}
+              <Link href={`/dashboard/club/${id}/events/${item?.id}`}>
+                {item?.name}
+              </Link>
             </h2>
             <div className="w-full flex flex-col gap-y-1 text-xs text-gray-600">
               <span className="line-clamp-1">
