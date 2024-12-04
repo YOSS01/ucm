@@ -44,6 +44,11 @@ class CreateClubsTable extends Migration
                 'constraint' => '255',
                 'null'       => true,
             ],
+            'email'=>[
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+                'null'       => true,
+            ],
             'status' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',

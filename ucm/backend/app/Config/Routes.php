@@ -59,6 +59,7 @@ $routes->get('/deleteEvent/(:num)','EventController::deleteEvent/$1');
 $routes->post('/add-event-request','EventRequestController::addeventrequest');
 $routes->post('/update-event-number-request/(:num)','EventRequestController::updateeventrequest/$1');
 $routes->get('/delet-event-number-request/(:num)','EventRequestController::deleteeventrequest/$1');
+$routes->get('/event-participate/(:num)', 'EventRequestController::eventVisitors/$1');
 
 //visitor routes
 $routes->post('addVisitor','VisitorController::addVisitor');

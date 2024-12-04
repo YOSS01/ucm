@@ -29,7 +29,7 @@ class EventRequestController extends BaseController
     return $this->response->setJSON(['status'=>'error','message'=>$validation->getErrors()]);
     }
 
-    // Check if the request is already exists
+   
     $existingEventRequest = $eventRequest->where('id_visitor', $this->request->getVar('id_visitor'))
     ->where('id_event', $this->request->getVar('id_event'))
     ->first();
@@ -81,6 +81,18 @@ class EventRequestController extends BaseController
   }else{
       return $this->response->setJSON(['status'=>'error','message'=>'Failed to delete evenreqt']);
   }
+ }
+
+
+ public function eventVisitors($id){
+
+    $event = new EventRequestModel();
+    $eventVisitors = $event->where('id_event', $id)->countAllResults();
+    
+  
+
+    return $this->response->setJSON([$eventVisitors]);
+    
  }
 
 }

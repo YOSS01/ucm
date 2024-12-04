@@ -95,3 +95,13 @@ INFO - 2024-12-03 12:10:34 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2024-12-03 15:58:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-12-03 15:59:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 >>>>>>> 4ef119b8a9b811b6de975f81908693a10f6825e4
+CRITICAL - 2024-12-03 22:09:55 --> ErrorException: Attempt to read property "visitor" on array
+[Method: GET, Route: event-participate/1]
+in APPPATH\Controllers\EventRequestController.php on line 92.
+ 1 APPPATH\Controllers\EventRequestController.php(92): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "visitor" on array', 'C:\\Users\\Oussama\\Desktop\\University_clubs_management\\ucm\\backend\\app\\Controllers\\EventRequestController.php', 92)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventRequestController->eventVisitors('1')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventRequestController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
