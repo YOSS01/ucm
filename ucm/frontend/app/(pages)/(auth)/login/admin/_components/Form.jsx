@@ -80,7 +80,7 @@ export default function Form() {
               )}
             </div>
 
-            <ForgetPassword />
+            {/* <ForgetPassword /> */}
           </div>
         </div>
       </div>
