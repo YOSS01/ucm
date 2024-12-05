@@ -2,45 +2,28 @@
 import { useState, useEffect } from "react";
 import Participant from "./Participant";
 
-const data = [
-  {
-    fullName: "Alice Johnson",
-    email: "alice.johnson@example.com",
-    status: "approved",
-  },
-  {
-    fullName: "Bob Smith",
-    email: "bob.smith@example.com",
-    status: "pending",
-  },
-  {
-    fullName: "Charlie Brown",
-    email: "charlie.brown@example.com",
-    status: "rejected",
-  },
-  {
-    fullName: "Diana Prince",
-    email: "diana.prince@example.com",
-    status: "approved",
-  },
-  {
-    fullName: "Ethan Hunt",
-    email: "ethan.hunt@example.com",
-    status: "pending",
-  },
-];
-
-export default function Participants() {
+export default function Participants({ data }) {
   const [participants, setParticipants] = useState(data);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     setParticipants(
       data?.filter((event) =>
-        event?.fullName.toLowerCase().includes(search.toLowerCase())
+        event?.name.toLowerCase().includes(search.toLowerCase())
       )
     );
   }, [search, data]);
+
+  const handleStatusChange = (requestId, newStatus) => {
+    setParticipants((prevParticipants) =>
+      prevParticipants.map((participant) =>
+        participant.requestId === requestId
+          ? { ...participant, status: newStatus }
+          : participant
+      )
+    );
+  };
+
   return (
     <>
       {/* Search Input */}
@@ -89,7 +72,12 @@ export default function Participants() {
 
           <tbody className="text-start text-sm divide-y divide-gray-100">
             {participants?.map((item, key) => (
-              <Participant item={item} key={key} index={key} />
+              <Participant
+                item={item}
+                key={key}
+                index={key}
+                onStatusChange={handleStatusChange}
+              />
             ))}
           </tbody>
         </table>

@@ -25,11 +25,6 @@ class CreateClubMembershipTable extends Migration
                 'constraint' => 5,
                 'unsigned'   => true,
             ],
-            'id_event' => [
-                'type'       => 'INT',
-                'constraint' => 5,
-                'unsigned'   => true,
-            ],
             'role' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',

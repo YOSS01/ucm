@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 class ClubMembershipModel extends Model
 {
     protected $table = 'clubmembership';
-    protected $allowedFields = ['id_club', 'id_user', 'id_event', 'role', 'join_date', 'status'];
+    protected $allowedFields = ['id_club', 'id_user', 'role', 'join_date', 'status'];
 
     public function getClub($membershipId)
     {
         $db = \Config\Database::connect();
         $builder = $db->table('clubmembership');
-        $builder->select('clubs.name as club_name, clubs.id as club_id');
+        $builder->select('clubs.name as club_name, clubs.id as club_id, clubs.logo as club_logo');
         $builder->join('clubs', 'clubs.id = clubmembership.id_club');
         $builder->where('clubmembership.id', $membershipId);
         $query = $builder->get();

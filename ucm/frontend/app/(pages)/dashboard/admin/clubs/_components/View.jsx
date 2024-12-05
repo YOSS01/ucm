@@ -1,41 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function View({ club }) {
   const [isViewBttnActive, setIsViewBttnActive] = useState(false);
-  const [president, setPresident] = useState({});
-
-  useEffect(() => {
-    // Fetch Users
-    const getUser = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_APP_BASE_URL}/user-number/${club?.id_president}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        if (!response.ok) {
-          // toast.error("Faild to load users!");
-          return;
-        }
-
-        const result = await response.json();
-        setPresident(result);
-        return;
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getUser();
-  }, []);
 
   return (
     <>
@@ -94,7 +63,7 @@ export default function View({ club }) {
                 alt="Club Logo"
                 width={500}
                 height={500}
-                className="min-h-[120px] min-w-[120px] size-[120px] overflow-hidden mb-3 object-contain pointer-events-none"
+                className="min-h-[120px] min-w-[120px] size-[120px] overflow-hidden mb-3 object-contain pointer-events-none bg-white/10 rounded-full p-3"
               />
             )}
             <h1 className="font-original_surfer">
@@ -130,23 +99,28 @@ export default function View({ club }) {
                 President:{" "}
                 <span className="text-white">
                   <span className="font-original_surfer">
-                    {president?.first_name + " " + president?.last_name}
+                    {club?.president_name}
                   </span>{" "}
                   /{" "}
                   <Link
-                    href={`mailto:${president?.email}`}
+                    href={`mailto:${club?.president_email}`}
                     className="text-[10px] italic font-original_surfer text-white/80 hover:text-white duration-300"
                   >
-                    {president?.email}
+                    {club?.president_email}
                   </Link>
                 </span>
               </p>
               <p className="text-white/80 font-light">
-                Members: <span className="text-green-500">55</span>
+                Members:{" "}
+                <span className="text-green-500 font-medium">
+                  {club?.members_count}
+                </span>
               </p>
               <p className="text-white/80 font-light">
                 Created At:{" "}
-                <span className="text-white">{club?.created_at}</span>
+                <span className="text-white font-medium">
+                  {club?.created_at}
+                </span>
               </p>
             </div>
           </div>

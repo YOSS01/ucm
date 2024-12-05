@@ -13,6 +13,7 @@ async function userParticipateIn(id_event, userId) {
     const data = {
       id_visitor: userId,
       id_event: id_event,
+      type: "user",
     };
 
     const response = await fetch(
@@ -119,34 +120,6 @@ function SeeMore({
   setIsGetInBttnActive,
   session,
 }) {
-  const [club, setClub] = useState({});
-
-  useEffect(() => {
-    // Fetch Users
-    const getClub = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_APP_BASE_URL}/club/${item?.id_club}`,
-          {
-            method: "GET",
-          }
-        );
-
-        if (!response.ok) {
-          // toast.error("Faild to load club!");
-          return;
-        }
-
-        const result = await response.json();
-        setClub(result);
-        return;
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getClub();
-  }, []);
   return (
     <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[500px] h-fit bg-white text-black px-5 pt-14 pb-7 z-50">
       <button
@@ -188,10 +161,10 @@ function SeeMore({
           <div className="flex gap-x-2">
             <span>Organized by:</span>
             <Link
-              href={`/clubs/${club?.slug}`}
+              href={`/clubs/${item?.club_slug}`}
               className="text-black font-medium font-original_surfer flex items-center gap-x-1"
             >
-              {club?.name}{" "}
+              {item?.club_name}{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

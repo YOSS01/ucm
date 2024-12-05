@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\ClubModel;
 use CodeIgniter\HTTP\IncomingRequest;
 use App\Models\EventModel;
+use App\Models\EventRequestModel;
 
 use App\Models\UserModel;
 use App\Models\ClubMembershipModel;
@@ -19,23 +20,17 @@ class EventController extends BaseController
     public function allEvents()
     {
         $eventModel = new EventModel();
-        $events = $eventModel->findAll();
-        $clubModel = new ClubModel();
-        $clubMembershipModel = new ClubMembershipModel(); 
-    
-        foreach ($events as &$event) {
-            
-            $club = $clubModel->find($event['id_club']);
-            if ($club) {
-                $event['club_name'] = $club['name'];
-            } else {
-                $event['club_name'] = 'Unknown Club';
-            }
-    
-            $participantCount = $clubMembershipModel->where('id_event', $event['id'])->countAllResults();
-            $event['participant_count'] = $participantCount;
-        }
-    
+        $events = $eventModel
+        ->select("
+            event.*, 
+            clubs.name as club_name, 
+            clubs.slug as club_slug, 
+            COUNT(CASE WHEN eventRequest.status = 'approved' THEN 1 END) as participant_count
+        ")
+        ->join('clubs', 'event.id_club = clubs.id') // Join with clubs table
+        ->join('eventRequest', 'event.id = eventRequest.id_event', 'left') // Join with eventRequest table
+        ->groupBy('event.id') // Group by event ID to ensure correct counts
+        ->findAll();
         return $this->response->setJSON($events);
     }
 
@@ -177,5 +172,82 @@ class EventController extends BaseController
         }
     
         return $this->response->setJSON(['status' => 'success', 'events' => $eventDetails]);
+    }
+
+    public function getEventParticipants($id)
+    {
+        $eventModel = new EventModel();
+        $eventRequestModel = new EventRequestModel();
+
+        // Check if the event exists
+        $event = $eventModel->find($id);
+
+        if (!$event) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Event not found'
+            ], 404);
+        }
+
+        // Get participants with 'approved' status
+        $participants = $eventRequestModel
+            ->select("
+                eventrequest.id as requestId,
+                eventrequest.type,
+                eventrequest.status,
+                eventrequest.request_date,
+                CASE
+                    WHEN eventrequest.type = 'user' THEN CONCAT(user.first_name, ' ', user.last_name)
+                    ELSE visitors.name
+                END AS name,
+                CASE
+                    WHEN eventrequest.type = 'user' THEN user.email
+                    ELSE visitors.email
+                END AS email
+            ")
+            ->join('user', 'eventrequest.id_visitor = user.id AND eventrequest.type = "user"', 'left')
+            ->join('visitors', 'eventrequest.id_visitor = visitors.id AND eventrequest.type = "visitor"', 'left')
+            ->where('eventrequest.id_event', $id)
+            ->findAll();
+
+        return $this->response->setJSON([
+            'status' => 'success',
+            'participants' => $participants
+        ], 200);
+    }
+
+    public function updateParticipantStatus($id)
+    {
+        $eventRequestModel = new EventRequestModel();
+
+        // Get the new status from the request payload
+        $newStatus = $this->request->getVar('status');
+
+        // Validate the input
+        if (!$newStatus || !in_array($newStatus, ['approved', 'pending', 'rejected'])) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Invalid or missing status value.'
+            ], 400);
+        }
+
+        // Find the event request by ID
+        $eventRequest = $eventRequestModel->find($id);
+
+        if (!$eventRequest) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Event request not found.'
+            ], 404);
+        }
+
+        // Update the status
+        $eventRequest['status'] = $newStatus;
+        $eventRequestModel->update($id, $eventRequest);
+
+        return $this->response->setJSON([
+            'status' => 'success',
+            'message' => 'Participant status updated successfully.',
+        ], 200);
     }
 }

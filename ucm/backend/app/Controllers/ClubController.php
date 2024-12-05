@@ -17,7 +17,17 @@ class ClubController extends BaseController
     public function allclubs()
     {
         $clubModel = new ClubModel();
-        $clubs = $clubModel->findAll();
+        $clubs = $clubModel
+        ->select("
+            clubs.*, 
+            CONCAT(user.first_name, ' ', user.last_name) as president_name, 
+            user.email as president_email, 
+            COUNT(CASE WHEN clubMembership.status = 'approved' THEN 1 END) as members_count
+        ")
+        ->join('user', 'clubs.id_president = user.id', 'left') // Join with users table for president details
+        ->join('clubmembership', 'clubs.id = clubmembership.id_club', 'left') // Join with clubMembership table
+        ->groupBy('clubs.id') // Group by club ID for correct aggregation
+        ->findAll();
         return $this->response->setJSON($clubs);
     }
 
@@ -30,6 +40,7 @@ class ClubController extends BaseController
     public function getClubBySlug($slug)
     {
         $clubModel = new ClubModel();
+        $clubMembershipModel = new ClubMembershipModel();
         $club = $clubModel->where('slug', $slug)->first();
 
         if ($club) {
@@ -39,14 +50,23 @@ class ClubController extends BaseController
             $eventModel = new EventModel();
             $events = $eventModel->where('id_club', $club['id'])->findAll();
 
-            if($user) {
+            // Count the approved members for the club
+            $approvedMembersCount = $clubMembershipModel
+                ->where('id_club', $club['id']) // Filter by club ID
+                ->where('status', 'approved') // Only approved members
+                ->countAllResults(); // Get the count of approved members
+
+            // Add the count to the response
+            if ($user) {
                 return $this->response->setJSON([
                     'status' => 'success',
-                    'club'=> $club,
-                    'president'=> $user,
-                    'events' => $events
+                    'club' => $club,
+                    'president' => $user,
+                    'events' => $events,
+                    'members_count' => $approvedMembersCount // Add the count here
                 ], 200);
             }
+
             return $this->response->setJSON([
                 'status' => 'error',
                 'message' => 'President not found'
@@ -58,6 +78,7 @@ class ClubController extends BaseController
             ], 404);
         }
     }
+
 
     public function addclubview()
     {

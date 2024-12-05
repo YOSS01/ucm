@@ -17,45 +17,35 @@ class CreateUsersTable extends Migration
             ],
             'email' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '255',
+                'constraint' => '150',
                 'unique' => true,
             ],
             'password' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '255',
+                'constraint' => '150',
             ],
             'first_name' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '255',
+                'constraint' => '150',
             ],
             'last_name' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '255',
+                'constraint' => '150',
             ],
             'cin' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '255',
+                'constraint' => '150',
                 'unique' => true,
             ],
             'picture' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '255',
+                'constraint' => '150',
                 'null'       => true,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
             ]
-        ,
-        'reset_token' => [
-            'type'       => 'VARCHAR',
-            'constraint' => '255',
-            'null'       => true,
-        ],
-        'reset_expires' => [
-            'type' => 'DATETIME',
-            'null' => true,
-        ]
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('user');

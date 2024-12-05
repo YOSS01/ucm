@@ -49,6 +49,7 @@ export default async function Club({ params }) {
           club={data?.club}
           president={data?.president}
           events={data?.events}
+          members_count={data?.members_count}
           session={session}
         />
       </div>

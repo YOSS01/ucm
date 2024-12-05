@@ -308,3 +308,665 @@ in APPPATH\Controllers\UserController.php on line 203.
  5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 13:53:31 --> ErrorException: Undefined property: stdClass::$club_logo
+[Method: GET, Route: user-number/5]
+in APPPATH\Controllers\UserController.php on line 203.
+ 1 APPPATH\Controllers\UserController.php(203): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$club_logo', 'D:\\FSA Courses\\S5\\Programation web dynamique\\University_clubs_management\\ucm\\backend\\app\\Controllers\\UserController.php', 203)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('5')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 14:00:32 --> ErrorException: Undefined property: stdClass::$club_logo
+[Method: GET, Route: user-number/5]
+in APPPATH\Controllers\UserController.php on line 203.
+ 1 APPPATH\Controllers\UserController.php(203): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$club_logo', 'D:\\FSA Courses\\S5\\Programation web dynamique\\University_clubs_management\\ucm\\backend\\app\\Controllers\\UserController.php', 203)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->getuserByid('5')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-12-04 14:16:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-12-04 15:54:14 --> mysqli_sql_exception: Unknown table 'events' in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `events`...', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `events`...')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `events`...')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `events`...', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(25): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-04 15:54:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'events'
+[Method: GET, Route: all-events]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `events`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`
+FROM `event`
+JOIN `clubs` ON `events`.`id_club` = `clubs`.`id`', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\EventController.php(25): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 15:54:14 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'events'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `events`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`
+FROM `event`
+JOIN `clubs` ON `events`.`id_club` = `clubs`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `events`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`
+FROM `event`
+JOIN `clubs` ON `events`.`id_club` = `clubs`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `events`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`
+FROM `event`
+JOIN `clubs` ON `events`.`id_club` = `clubs`.`id`', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\EventController.php(25): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 15:54:14 --> [Caused by] mysqli_sql_exception: Unknown table 'events'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `events`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`
+FROM `event`
+JOIN `clubs` ON `events`.`id_club` = `clubs`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `events`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`
+FROM `event`
+JOIN `clubs` ON `events`.`id_club` = `clubs`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `events`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`
+FROM `event`
+JOIN `clubs` ON `events`.`id_club` = `clubs`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `events`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`
+FROM `event`
+JOIN `clubs` ON `events`.`id_club` = `clubs`.`id`', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\EventController.php(25): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-12-04 16:07:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-04 16:15:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-04 16:20:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-12-04 16:29:21 --> mysqli_sql_exception: Unknown column 'user.name' in 'field list' in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `clubs`....', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `clubs`....')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `clubs`....')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `clubs`....', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\ClubController.php(30): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-04 16:29:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user.name' in 'field list'
+[Method: GET, Route: all-clubs]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `clubs`.*, `user`.`name` as `president_name`, `user`.`email` as `president_email`, COUNT(CASE WHEN clubMembership.status = \'approved\' THEN 1 END) as members_count
+FROM `clubs`
+LEFT JOIN `user` ON `clubs`.`id_president` = `user`.`id`
+LEFT JOIN `clubmembership` ON `clubs`.`id` = `clubmembership`.`id_club`
+GROUP BY `clubs`.`id`', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ClubController.php(30): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 16:29:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `clubs`.*, `user`.`name` as `president_name`, `user`.`email` as `president_email`, COUNT(CASE WHEN clubMembership.status = \'approved\' THEN 1 END) as members_count
+FROM `clubs`
+LEFT JOIN `user` ON `clubs`.`id_president` = `user`.`id`
+LEFT JOIN `clubmembership` ON `clubs`.`id` = `clubmembership`.`id_club`
+GROUP BY `clubs`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `clubs`.*, `user`.`name` as `president_name`, `user`.`email` as `president_email`, COUNT(CASE WHEN clubMembership.status = \'approved\' THEN 1 END) as members_count
+FROM `clubs`
+LEFT JOIN `user` ON `clubs`.`id_president` = `user`.`id`
+LEFT JOIN `clubmembership` ON `clubs`.`id` = `clubmembership`.`id_club`
+GROUP BY `clubs`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `clubs`.*, `user`.`name` as `president_name`, `user`.`email` as `president_email`, COUNT(CASE WHEN clubMembership.status = \'approved\' THEN 1 END) as members_count
+FROM `clubs`
+LEFT JOIN `user` ON `clubs`.`id_president` = `user`.`id`
+LEFT JOIN `clubmembership` ON `clubs`.`id` = `clubmembership`.`id_club`
+GROUP BY `clubs`.`id`', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\ClubController.php(30): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 16:29:21 --> [Caused by] mysqli_sql_exception: Unknown column 'user.name' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `clubs`.*, `user`.`name` as `president_name`, `user`.`email` as `president_email`, COUNT(CASE WHEN clubMembership.status = \'approved\' THEN 1 END) as members_count
+FROM `clubs`
+LEFT JOIN `user` ON `clubs`.`id_president` = `user`.`id`
+LEFT JOIN `clubmembership` ON `clubs`.`id` = `clubmembership`.`id_club`
+GROUP BY `clubs`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `clubs`.*, `user`.`name` as `president_name`, `user`.`email` as `president_email`, COUNT(CASE WHEN clubMembership.status = \'approved\' THEN 1 END) as members_count
+FROM `clubs`
+LEFT JOIN `user` ON `clubs`.`id_president` = `user`.`id`
+LEFT JOIN `clubmembership` ON `clubs`.`id` = `clubmembership`.`id_club`
+GROUP BY `clubs`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `clubs`.*, `user`.`name` as `president_name`, `user`.`email` as `president_email`, COUNT(CASE WHEN clubMembership.status = \'approved\' THEN 1 END) as members_count
+FROM `clubs`
+LEFT JOIN `user` ON `clubs`.`id_president` = `user`.`id`
+LEFT JOIN `clubmembership` ON `clubs`.`id` = `clubmembership`.`id_club`
+GROUP BY `clubs`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `clubs`.*, `user`.`name` as `president_name`, `user`.`email` as `president_email`, COUNT(CASE WHEN clubMembership.status = \'approved\' THEN 1 END) as members_count
+FROM `clubs`
+LEFT JOIN `user` ON `clubs`.`id_president` = `user`.`id`
+LEFT JOIN `clubmembership` ON `clubs`.`id` = `clubmembership`.`id_club`
+GROUP BY `clubs`.`id`', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\ClubController.php(30): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-12-04 17:17:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-04 17:39:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-04 17:40:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-04 17:41:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-04 18:00:21 --> Error: Class "App\Controllers\EventRequestModel" not found
+[Method: GET, Route: get-event-participants/1]
+in APPPATH\Controllers\EventController.php on line 179.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 18:03:17 --> Error: Class "App\Controllers\EventRequestModel" not found
+[Method: GET, Route: get-event-participants/1]
+in APPPATH\Controllers\EventController.php on line 179.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-04 18:04:00 --> mysqli_sql_exception: Table 'clubs_managment_system.users' doesn't exist in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event_r...', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event_r...')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event_r...')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event_r...', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(198): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-04 18:04:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'clubs_managment_system.users' doesn't exist
+[Method: GET, Route: get-event-participants/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event_requests`.`id_visitor`, `event_requests`.`status`, `users`.`first_name`, `users`.`last_name`, `users`.`email`
+FROM `eventrequest`
+JOIN `users` ON `event_requests`.`id_visitor` = `users`.`id`
+WHERE `event_requests`.`id_event` = :event_requests.id_event:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\EventController.php(198): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 18:04:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'clubs_managment_system.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event_requests`.`id_visitor`, `event_requests`.`status`, `users`.`first_name`, `users`.`last_name`, `users`.`email`
+FROM `eventrequest`
+JOIN `users` ON `event_requests`.`id_visitor` = `users`.`id`
+WHERE `event_requests`.`id_event` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event_requests`.`id_visitor`, `event_requests`.`status`, `users`.`first_name`, `users`.`last_name`, `users`.`email`
+FROM `eventrequest`
+JOIN `users` ON `event_requests`.`id_visitor` = `users`.`id`
+WHERE `event_requests`.`id_event` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event_requests`.`id_visitor`, `event_requests`.`status`, `users`.`first_name`, `users`.`last_name`, `users`.`email`
+FROM `eventrequest`
+JOIN `users` ON `event_requests`.`id_visitor` = `users`.`id`
+WHERE `event_requests`.`id_event` = :event_requests.id_event:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\EventController.php(198): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 18:04:00 --> [Caused by] mysqli_sql_exception: Table 'clubs_managment_system.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event_requests`.`id_visitor`, `event_requests`.`status`, `users`.`first_name`, `users`.`last_name`, `users`.`email`
+FROM `eventrequest`
+JOIN `users` ON `event_requests`.`id_visitor` = `users`.`id`
+WHERE `event_requests`.`id_event` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event_requests`.`id_visitor`, `event_requests`.`status`, `users`.`first_name`, `users`.`last_name`, `users`.`email`
+FROM `eventrequest`
+JOIN `users` ON `event_requests`.`id_visitor` = `users`.`id`
+WHERE `event_requests`.`id_event` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event_requests`.`id_visitor`, `event_requests`.`status`, `users`.`first_name`, `users`.`last_name`, `users`.`email`
+FROM `eventrequest`
+JOIN `users` ON `event_requests`.`id_visitor` = `users`.`id`
+WHERE `event_requests`.`id_event` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event_requests`.`id_visitor`, `event_requests`.`status`, `users`.`first_name`, `users`.`last_name`, `users`.`email`
+FROM `eventrequest`
+JOIN `users` ON `event_requests`.`id_visitor` = `users`.`id`
+WHERE `event_requests`.`id_event` = :event_requests.id_event:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\EventController.php(198): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-12-04 18:05:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-04 18:06:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-04 18:06:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-12-04 22:36:00 --> mysqli_sql_exception: Unknown column 'visitors.fullname' in 'field list' in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `eventre...', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `eventre...')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `eventre...')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventre...', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(206): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('4')
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-04 22:36:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'visitors.fullname' in 'field list'
+[Method: GET, Route: get-event-participants/4]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = :eventrequest.id_event:
+AND `eventrequest`.`status` = :eventrequest.status:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\EventController.php(206): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('4')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 22:36:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'visitors.fullname' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'4\'
+AND `eventrequest`.`status` = \'approved\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'4\'
+AND `eventrequest`.`status` = \'approved\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = :eventrequest.id_event:
+AND `eventrequest`.`status` = :eventrequest.status:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\EventController.php(206): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('4')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 22:36:00 --> [Caused by] mysqli_sql_exception: Unknown column 'visitors.fullname' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'4\'
+AND `eventrequest`.`status` = \'approved\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'4\'
+AND `eventrequest`.`status` = \'approved\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'4\'
+AND `eventrequest`.`status` = \'approved\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = :eventrequest.id_event:
+AND `eventrequest`.`status` = :eventrequest.status:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\EventController.php(206): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('4')
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-04 22:36:11 --> mysqli_sql_exception: Unknown column 'visitors.fullname' in 'field list' in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `eventre...', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `eventre...')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `eventre...')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventre...', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(206): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('4')
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-04 22:36:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'visitors.fullname' in 'field list'
+[Method: GET, Route: get-event-participants/4]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = :eventrequest.id_event:
+AND `eventrequest`.`status` = :eventrequest.status:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\EventController.php(206): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('4')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 22:36:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'visitors.fullname' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'4\'
+AND `eventrequest`.`status` = \'approved\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'4\'
+AND `eventrequest`.`status` = \'approved\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = :eventrequest.id_event:
+AND `eventrequest`.`status` = :eventrequest.status:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\EventController.php(206): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('4')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 22:36:11 --> [Caused by] mysqli_sql_exception: Unknown column 'visitors.fullname' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'4\'
+AND `eventrequest`.`status` = \'approved\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'4\'
+AND `eventrequest`.`status` = \'approved\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'4\'
+AND `eventrequest`.`status` = \'approved\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = :eventrequest.id_event:
+AND `eventrequest`.`status` = :eventrequest.status:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\EventController.php(206): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('4')
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-04 22:37:56 --> mysqli_sql_exception: Unknown column 'visitors.fullname' in 'field list' in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `eventre...', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `eventre...')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `eventre...')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventre...', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(206): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-04 22:37:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'visitors.fullname' in 'field list'
+[Method: GET, Route: get-event-participants/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = :eventrequest.id_event:
+AND `eventrequest`.`status` = :eventrequest.status:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\EventController.php(206): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 22:37:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'visitors.fullname' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'1\'
+AND `eventrequest`.`status` = \'approved\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'1\'
+AND `eventrequest`.`status` = \'approved\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = :eventrequest.id_event:
+AND `eventrequest`.`status` = :eventrequest.status:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\EventController.php(206): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-04 22:37:56 --> [Caused by] mysqli_sql_exception: Unknown column 'visitors.fullname' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'1\'
+AND `eventrequest`.`status` = \'approved\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'1\'
+AND `eventrequest`.`status` = \'approved\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = \'1\'
+AND `eventrequest`.`status` = \'approved\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventrequest`.`id_visitor`, `visitors`.`fullname` as `name`, `visitors`.`email`, "visitor" as `type`
+FROM `eventrequest`
+JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id`
+WHERE `eventrequest`.`id_event` = :eventrequest.id_event:
+AND `eventrequest`.`status` = :eventrequest.status:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\EventController.php(206): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-04 22:56:28 --> mysqli_sql_exception: Specified key was too long; max key length is 1000 bytes in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `c...', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193711_CreateClubsTable.php(66): CodeIgniter\Database\Forge->createTable('clubs')
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateClubsTable->up()
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\BaseCommand.php(119): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\MigrateRefresh.php(87): CodeIgniter\CLI\BaseCommand->call('migrate', Array)
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\MigrateRefresh->run(Array)
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate:refresh', Array)
+#13 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#14 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#15 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#16 {main}
+ERROR - 2024-12-04 22:59:04 --> mysqli_sql_exception: Specified key was too long; max key length is 1000 bytes in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `c...', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `c...')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `c...')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `c...')
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193711_CreateClubsTable.php(66): CodeIgniter\Database\Forge->createTable('clubs')
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateClubsTable->up()
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\BaseCommand.php(119): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\MigrateRefresh.php(87): CodeIgniter\CLI\BaseCommand->call('migrate', Array)
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\MigrateRefresh->run(Array)
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate:refresh', Array)
+#13 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#14 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#15 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#16 {main}
+ERROR - 2024-12-04 22:59:41 --> mysqli_sql_exception: Specified key was too long; max key length is 1000 bytes in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `u...', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193712_CreateUsersTable.php(61): CodeIgniter\Database\Forge->createTable('user')
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateUsersTable->up()
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\BaseCommand.php(119): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\MigrateRefresh.php(87): CodeIgniter\CLI\BaseCommand->call('migrate', Array)
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\MigrateRefresh->run(Array)
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate:refresh', Array)
+#13 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#14 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#15 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#16 {main}
+ERROR - 2024-12-04 23:00:06 --> mysqli_sql_exception: Specified key was too long; max key length is 1000 bytes in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `u...', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193712_CreateUsersTable.php(61): CodeIgniter\Database\Forge->createTable('user')
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateUsersTable->up()
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\BaseCommand.php(119): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\MigrateRefresh.php(87): CodeIgniter\CLI\BaseCommand->call('migrate', Array)
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\MigrateRefresh->run(Array)
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate:refresh', Array)
+#13 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#14 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#15 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#16 {main}
+ERROR - 2024-12-04 23:00:39 --> mysqli_sql_exception: Specified key was too long; max key length is 1000 bytes in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `u...', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Database\Migrations\2024-11-10-193712_CreateUsersTable.php(51): CodeIgniter\Database\Forge->createTable('user')
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateUsersTable->up()
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\BaseCommand.php(119): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Commands\Database\MigrateRefresh.php(87): CodeIgniter\CLI\BaseCommand->call('migrate', Array)
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\MigrateRefresh->run(Array)
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate:refresh', Array)
+#13 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#14 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#15 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#16 {main}
+INFO - 2024-12-04 23:08:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-04 23:25:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

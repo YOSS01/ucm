@@ -23,29 +23,34 @@ class EventRequestController extends BaseController
     $validation->setRules(([
     'id_visitor' => 'required|integer',
     'id_event' => 'required|integer',
+    'type' => 'required|string'
     ]));
 
     if($validation->withRequest($this->request)->run() == false){
     return $this->response->setJSON(['status'=>'error','message'=>$validation->getErrors()]);
     }
 
-   
-    $existingEventRequest = $eventRequest->where('id_visitor', $this->request->getVar('id_visitor'))
-    ->where('id_event', $this->request->getVar('id_event'))
-    ->first();
+   if($this->request->getVar('type') == "user") {
+        $existingEventRequest = $eventRequest->where('id_visitor', $this->request->getVar('id_visitor'))
+        ->where('id_event', $this->request->getVar('id_event'))
+        ->first();
 
-    if ($existingEventRequest) {
-        return $this->response->setJSON([
-            'status' => 'error',
-            'message' => 'Request for this event has already been submitted.',
-        ]);
-    }
+        if ($existingEventRequest) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Request for this event has already been submitted.',
+            ]);
+        }
+   }
+    
 
     $data = [
         'id_visitor'   => $this->request->getVar('id_visitor'),
         'id_event'     => $this->request->getVar('id_event'),
         'status'       => "pending",
-        'request_date' => date('Y-m-d H:i:s')
+        'type'         => $this->request->getVar('type'),
+        'request_date' => date('Y-m-d H:i:s'),
+        'created_at' => date('Y-m-d H:i:s')
     ];
 
     if($eventRequest->insert($data)){

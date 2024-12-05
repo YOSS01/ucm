@@ -7,6 +7,9 @@ import Link from "next/link";
 // Toaster
 import toast from "react-hot-toast";
 
+// images
+import userPic from "@/public/images/user.svg";
+
 // gsap
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -18,6 +21,7 @@ export default function ObserverContainer({
   club,
   president,
   events,
+  members_count,
 }) {
   useEffect(() => {
     let sections = document.querySelectorAll(".section"),
@@ -82,6 +86,7 @@ export default function ObserverContainer({
         description={club?.description}
         createdAt={club?.created_at}
         events={events}
+        members_count={members_count}
       />
       <SectionThree session={session} clubID={club?.id} president={president} />
     </>
@@ -116,7 +121,7 @@ function SectionOne({ logo, name }) {
   );
 }
 
-function SectionTwo({ description, createdAt, events }) {
+function SectionTwo({ description, createdAt, events, members_count }) {
   return (
     <section className="section second">
       <div className="outer">
@@ -131,7 +136,8 @@ function SectionTwo({ description, createdAt, events }) {
                     <span className="font-semibold">{createdAt}</span>
                   </li>
                   <li>
-                    Members: <span className="font-semibold">24</span>
+                    Members:{" "}
+                    <span className="font-semibold">{members_count}</span>
                   </li>
                 </ul>
               </div>
@@ -173,13 +179,24 @@ function SectionThree({ session, clubID, president }) {
         <div className="inner">
           <div className="bg">
             <div className="flex flex-col items-center gap-y-7 z-10 text-white text-center">
-              <Image
-                src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/users/${president?.picture}`}
-                alt="President Img"
-                width={300}
-                height={300}
-                className="size-[150px] object-cover pointer-events-none rounded-full"
-              />
+              {president?.picture ? (
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/users/${president?.picture}`}
+                  alt="President Img"
+                  width={300}
+                  height={300}
+                  className="size-[150px] object-cover pointer-events-none rounded-full"
+                />
+              ) : (
+                <Image
+                  src={userPic}
+                  alt="user pic"
+                  width={500}
+                  height={500}
+                  className="size-[150px] object-cover pointer-events-none"
+                />
+              )}
+
               <div className="flex flex-col items-center gap-y-2">
                 <h1 className="font-original_surfer text-xl font-black">
                   {president?.first_name + " " + president?.last_name}{" "}

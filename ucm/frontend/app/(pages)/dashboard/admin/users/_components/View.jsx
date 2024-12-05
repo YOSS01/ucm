@@ -94,16 +94,34 @@ export default function View({ user }) {
             </h1>
 
             <span className="text-xs text-white/80 font-light uppercase">
-              CIN: {user?.cin}
+              CIN: <span className="font-medium text-white">{user?.cin}</span>
             </span>
             <span className="text-xs text-white/80 font-light">
-              Created At: {user?.created_at}
+              Created At:{" "}
+              <span className="font-medium text-white">{user?.created_at}</span>
             </span>
           </div>
           <div>
             <h2 className="text-sm">Clubs:</h2>
-            <ul className="min-h-[100px] flex justify-center items-center text-xs text-white/60">
-              Not member in any club yet
+            <ul className="min-h-[80px] max-h-[80px] flex flex-wrap justify-center items-center py-3 gap-2 text-xs overflow-y-auto">
+              {user?.clubs?.length !== 0 ? (
+                user?.clubs?.map((club, key) => (
+                  <li
+                    key={key}
+                    className="size-14 bg-white/10 rounded-full flex justify-center items-center p-1"
+                  >
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_APP_BASE_FILE_PATH}/clubs/${club?.club_logo}`}
+                      alt={club?.club_name}
+                      width={100}
+                      height={100}
+                      className="object-contain"
+                    />
+                  </li>
+                ))
+              ) : (
+                <li className="text-white/40">Not member in any club yet</li>
+              )}
             </ul>
           </div>
         </div>

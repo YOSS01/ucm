@@ -79,10 +79,6 @@ export default function View({ event, id }) {
                 Date:{" "}
                 <span className="text-white font-medium">{event?.date}</span>
               </p>
-              <p className="text-white/80 font-light">
-                Participants:{" "}
-                <span className="text-green-500 font-medium">77</span>
-              </p>
               {/* <p className="text-white/80 font-light">
                 Status:{" "}
                 <span

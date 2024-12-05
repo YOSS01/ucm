@@ -10,17 +10,17 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 //user routes 
-    $routes->post('/register', 'UserController::register'); //add new user
-    $routes->post('login', 'UserController::login');      
-    $routes->post('logout', 'UserController::logout');
-    $routes->get('/all-users','UserController::allusers');
-    $routes->get('user-number/(:num)','UserController::getuserByid/$1');
-    $routes->post('/update-user/(:num)','UserController::updateuser/$1');
-    $routes->post('/forget-password', 'UserController::forgetPassword');
-    $routes->post('/requestPasswordReset', 'UserController::requestPasswordReset');
-    $routes->post('/resetPassword/(:num)', 'UserController::resetPassword/$1');
-    $routes->get('/deleteUser/(:num)','UserController::deleteUser/$1');
-    $routes->get('/userclubs/(:num)','UserController::getClubUsers/$1');
+$routes->post('/register', 'UserController::register'); //add new user
+$routes->post('login', 'UserController::login');      
+$routes->post('logout', 'UserController::logout');
+$routes->get('/all-users','UserController::allusers');
+$routes->get('user-number/(:num)','UserController::getuserByid/$1');
+$routes->post('/update-user/(:num)','UserController::updateuser/$1');
+$routes->post('/forget-password', 'UserController::forgetPassword');
+$routes->post('/requestPasswordReset', 'UserController::requestPasswordReset');
+$routes->post('/resetPassword/(:num)', 'UserController::resetPassword/$1');
+$routes->post('/forgot-password','UserController::forgotPassword');
+$routes->get('/deleteUser/(:num)','UserController::deleteUser/$1');
 
 //admin routes
 $routes->post('/add-admin','AdminController::addadmin');
@@ -41,7 +41,7 @@ $routes->post('/add-club','ClubController::addClub');
 $routes->post('/update-club/(:num)','ClubController::updateClub/$1');
 $routes->get('/deleteClub/(:num)','ClubController::deleteClub/$1');
 
-// dashboard
+// club dashboard routes
 $routes->get('/club-events/(:num)','EventController::getClubEvents/$1');
 $routes->get('/club-users/(:num)','UserController::getClubUsers/$1');
 $routes->get('club-statistics/(:num)', 'ClubController::clubstatistics/$1');
@@ -53,6 +53,10 @@ $routes->get('/all-events','EventController::allEvents');
 $routes->post('/add-event','EventController::addevent'); 
 $routes->post('/update-event/(:num)','EventController::updateEvent/$1');
 $routes->get('/deleteEvent/(:num)','EventController::deleteEvent/$1');
+
+// events dashboard routes
+$routes->get('/get-event-participants/(:num)','EventController::getEventParticipants/$1');
+$routes->post('/update-event-participant-status/(:num)','EventController::updateParticipantStatus/$1');
 
 
 //event request routes
@@ -71,6 +75,3 @@ $routes->get('/delet-visitor/(:num)','VisitorController::deletevisitor/$1');
 $routes->get('club-mumbers','ClubMembershipController::index');
 $routes->post('/add-clubmembership', 'ClubMembershipController::addClubMembership');
 $routes->post('/update-clubmembership/(:num)','ClubMembershipController::updateClubMembershipStatus/$1');
-
-$routes->post('/forgot-password','UserController::forgotPassword');
-

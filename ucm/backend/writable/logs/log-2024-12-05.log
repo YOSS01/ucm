@@ -1,0 +1,794 @@
+ERROR - 2024-12-05 11:05:57 --> mysqli_sql_exception: Table 'eventrequest' is marked as crashed and should be repaired in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event`....', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`....')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`....')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`....', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-05 11:05:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'eventrequest' is marked as crashed and should be repaired
+[Method: GET, Route: all-events]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:05:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'eventrequest' is marked as crashed and should be repaired
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:05:57 --> [Caused by] mysqli_sql_exception: Table 'eventrequest' is marked as crashed and should be repaired
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-05 11:06:25 --> mysqli_sql_exception: Table 'eventrequest' is marked as crashed and should be repaired in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event`....', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`....')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`....')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`....', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-05 11:06:25 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'eventrequest' is marked as crashed and should be repaired
+[Method: GET, Route: all-events]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:06:25 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'eventrequest' is marked as crashed and should be repaired
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:06:25 --> [Caused by] mysqli_sql_exception: Table 'eventrequest' is marked as crashed and should be repaired
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-05 11:07:06 --> mysqli_sql_exception: Table 'eventrequest' is marked as crashed and should be repaired in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event`....', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`....')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`....')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`....', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-05 11:07:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'eventrequest' is marked as crashed and should be repaired
+[Method: GET, Route: all-events]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:07:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'eventrequest' is marked as crashed and should be repaired
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:07:06 --> [Caused by] mysqli_sql_exception: Table 'eventrequest' is marked as crashed and should be repaired
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-05 11:08:07 --> mysqli_sql_exception: Table 'eventrequest' is marked as crashed and should be repaired in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event`....', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`....')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`....')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`....', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-05 11:08:07 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'eventrequest' is marked as crashed and should be repaired
+[Method: GET, Route: all-events]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:08:07 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'eventrequest' is marked as crashed and should be repaired
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:08:07 --> [Caused by] mysqli_sql_exception: Table 'eventrequest' is marked as crashed and should be repaired
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-05 11:08:14 --> mysqli_sql_exception: Table 'eventrequest' is marked as crashed and should be repaired in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event`....', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`....')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`....')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`....', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-05 11:08:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'eventrequest' is marked as crashed and should be repaired
+[Method: GET, Route: all-events]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:08:14 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'eventrequest' is marked as crashed and should be repaired
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:08:14 --> [Caused by] mysqli_sql_exception: Table 'eventrequest' is marked as crashed and should be repaired
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-05 11:09:33 --> mysqli_sql_exception: Table 'eventrequest' is marked as crashed and should be repaired in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event`....', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`....')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`....')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`....', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-05 11:09:33 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'eventrequest' is marked as crashed and should be repaired
+[Method: GET, Route: all-events]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:09:33 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'eventrequest' is marked as crashed and should be repaired
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:09:33 --> [Caused by] mysqli_sql_exception: Table 'eventrequest' is marked as crashed and should be repaired
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-05 11:27:17 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'clubs_managment...', 3306, '', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`....', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`....', Array, false)
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-12-05 11:27:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: all-events]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2024-12-05 11:27:36 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'clubs_managment...', 3306, '', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `clubs`....', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\ClubController.php(30): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `clubs`....', Array, false)
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\ClubController.php(30): CodeIgniter\BaseModel->findAll()
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-12-05 11:27:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: all-clubs]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `clubs`.*, CONCAT(user.first_name, \' \', user.last_name) as president_name, `user`.`email` as `president_email`, COUNT(CASE WHEN clubMembership.status = \'approved\' THEN 1 END) as members_count
+FROM `clubs`
+LEFT JOIN `user` ON `clubs`.`id_president` = `user`.`id`
+LEFT JOIN `clubmembership` ON `clubs`.`id` = `clubmembership`.`id_club`
+GROUP BY `clubs`.`id`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\ClubController.php(30): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ClubController->allclubs()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ClubController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-12-05 11:31:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-12-05 11:48:26 --> mysqli_sql_exception: Unknown column 'visitors.fullname' in 'field list' in D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `eventre...', 0)
+#1 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `eventre...')
+#2 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `eventre...')
+#3 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventre...', Array, false)
+#4 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\app\Controllers\EventController.php(212): CodeIgniter\BaseModel->findAll()
+#7 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+#8 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\FSA Courses\S5\Programation web dynamique\University_clubs_management\ucm\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2024-12-05 11:48:26 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'visitors.fullname' in 'field list'
+[Method: GET, Route: get-event-participants/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventrequest`.`id_visitor`, `eventrequest`.`type`, `eventrequest`.`status`, `eventrequest`.`request_date`, CASE
+                    WHEN eventrequest.type = \'user\' THEN CONCAT(user.first_name, \' \', user.last_name)
+                    ELSE visitors.fullname
+                END AS name, CASE
+                    WHEN eventrequest.type = \'user\' THEN user.email
+                    ELSE visitors.email
+                END AS email
+FROM `eventrequest`
+LEFT JOIN `user` ON `eventrequest`.`id_visitor` = `user`.`id` AND `eventrequest`.`type` = "user"
+LEFT JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id` AND `eventrequest`.`type` = "visitor"
+WHERE `eventrequest`.`id_event` = :eventrequest.id_event:
+AND `eventrequest`.`status` = :eventrequest.status:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\EventController.php(212): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:48:26 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'visitors.fullname' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `eventrequest`.`id_visitor`, `eventrequest`.`type`, `eventrequest`.`status`, `eventrequest`.`request_date`, CASE
+                    WHEN eventrequest.type = \'user\' THEN CONCAT(user.first_name, \' \', user.last_name)
+                    ELSE visitors.fullname
+                END AS name, CASE
+                    WHEN eventrequest.type = \'user\' THEN user.email
+                    ELSE visitors.email
+                END AS email
+FROM `eventrequest`
+LEFT JOIN `user` ON `eventrequest`.`id_visitor` = `user`.`id` AND `eventrequest`.`type` = "user"
+LEFT JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id` AND `eventrequest`.`type` = "visitor"
+WHERE `eventrequest`.`id_event` = \'1\'
+AND `eventrequest`.`status` = \'approved\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `eventrequest`.`id_visitor`, `eventrequest`.`type`, `eventrequest`.`status`, `eventrequest`.`request_date`, CASE
+                    WHEN eventrequest.type = \'user\' THEN CONCAT(user.first_name, \' \', user.last_name)
+                    ELSE visitors.fullname
+                END AS name, CASE
+                    WHEN eventrequest.type = \'user\' THEN user.email
+                    ELSE visitors.email
+                END AS email
+FROM `eventrequest`
+LEFT JOIN `user` ON `eventrequest`.`id_visitor` = `user`.`id` AND `eventrequest`.`type` = "user"
+LEFT JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id` AND `eventrequest`.`type` = "visitor"
+WHERE `eventrequest`.`id_event` = \'1\'
+AND `eventrequest`.`status` = \'approved\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventrequest`.`id_visitor`, `eventrequest`.`type`, `eventrequest`.`status`, `eventrequest`.`request_date`, CASE
+                    WHEN eventrequest.type = \'user\' THEN CONCAT(user.first_name, \' \', user.last_name)
+                    ELSE visitors.fullname
+                END AS name, CASE
+                    WHEN eventrequest.type = \'user\' THEN user.email
+                    ELSE visitors.email
+                END AS email
+FROM `eventrequest`
+LEFT JOIN `user` ON `eventrequest`.`id_visitor` = `user`.`id` AND `eventrequest`.`type` = "user"
+LEFT JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id` AND `eventrequest`.`type` = "visitor"
+WHERE `eventrequest`.`id_event` = :eventrequest.id_event:
+AND `eventrequest`.`status` = :eventrequest.status:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\EventController.php(212): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-05 11:48:26 --> [Caused by] mysqli_sql_exception: Unknown column 'visitors.fullname' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `eventrequest`.`id_visitor`, `eventrequest`.`type`, `eventrequest`.`status`, `eventrequest`.`request_date`, CASE
+                    WHEN eventrequest.type = \'user\' THEN CONCAT(user.first_name, \' \', user.last_name)
+                    ELSE visitors.fullname
+                END AS name, CASE
+                    WHEN eventrequest.type = \'user\' THEN user.email
+                    ELSE visitors.email
+                END AS email
+FROM `eventrequest`
+LEFT JOIN `user` ON `eventrequest`.`id_visitor` = `user`.`id` AND `eventrequest`.`type` = "user"
+LEFT JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id` AND `eventrequest`.`type` = "visitor"
+WHERE `eventrequest`.`id_event` = \'1\'
+AND `eventrequest`.`status` = \'approved\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `eventrequest`.`id_visitor`, `eventrequest`.`type`, `eventrequest`.`status`, `eventrequest`.`request_date`, CASE
+                    WHEN eventrequest.type = \'user\' THEN CONCAT(user.first_name, \' \', user.last_name)
+                    ELSE visitors.fullname
+                END AS name, CASE
+                    WHEN eventrequest.type = \'user\' THEN user.email
+                    ELSE visitors.email
+                END AS email
+FROM `eventrequest`
+LEFT JOIN `user` ON `eventrequest`.`id_visitor` = `user`.`id` AND `eventrequest`.`type` = "user"
+LEFT JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id` AND `eventrequest`.`type` = "visitor"
+WHERE `eventrequest`.`id_event` = \'1\'
+AND `eventrequest`.`status` = \'approved\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `eventrequest`.`id_visitor`, `eventrequest`.`type`, `eventrequest`.`status`, `eventrequest`.`request_date`, CASE
+                    WHEN eventrequest.type = \'user\' THEN CONCAT(user.first_name, \' \', user.last_name)
+                    ELSE visitors.fullname
+                END AS name, CASE
+                    WHEN eventrequest.type = \'user\' THEN user.email
+                    ELSE visitors.email
+                END AS email
+FROM `eventrequest`
+LEFT JOIN `user` ON `eventrequest`.`id_visitor` = `user`.`id` AND `eventrequest`.`type` = "user"
+LEFT JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id` AND `eventrequest`.`type` = "visitor"
+WHERE `eventrequest`.`id_event` = \'1\'
+AND `eventrequest`.`status` = \'approved\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `eventrequest`.`id_visitor`, `eventrequest`.`type`, `eventrequest`.`status`, `eventrequest`.`request_date`, CASE
+                    WHEN eventrequest.type = \'user\' THEN CONCAT(user.first_name, \' \', user.last_name)
+                    ELSE visitors.fullname
+                END AS name, CASE
+                    WHEN eventrequest.type = \'user\' THEN user.email
+                    ELSE visitors.email
+                END AS email
+FROM `eventrequest`
+LEFT JOIN `user` ON `eventrequest`.`id_visitor` = `user`.`id` AND `eventrequest`.`type` = "user"
+LEFT JOIN `visitors` ON `eventrequest`.`id_visitor` = `visitors`.`id` AND `eventrequest`.`type` = "visitor"
+WHERE `eventrequest`.`id_event` = :eventrequest.id_event:
+AND `eventrequest`.`status` = :eventrequest.status:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\EventController.php(212): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->getEventParticipants('1')
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-12-05 11:51:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-05 12:18:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-05 12:26:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-05 12:29:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-05 12:30:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

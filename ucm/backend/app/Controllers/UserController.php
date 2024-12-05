@@ -15,6 +15,41 @@ class UserController extends BaseController
         // return view('');
     }
 
+    public function allusers(){
+        $userModel = new UserModel();
+        $clubMembershipModel = new ClubMembershipModel();
+        $clubModel = new ClubModel();
+    
+        // Fetch all users
+        $users = $userModel->findAll();
+    
+        // Add club details for each user
+        foreach ($users as &$user) {
+            // Fetch memberships for the user with status 'approved'
+            $memberships = $clubMembershipModel
+                ->where('id_user', $user['id'])
+                ->where('status', 'approved') // Only get approved memberships
+                ->findAll();
+    
+            // Fetch club details for the memberships
+            $clubs = [];
+            foreach ($memberships as $membership) {
+                $club = $clubModel->find($membership['id_club']); // Get the club details
+                if ($club) {
+                    $clubs[] = [
+                        'club_id' => $club['id'],
+                        'club_name' => $club['name'],
+                        'club_logo' => $club['logo']
+                    ];
+                }
+            }
+    
+            // Add clubs to the user data
+            $user['clubs'] = $clubs;
+        }
+        return $this->response->setJSON($users);
+    }
+
 
     public function updateUser($id)
     {
@@ -68,12 +103,6 @@ class UserController extends BaseController
         return $this->response->setJSON(['status' => 'error', 'message' => 'No changes made or update failed']);
     }
 
-
-    public function allusers(){
-        $userModel = new UserModel();
-        $users = $userModel->findAll();
-         return $this->response->setJSON($users);
-    }
     public function login()
     {
         $validation = \Config\Services::validation();
@@ -182,7 +211,6 @@ class UserController extends BaseController
 
         $user = $userModel->find($id);
         if (!$user) {
-         
             return $this->response->setJSON(['status' => 'error', 'message' => 'User not found'], 404);
         }
     
@@ -323,31 +351,6 @@ class UserController extends BaseController
         }
     
         return $this->response->setJSON(['status' => 'success', 'users' => $users]);
-    }
-
-    public function push()
-    {
-        $to = 'alahyane900@gmail.com';//Type here the mail address where you want to send
-        $subject = 'Subject of Email';//Write here Subject of Email
-        $message="Conngrats ! You did it.";//Write the message you want to send
-        $email = \Config\Services::email();
-        $email->setTo($to);
-        $email->setFrom('alahyane900@gmail.com','Reset Password');//set From
-        $email->setSubject($subject);
-        $email->setMessage($message);
-        if($email->send())
-        {
-            return $this->response->setJSON([
-                'status' => 'success',
-                'message' => 'Email has been Sent.',
-            ]);
-        }
-        else{
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'Something went wrong !',
-            ]);
-        }
     }
     
     // Reset Password

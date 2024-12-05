@@ -8,7 +8,7 @@ class EventRequestModel extends Model
 {
     protected $table = 'eventrequest';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id_club', 'id_visitor', 'id_event', 'status', 'request_date'];
+    protected $allowedFields = ['id_visitor', 'id_event', 'status', 'request_date', 'type', 'created_at', 'updated_at'];
     
     public function getClub($requestId){
         $db = \Config\Database::connect();

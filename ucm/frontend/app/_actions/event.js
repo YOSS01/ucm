@@ -55,6 +55,7 @@ export async function participateIn(state, formData) {
     const data = {
       id_visitor: result.visitor_id,
       id_event: id_event,
+      type: "visitor",
     };
 
     const responseTwo = await fetch(

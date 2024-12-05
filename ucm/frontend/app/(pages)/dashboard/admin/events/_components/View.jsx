@@ -4,34 +4,6 @@ import Link from "next/link";
 
 export default function View({ event }) {
   const [isViewBttnActive, setIsViewBttnActive] = useState(false);
-  const [club, setClub] = useState({});
-
-  useEffect(() => {
-    // Fetch Users
-    const getClub = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_APP_BASE_URL}/club/${event?.id_club}`,
-          {
-            method: "GET",
-          }
-        );
-
-        if (!response.ok) {
-          // toast.error("Faild to load club!");
-          return;
-        }
-
-        const result = await response.json();
-        setClub(result);
-        return;
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getClub();
-  }, []);
 
   return (
     <>
@@ -91,10 +63,10 @@ export default function View({ event }) {
               <p className="text-white/80 font-light">
                 Club:{" "}
                 <Link
-                  href={`/clubs/${club?.slug}`}
+                  href={`/clubs/${event?.club_slug}`}
                   className="text-white font-original_surfer"
                 >
-                  {club?.name}
+                  {event?.club_name}
                 </Link>
               </p>
               <p className="text-white/80 font-light">
@@ -109,7 +81,9 @@ export default function View({ event }) {
               </p>
               <p className="text-white/80 font-light">
                 Participants:{" "}
-                <span className="text-green-500 font-medium">77</span>
+                <span className="text-green-500 font-medium">
+                  {event?.participant_count}
+                </span>
               </p>
               {/* <p className="text-white/80 font-light">
                 Status:{" "}
@@ -128,7 +102,9 @@ export default function View({ event }) {
 
               <p className="text-white/80 font-light">
                 Created At:{" "}
-                <span className="text-white">{event?.created_at}</span>
+                <span className="text-white font-medium">
+                  {event?.created_at}
+                </span>
               </p>
             </div>
           </div>
