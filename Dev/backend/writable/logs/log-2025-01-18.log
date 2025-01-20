@@ -1,0 +1,38 @@
+ERROR - 2025-01-18 21:17:20 --> Error connecting to the database: mysqli_sql_exception: Base 'clubs_managment_system' inconnue in C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'clubs_managment...', 3306, '', 0)
+#1 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\BaseConnection.php(1485): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\BaseConnection.php(1505): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\MigrationRunner.php(163): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Base 'clubs_managment_system' inconnue in C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\BaseConnection.php(1485): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\BaseConnection.php(1505): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\MigrationRunner.php(759): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Database\MigrationRunner.php(163): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#10 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#11 C:\Users\ULTRAPC\Desktop\Projects\UCM\ucm\backend\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#12 {main}
+INFO - 2025-01-18 21:22:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 21:23:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 21:25:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 23:03:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 23:04:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-18 23:05:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -1,0 +1,51 @@
+ERROR - 2025-01-20 22:34:55 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'clubs_managment...', 3306, '', 0)
+#1 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`....', Array, false)
+#4 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\app\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+#8 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#9 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`....', Array, false)
+#3 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\app\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+#6 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+#7 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+#8 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\Users\ULTRAPC\Desktop\Projects\UCM\Dev\backend\public\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-01-20 22:34:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: all-events]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `event`.*, `clubs`.`name` as `club_name`, `clubs`.`slug` as `club_slug`, COUNT(CASE WHEN eventRequest.status = \'approved\' THEN 1 END) as participant_count
+FROM `event`
+JOIN `clubs` ON `event`.`id_club` = `clubs`.`id`
+LEFT JOIN `eventRequest` ON `event`.`id` = `eventRequest`.`id_event`
+GROUP BY `event`.`id`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\EventController.php(33): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\EventController->allEvents()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\EventController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(66): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
